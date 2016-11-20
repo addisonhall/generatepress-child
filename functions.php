@@ -49,7 +49,7 @@ function gpc_embed_html( $html ) {
  */
 // add_action('acf/init', 'gpc_acf_init');
 function gpc_acf_init() {
-	acf_update_setting('google_api_key', 'AIzaSyAEHsFZz0VJKCvTyZjjH1S4ZX-qbRvhNsU');
+	acf_update_setting('google_api_key', 'key_goes_here');
 }
 
 /**
