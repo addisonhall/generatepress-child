@@ -18,8 +18,10 @@ show_admin_bar( false );
 
 /**
  * Add custom capability for GeneratePress meta boxes.
+ * Requires GeneratPress addons:
+ * @link https://generatepress.com/premium/
  */
-add_filter( 'generate_metabox_capability', 'gpc_custom_metabox_capability', 10 );
+// add_filter( 'generate_metabox_capability', 'gpc_custom_metabox_capability', 10 );
 function gpc_gp_custom_metabox_capability() {
 	return 'view_gp_metaboxes';
 }
