@@ -24,14 +24,14 @@ if ( !function_exists( 'gpc_base_inline_css' ) ) :
       
       // Form button-outline
       '.button.button-outline,
-      .button.button-outline:visited' => array(
+			.button.button-outline:visited' => array(
         'border-color' => $gpc_settings['form_button_background_color'],
         'color' => $gpc_settings['form_button_background_color']
       ),
       
       // Form button-outline hover
       '.button.button-outline:hover,
-      .button.button-outline:focus' => array(
+			.button.button-outline:focus' => array(
         'border-color' => $gpc_settings['form_button_background_color_hover'],
         'color' => $gpc_settings['form_button_background_color_hover']
       )
