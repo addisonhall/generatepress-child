@@ -30,6 +30,17 @@ svg {
   max-height: 100%;
 }
 
+/* Buttons */
+
+button,
+html input[type="button"],
+input[type="reset"],
+input[type="submit"],
+.button,
+.button:visited {
+  border: 1px solid transparent; /* so that default buttons are same size as outline buttons */
+}
+
 /* Button Sizes */
 
 .button-small {
