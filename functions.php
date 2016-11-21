@@ -17,6 +17,15 @@ define( 'GPC_VERSION', '1.0');
 show_admin_bar( false );
 
 /**
+ * Enqueue scripts and styles.
+ */
+add_action( 'wp_enqueue_scripts', 'gpc_scripts' );
+function gpc_scripts() {
+	wp_enqueue_style( 'gpc-base', get_stylesheet_directory_uri() . '/css/base.css', false, GPC_VERSION, 'all');
+	wp_enqueue_script( 'gpc-scripts', get_stylesheet_directory_uri() . '/js/scripts.js', array( 'jquery' ), GPC_VERSION, true );
+}
+
+/**
  * Add custom capability for GeneratePress meta boxes.
  * Requires GeneratPress addons:
  * @link https://generatepress.com/premium/
@@ -24,15 +33,6 @@ show_admin_bar( false );
 // add_filter( 'generate_metabox_capability', 'gpc_custom_metabox_capability', 10 );
 function gpc_gp_custom_metabox_capability() {
 	return 'view_gp_metaboxes';
-}
-
-/**
- * Enqueue scripts and styles.
- */
-add_action( 'wp_enqueue_scripts', 'gpc_scripts' );
-function gpc_scripts() {
-	wp_enqueue_style( 'gpc-base-css', get_stylesheet_directory_uri() . '/css/base.css', false, GPC_VERSION, 'all');
-	wp_enqueue_script( 'gpc-scripts', get_stylesheet_directory_uri() . '/js/scripts.js', array( 'jquery' ), GPC_VERSION, true );
 }
 
 /**
@@ -56,6 +56,11 @@ function gpc_acf_init() {
  * Enable shortcodes in widgets.
  */
 add_filter( 'widget_text' , 'do_shortcode' );
+
+/**
+ * Enable further custom styles.
+ */
+require get_stylesheet_directory() . '/inc/styles.php';
 
 /**
  * Include optimizations.

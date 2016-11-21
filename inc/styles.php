@@ -11,61 +11,62 @@
 
 if ( ! defined( 'ABSPATH' ) ) exit;
 
-if ( !function_exists('generate_get_color_defaults') && !function_exists('generate_advanced_css') ) :
+if ( !function_exists( 'gpc_base_inline_css' ) ) :
 
-  function generate_advanced_css() {
+  function gpc_base_inline_css() {
 
-    $generate_settings = wp_parse_args( 
-      get_option( 'generate_settings', array() ), 
-      generate_get_color_defaults() 
+    $gpc_settings = wp_parse_args( 
+      get_option( 'generate_settings', array() ),
+      generate_get_color_defaults()
     );
 
-    $visual_css = array (
+    $gpc_visual_css = array (
       
       // Form button-outline
-      '.button-outline,
-      .button-outline:visited' => array(
-        'border-color' => $generate_settings['form_button_background_color'],
-        'color' => $generate_settings['form_button_text_color']
+      '.button.button-outline,
+      .button.button-outline:visited' => array(
+        'border-color' => $gpc_settings['form_button_background_color'],
+        'color' => $gpc_settings['form_button_background_color']
       ),
       
       // Form button-outline hover
-      '.button-outline:hover,
-      .button-outline:focus' => array(
-        'border-color' => $generate_settings['form_button_background_color_hover'],
-        'color' => $generate_settings['form_button_text_color_hover']
+      '.button.button-outline:hover,
+      .button.button-outline:focus' => array(
+        'border-color' => $gpc_settings['form_button_background_color_hover'],
+        'color' => $gpc_settings['form_button_background_color_hover']
       )
 
     );
 
-    $output = '';
-    foreach ($visual_css as $k => $properties) {
-      if(!count($properties))
-        continue;
-      $temporary_output = $k . ' {';
-      $elements_added = 0;
-      foreach($properties as $p => $v) {
-        if(empty($v))
-          continue;
-        $elements_added++;
-        $temporary_output .= $p . ': ' . $v . '; ';
-      }
-      $temporary_output .= "}";
-      if($elements_added > 0)
-        $output .= $temporary_output;
-    }
-    
-    $output = str_replace(array("\r", "\n", "\t"), '', $output);
-    return $output;
+    // Output the above CSS
+		$output = '';
+		foreach($gpc_visual_css as $k => $properties) {
+			if(!count($properties))
+				continue;
+			$temporary_output = $k . ' {';
+			$elements_added = 0;
+			foreach($properties as $p => $v) {
+				if(empty($v))
+					continue;
+				$elements_added++;
+				$temporary_output .= $p . ': ' . $v . '; ';
+			}
+			$temporary_output .= "}";
+			if($elements_added > 0)
+				$output .= $temporary_output;
+		}
+		
+		$output = str_replace(array("\r", "\n", "\t"), '', $output);
+		return $output;
 
   }
 
   /**
 	 * Enqueue scripts and styles
 	 */
-	add_action( 'wp_enqueue_scripts', 'generate_color_scripts', 50 );
-	function generate_color_scripts() {
-		wp_add_inline_style( 'generate-style', generate_advanced_css() );
+	add_action( 'wp_enqueue_scripts', 'gpc_color_scripts' );
+	function gpc_color_scripts() {
+		wp_add_inline_style( 'gpc-base', gpc_base_inline_css() );
 	}
 
 endif;
