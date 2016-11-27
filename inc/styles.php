@@ -2,11 +2,13 @@
 /**
  * Additional inline styles.
  *
- * These additional styles pull styling info
- * from customizations in GeneratePress.
+ * These additional styles pull styling
+ * info from customizations in GeneratePress.
+ * It requires the Colors portion of the
+ * premium add-on.
  *
  * @package GenerateChild
- * @link https://github.com/tomusborne/GeneratePress/blob/7bb38855e0e92b3585956f8c3757b46a57d8e31c/inc/add-ons/colors.php
+ * @link https://generatepress.com/downloads/generate-colors/
  */
 
 if ( ! defined( 'ABSPATH' ) ) exit;
