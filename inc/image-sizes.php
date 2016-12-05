@@ -7,9 +7,9 @@
  * @package GenerateChild
  */
 
- /**
-  * Additional image sizes
-  */
+/**
+ * Additional image sizes
+ */
 add_image_size( 'portrait-square', 480, 480, array( 'center', 'top' ) );
 add_filter( 'image_size_names_choose', 'gpc_add_image_sizes' );
 // Add sizes to media admin
