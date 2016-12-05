@@ -36,6 +36,7 @@ It will probably be easiest to check the comments in each file to find out what'
 - `acf-relationships.php`: Allows for bi-directional relationships in Advanced Custom Fields
 - `cpt-output-custom.php`: Tells custom post types and taxonomies to use specified template partials (stored within `partials`)
 - `cpt-output-reset.php`: Heads off the default display of custom post types and taxonomies so that our custom partials can be used instead
+- `image-sizes.php`: Optional custom image sizes
 - `optimizations.php`: Some stuff to make our site lean and mean
 - `shortcodes.php`: Where my shortcodes live
 - `styles.php`: Creates additional inline styles from colors set within the customizer of GeneratePress

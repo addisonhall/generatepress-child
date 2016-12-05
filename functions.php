@@ -68,6 +68,11 @@ require get_stylesheet_directory() . '/inc/styles.php';
 require get_stylesheet_directory() . '/inc/optimizations.php';
 
 /**
+ * Include custom image sizes.
+ */
+// require get_stylesheet_directory() . '/inc/image-sizes.php';
+
+/**
  * ACF relationship helpers. Uncomment to use.
  */
 // require get_stylesheet_directory() . '/inc/acf-relationships.php';
