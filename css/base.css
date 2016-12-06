@@ -982,3 +982,10 @@ input[type="submit"],
 .all-unset { all: unset }
 .all-inherit { all: inherit }
 .all-revert { all: revert }
+
+/* Grid parent fix for entry content */
+
+.entry-content > .grid-parent {
+  margin-left: -10px;
+  margin-right: -10px;
+}
