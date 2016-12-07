@@ -91,3 +91,8 @@ require get_stylesheet_directory() . '/inc/optimizations.php';
  * Include shortcodes. Uncomment to use.
  */
 // require get_stylesheet_directory() . '/inc/shortcodes.php';
+
+/**
+ * Include dashboard widgets.
+ */
+// require get_stylesheet_directory() . '/inc/dashboard-widgets.php';
