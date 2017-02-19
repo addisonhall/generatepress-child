@@ -57,7 +57,7 @@ I've included an [Affinity Designer](https://affinity.serif.com/en-us/) file to 
 
 #### Margin fix for Lightweight Grid Columns
 
-Lightweight Grid Columns is an outstanding plugin for creating grid columns within your content. The only issue I've found is that it creates a smal ten pixel margin difference if used with content not placed in a grid column. There's now a small bit of JavaScript that wraps sets of columns in a div (`.lgc-row`) along with some CSS that provides negative left and right margins to even things out. This is the same technique that Bootstrap 3.x uses.
+Lightweight Grid Columns is an outstanding plugin for creating grid columns within your content. The only issue I've found is that it creates a small ten pixel margin difference if used with content not placed in a grid column. There's now a small bit of JavaScript that wraps sets of columns in a div (`.lgc-row`) along with some CSS that provides negative left and right margins to even things out. This is the same technique that Bootstrap 3.x uses.
 
 ## Plugins I normally use
 
