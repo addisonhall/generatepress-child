@@ -22,6 +22,7 @@ The `style.css` file is where I include all of my custom styling. I have not inc
 
 Only one JavaScript file is present, `js/scripts.js`, for all of my javascript goodies. As of now it includes:
 
+- a small margin "fix" for the Lightweight Grid Columns plugin (see explanation below)
 - a simple scroll-to function for inline anchor links
 - a generic Google Maps function for Advanced Custom Fields (see Plugins below)
 
@@ -52,9 +53,16 @@ These partials are called from within `inc/cpt-custom-output.php`.
 
 I've included an [Affinity Designer](https://affinity.serif.com/en-us/) file to create the `screenshot.png` for the child theme. Of course you can use whatever you like to make your 1200x900 PNG or JPEG file to suit your needs.
 
+### Other
+
+#### Margin fix for Lightweight Grid Columns
+
+Lightweight Grid Columns is an outstanding plugin for creating grid columns within your content. The only issue I've found is that it creates a smal ten pixel margin difference if used with content not placed in a grid column. There's now a small bit of JavaScript that wraps sets of columns in a div (`.lgc-row`) along with some CSS that provides negative left and right margins to even things out. This is the same technique that Bootstrap 3.x uses.
+
 ## Plugins I normally use
 
 - [GeneratePress Premium](https://generatepress.com/premium/)
+- [Lightweight Grid Columns](https://wordpress.org/plugins/lightweight-grid-columns/)
 - [Advanced Custom Fields](https://www.advancedcustomfields.com/)
 - [Custom Post Type UI](https://wordpress.org/plugins/custom-post-type-ui/)
 - [Gravity Forms](http://www.gravityforms.com/) or [Formidable Pro](https://formidablepro.com/)

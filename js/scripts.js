@@ -4,6 +4,15 @@ jQuery(document).ready(function ($) {
   'use strict'
 
   // =========================================
+  // FIX LIGHTWEIGHT GRID COLUMN SPACING
+  // -----------------------------------------
+  if ($('.lgc-clear').length) {
+    $('.lgc-clear').each(function() {
+      $(this).prevAll('.lgc-column').wrapAll('<div class="lgc-row"></div>');
+    });
+  }
+
+  // =========================================
   // SCROLL DOWN ON CLICK
   // -----------------------------------------
 	$('.scroll-to').on('click', function (event) {

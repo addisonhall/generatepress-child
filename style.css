@@ -98,3 +98,13 @@ PROPERTY ORDERING:
 /* ==========================================
 =! OTHER
 ------------------------------------------ */
+
+/* Lightweight Grid Columns spacing fix */
+.has-js .lgc-column { visibility: hidden; }
+.lgc-row .lgc-column { visibility: visible; }
+@media (min-width: 768px) {
+	.lgc-row {
+		margin-left: -10px;
+		margin-right: -10px;
+	}
+}

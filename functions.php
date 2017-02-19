@@ -26,6 +26,16 @@ function gpc_scripts() {
 }
 
 /**
+ * Add .has-js class to html element.
+ */
+add_action( 'generate_before_header','gpc_add_js_class' );  
+function gpc_add_js_class() { ?> 
+	<script>
+		jQuery('html').addClass('has-js');
+	</script>
+<?php }
+
+/**
  * Add custom capability for GeneratePress meta boxes.
  * Requires GeneratPress addons:
  * @link https://generatepress.com/premium/
