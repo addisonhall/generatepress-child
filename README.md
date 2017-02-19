@@ -12,7 +12,7 @@ I've tried to be thorough with comments at the top of each file, but here's the 
 
 ### CSS
 
-As of now, there's only `base.css` within the `styles` folder, and just as it's named, its only purpose is to provide some "base" styles not already included in GeneratePress. Much of it is pulled from [Basscss](http://basscss.com/), but I've modified and added here and there to make it more in line with GeneratePress styling.
+As of now, there's only `base.css` within the `css` folder, and just as it's named, its only purpose is to provide some "base" styles not already included in GeneratePress. Much of it is pulled from [Basscss](http://basscss.com/), but I've modified and added here and there to make it more in line with GeneratePress styling.
 
 By the way, GeneratePress implements [Unsemantic](http://unsemantic.com/) for its layout styling. The additional [default styling](https://github.com/tomusborne/generatepress/blob/master/style.unmin.css) is on Github.
 
