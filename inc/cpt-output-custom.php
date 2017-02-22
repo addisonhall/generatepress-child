@@ -20,7 +20,7 @@ if ( ! defined( 'ABSPATH' ) ) exit;
  */
 add_filter( 'the_content', 'gpc_cpt_content' );
 function gpc_cpt_content( $content ) {
-	if ( is_singular( 'custom_post_type_name' ) && is_main_query() ) {
+	if ( is_singular( 'custom_post_type_name' ) && is_main_query() && in_the_loop() ) {
 		include get_stylesheet_directory() . '/partials/content-cpt-sample-single.php';
 	} elseif ( is_post_type_archive( 'custom_post_type_name' ) && is_main_query() ) {
 		include get_stylesheet_directory() . '/partials/content-cpt-sample-archive.php';
