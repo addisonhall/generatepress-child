@@ -3,12 +3,15 @@
 jQuery(document).ready(function ($) {
   'use strict'
 
+  // Reverse stuff when necessary
+  $.fn.reverse = [].reverse;
+
   // =========================================
   // FIX LIGHTWEIGHT GRID COLUMN SPACING
   // -----------------------------------------
   if ($('.lgc-clear').length) {
     $('.lgc-clear').each(function() {
-      $(this).prevAll('.lgc-column').wrapAll('<div class="lgc-row"></div>');
+      $(this).prevAll('.lgc-column').reverse().wrapAll('<div class="lgc-row"></div>');
     });
   }
 
