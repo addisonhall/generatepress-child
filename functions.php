@@ -17,6 +17,15 @@ define( 'GPC_VERSION', '1.0');
 show_admin_bar( false );
 
 /**
+ * Show all the Google fonts.
+ * @link https://docs.generatepress.com/article/customizing-the-google-font-list/
+ */
+add_filter( 'generate_number_of_fonts', 'gp_show_all_available_google_fonts' );
+function gp_show_all_available_google_fonts() {
+	return 'all';
+}
+
+/**
  * Enqueue scripts and styles.
  */
 add_action( 'wp_enqueue_scripts', 'gpc_scripts' );
