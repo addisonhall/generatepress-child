@@ -42,6 +42,8 @@ It will probably be easiest to check the comments in each file to find out what'
 - `optimizations.php`: Some stuff to make our site lean and mean
 - `shortcodes.php`: Where my shortcodes live
 - `styles.php`: Creates additional inline styles from colors set within the customizer of GeneratePress
+- `sub-menu-widget.php`: Creates a contextual sub menu widget that pulls from the `primary` menu location
+- `sub-menu.php`: Function for adding contextual sub menus. Used by `sub-menu-widget.php`.
 
 ### Partials
 

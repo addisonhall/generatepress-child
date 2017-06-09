@@ -87,7 +87,11 @@ PROPERTY ORDERING:
 =! WIDGETS
 ------------------------------------------ */
 
-
+/* GPC Sub Menu Widget */
+.widget_gpc_sub_menu_widget .dropdown-menu-toggle { display: none; }
+.widget_gpc_sub_menu_widget .menu-item-has-children .sub-menu { margin-left: 1.2em; }
+.widget_gpc_sub_menu_widget .menu-item-has-children .sub-menu li { list-style: disc; }
+.widget_gpc_sub_menu_widget .current-menu-item > a { font-weight: bold; }
 
 /* ==========================================
 =! FOOTER

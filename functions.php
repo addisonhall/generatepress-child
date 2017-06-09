@@ -87,6 +87,11 @@ require get_stylesheet_directory() . '/inc/styles.php';
 require get_stylesheet_directory() . '/inc/optimizations.php';
 
 /**
+ * Include Sub Menu widget.
+ */
+require get_stylesheet_directory() . '/inc/sub-menu-widget.php';
+
+/**
  * Include custom image sizes.
  */
 // require get_stylesheet_directory() . '/inc/image-sizes.php';
