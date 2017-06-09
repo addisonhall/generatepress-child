@@ -24,13 +24,6 @@ CONTENTS:
 7. Footer
 8. Other
 
-PROPERTY ORDERING:
-- Display
-- Positioning
-- Box model
-- Colors and Typography
-- Other
-
 */
 
 /* ==========================================
@@ -45,7 +38,7 @@ PROPERTY ORDERING:
 
 /* define width of logo */
 .site-header .header-image {
-	width: 246px;
+	width: 300px;
 	height: auto;
 }
 
