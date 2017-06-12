@@ -1,0 +1,8 @@
+/*
+Just a few tweaks for the Editor role in the admin.
+*/
+
+.wp-admin.nav-menus-php .page-title-action,
+.wp-admin.widgets-php .page-title-action {
+  display: none;
+}
