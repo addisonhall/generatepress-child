@@ -96,6 +96,12 @@ CONTENTS:
 =! OTHER
 ------------------------------------------ */
 
+/* Reset grid margins */
+.grid-reset {
+  margin-left: -10px;
+  margin-right: -10px;
+}
+
 /* Lightweight Grid Columns spacing fix */
 .has-js .lgc-column { visibility: hidden; }
 .lgc-row .lgc-column { visibility: visible; }
