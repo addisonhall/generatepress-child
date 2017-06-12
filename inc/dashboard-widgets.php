@@ -10,6 +10,23 @@
  */
  
 /**
+ * Display video tutorials link.
+ */
+function gpc_tutorials_dashboard_widget() {
+	wp_add_dashboard_widget(
+    'gpc_tutorials_dashboard_widget', // Widget slug.
+    'Video Tutorials', // Title.
+    'gpc_tutorials_dashboard_widget_function' // Display function.
+  );	
+}
+add_action( 'wp_dashboard_setup', 'gpc_tutorials_dashboard_widget' );
+function gpc_tutorials_dashboard_widget_function() {
+  echo '<p>You may access video tutorials for this website here:</p>
+  <p><a href="https://vimeo.com/" target="_blank">Coming soon</a><br>
+  Password: NA</p>';
+}
+
+/**
  * Display custom shortcodes.
  */
 function gpc_shortcodes_dashboard_widget() {
@@ -20,10 +37,10 @@ function gpc_shortcodes_dashboard_widget() {
   );	
 }
 add_action( 'wp_dashboard_setup', 'gpc_shortcodes_dashboard_widget' );
-function gpc_shortcodes_dashboard_widget_function() { ?>
-	<p>These are shortcodes you can use within a page or post to display data:</p>
-  <dl>
-    <dt>[sample_short_code]</dt>
-    <dd>Show a custom post type list?</dd>
-  </dl>
-<?php } ?>
+function gpc_shortcodes_dashboard_widget_function() {
+  echo '<p>Any custom shortcodes for use on your site will appear here.</p>';
+  echo '<dl>';
+  echo '<dt>[gpc_output_staff]</dt>';
+  echo '<dd>Output a list of staff members.</dd>';
+  echo '</dl>';
+}
