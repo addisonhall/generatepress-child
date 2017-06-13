@@ -31,8 +31,8 @@ function gpc_remove_archive_title() {
 /**
  * Remove default post image for all archives.
  */
-add_action( 'generate_after_entry_header', 'gpc_remove_default_image', 5 );
-function gpc_remove_default_image() {
+add_action( 'generate_after_entry_header', 'gpc_remove_default_archive_image', 5 );
+function gpc_remove_default_archive_image() {
 	if ( is_post_type_archive( $post_types ) || is_tax( $custom_taxonomies ) ) {
 		remove_action( 'generate_after_entry_header', 'generate_blog_post_image' );
 	}
@@ -41,8 +41,8 @@ function gpc_remove_default_image() {
 /**
  * Remove default post image for single view on specified post types.
  */
-add_action( 'generate_before_content', 'gpc_remove_default_image', 0 );
-function gpc_remove_default_image() {
+add_action( 'generate_before_content', 'gpc_remove_default_single_image', 0 );
+function gpc_remove_default_single_image() {
 	if ( is_singular( 'custom_post_type' ) || is_singular( 'custom_post_type_2' ) ) {
 		remove_action( 'generate_before_content', 'generate_featured_page_header_inside_single', 10 );
 		remove_action( 'generate_before_content', 'generate_page_header_single', 10);
