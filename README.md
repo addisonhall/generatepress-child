@@ -30,20 +30,24 @@ I plan on simply editing this file as needed.
 
 ### Functions
 
+**Note:** I've recently rearranged some things here in the latest update. The idea is to compartmentalize things as much as possible.
+
 The `functions.php` file and everything within the `inc` folder go together. You'll find the usual within `functions.php`, but the `inc` folder includes some optional files that can be "required" as needed.
 
 It will probably be easiest to check the comments in each file to find out what's going on, but basically, it's:
 
-- `acf-relationships.php`: Allows for bi-directional relationships in Advanced Custom Fields
+- `advanced-custom-fields.php`: Helpers for Google Maps and bi-directional relationships in Advanced Custom Fields
 - `cpt-output-custom.php`: Tells custom post types and taxonomies to use specified template partials (stored within `partials`)
 - `cpt-output-reset.php`: Heads off the default display of custom post types and taxonomies so that our custom partials can be used instead
 - `dashboard-widgets.php`: Where my dashboard widgets live
+- `generatepress.php`: Some customizations for GeneratePress
 - `image-sizes.php`: Optional custom image sizes
 - `optimizations.php`: Some stuff to make our site lean and mean
 - `shortcodes.php`: Where my shortcodes live
 - `styles.php`: Creates additional inline styles from colors set within the customizer of GeneratePress
 - `sub-menu-widget.php`: Creates a contextual sub menu widget that pulls from the specified menu theme location. Defaults to `primary`.
 - `sub-menu.php`: Function for adding contextual sub menus. Used by `sub-menu-widget.php`.
+- `users.php`: Currently defines what the admin looks like for the `editor` and `shop_manager` roles. Requires the [Members plugin](https://wordpress.org/plugins/members/) by Justin Tadlock.
 
 ### Partials
 
