@@ -6,6 +6,8 @@
  * a contextual portion of the primary menu to use
  * as a sub menu on inner pages.
  *
+ * TODO: Convert this to a plugin!
+ *
  * @package GenerateChild
  * @link https://christianvarga.com/how-to-get-submenu-items-from-a-wordpress-menu-based-on-parent-or-sibling/
  */

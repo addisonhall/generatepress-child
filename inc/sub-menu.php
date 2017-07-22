@@ -5,6 +5,8 @@
  * Must be included in functions.php to use.
  * Also used by sub-menu-widget.php.
  *
+ * TODO: Convert this to a plugin!
+ *
  * Example usage:
  *
  * // Simple
@@ -74,6 +76,11 @@ function gpc_wp_nav_menu_objects_sub_menu( $sorted_menu_items, $args ) {
         // not part of sub-tree: away with it!
         unset( $sorted_menu_items[$key] );
       }
+    }
+
+    // Remove the GP search icon from our sub menu
+    if ( function_exists( 'generate_menu_search_icon' ) ) {
+      remove_filter( 'wp_nav_menu_items', 'generate_menu_search_icon', 10, 2 );
     }
     
     return $sorted_menu_items;
