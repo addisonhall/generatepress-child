@@ -1,10 +1,29 @@
 <?php
 /**
+ * Advanced Custom Fields related stuff.
+ *
+ * Must be included in functions.php
+ *
+ * @package GenerateChild
+ * @link https://www.advancedcustomfields.com/resources/
+ */
+
+if ( ! defined( 'ABSPATH' ) ) exit;
+
+/**
+ * Initialize ACF Google Maps.
+ * @link https://www.advancedcustomfields.com/resources/acf-settings/
+ */
+// add_action('acf/init', 'gpc_acf_init');
+function gpc_acf_init() {
+	acf_update_setting('google_api_key', 'key_goes_here');
+}
+
+/**
  * ACF bi-directional relationships
  * @link: https://www.advancedcustomfields.com/resources/bidirectional-relationships/
  */
- 
-add_filter('acf/update_value/name=custom_post_type', 'gpc_bidirectional_acf_update_value', 10, 3);
+// add_filter('acf/update_value/name=custom_post_type', 'gpc_bidirectional_acf_update_value', 10, 3);
 function gpc_bidirectional_acf_update_value( $value, $post_id, $field  ) {
 
 	// vars

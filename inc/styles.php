@@ -26,14 +26,18 @@ if ( !function_exists( 'gpc_base_inline_css' ) ) :
       
       // Form button-outline
       '.button.button-outline,
-			.button.button-outline:visited' => array(
+			.button.button-outline:visited,
+      .woocommerce .button.button-outline,
+      .woocommerce .button.button-outline:visited' => array(
         'border-color' => $gpc_settings['form_button_background_color'],
         'color' => $gpc_settings['form_button_background_color']
       ),
       
       // Form button-outline hover
       '.button.button-outline:hover,
-			.button.button-outline:focus' => array(
+			.button.button-outline:focus,
+      .woocommerce .button.button-outline:hover,
+      .woocommerce .button.button-outline:focus' => array(
         'border-color' => $gpc_settings['form_button_background_color_hover'],
         'color' => $gpc_settings['form_button_background_color_hover']
       )
@@ -66,9 +70,9 @@ if ( !function_exists( 'gpc_base_inline_css' ) ) :
   /**
 	 * Enqueue scripts and styles
 	 */
-	add_action( 'wp_enqueue_scripts', 'gpc_color_scripts' );
-	function gpc_color_scripts() {
-		wp_add_inline_style( 'gpc-base', gpc_base_inline_css() );
+	add_action( 'wp_enqueue_scripts', 'gpc_inline_dynamic_scripts' );
+	function gpc_inline_dynamic_scripts() {
+		wp_add_inline_style( 'gpc-inline-dynamic', gpc_base_inline_css() );
 	}
 
 endif;

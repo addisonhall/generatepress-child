@@ -61,14 +61,20 @@ input[type="submit"],
 .button.button-outline,
 .button.button-outline:visited,
 .button.button-outline:hover,
-.button.button-outline:active {
+.button.button-outline:active,
+.woocommerce .button.button-outline,
+.woocommerce .button.button-outline:visited,
+.woocommerce .button.button-outline:hover,
+.woocommerce .button.button-outline:active {
   background-color: transparent;
   border-width: 1px;
   border-style: solid;
 }
 
 .button.button-outline:disabled,
-.button.button-outline.is-disabled {
+.button.button-outline.is-disabled,
+.woocommerce .button.button-outline:disabled,
+.woocommerce .button.button-outline.is-disabled {
   opacity: .5;
 }
 
