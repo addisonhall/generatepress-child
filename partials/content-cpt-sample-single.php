@@ -11,16 +11,16 @@ if ( ! defined( 'ABSPATH' ) ) exit; ?>
 
 <div class="grid-parent clearfix">
 
-	<div class="grid-33">
-		<?php
-			if ( has_post_thumbnail() ) {
-				the_post_thumbnail( 'large' );
-			}
-		?>
-	</div>
+  <div class="grid-33">
+    <?php
+      if ( has_post_thumbnail() ) {
+        the_post_thumbnail( 'large' );
+      }
+    ?>
+  </div>
 
-	<div class="grid-66">
-		<?php echo $content; ?>
-	</div>
+  <div class="grid-66">
+    <?php echo $content; ?>
+  </div>
 
 </div>

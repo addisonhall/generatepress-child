@@ -16,7 +16,7 @@ if ( ! defined( 'ABSPATH' ) ) exit;
  */
 // add_action('acf/init', 'gpc_acf_init');
 function gpc_acf_init() {
-	acf_update_setting('google_api_key', 'key_goes_here');
+  acf_update_setting('google_api_key', 'key_goes_here');
 }
 
 /**
@@ -26,94 +26,94 @@ function gpc_acf_init() {
 // add_filter('acf/update_value/name=custom_post_type', 'gpc_bidirectional_acf_update_value', 10, 3);
 function gpc_bidirectional_acf_update_value( $value, $post_id, $field  ) {
 
-	// vars
-	$field_name = $field['name'];
-	$global_name = 'is_updating_' . $field_name;
+  // vars
+  $field_name = $field['name'];
+  $global_name = 'is_updating_' . $field_name;
 
 
-	// bail early if this filter was triggered from the update_field() function called within the loop below
-	// - this prevents an inifinte loop
-	if( !empty($GLOBALS[ $global_name ]) ) return $value;
+  // bail early if this filter was triggered from the update_field() function called within the loop below
+  // - this prevents an inifinte loop
+  if( !empty($GLOBALS[ $global_name ]) ) return $value;
 
 
-	// set global variable to avoid inifite loop
-	// - could also remove_filter() then add_filter() again, but this is simpler
-	$GLOBALS[ $global_name ] = 1;
+  // set global variable to avoid inifite loop
+  // - could also remove_filter() then add_filter() again, but this is simpler
+  $GLOBALS[ $global_name ] = 1;
 
 
-	// loop over selected posts and add this $post_id
-	if( is_array($value) ) {
+  // loop over selected posts and add this $post_id
+  if( is_array($value) ) {
 
-		foreach( $value as $post_id2 ) {
+    foreach( $value as $post_id2 ) {
 
-			// load existing related posts
-			$value2 = get_field($field_name, $post_id2, false);
-
-
-			// allow for selected posts to not contain a value
-			if( empty($value2) ) {
-
-				$value2 = array();
-
-			}
+      // load existing related posts
+      $value2 = get_field($field_name, $post_id2, false);
 
 
-			// bail early if the current $post_id is already found in selected post's $value2
-			if( in_array($post_id, $value2) ) continue;
+      // allow for selected posts to not contain a value
+      if( empty($value2) ) {
+
+        $value2 = array();
+
+      }
 
 
-			// append the current $post_id to the selected post's 'related_posts' value
-			$value2[] = $post_id;
+      // bail early if the current $post_id is already found in selected post's $value2
+      if( in_array($post_id, $value2) ) continue;
 
 
-			// update the selected post's value
-			update_field($field_name, $value2, $post_id2);
-
-		}
-
-	}
+      // append the current $post_id to the selected post's 'related_posts' value
+      $value2[] = $post_id;
 
 
-	// find posts which have been removed
-	$old_value = get_field($field_name, $post_id, false);
+      // update the selected post's value
+      update_field($field_name, $value2, $post_id2);
 
-	if( is_array($old_value) ) {
+    }
 
-		foreach( $old_value as $post_id2 ) {
-
-			// bail early if this value has not been removed
-			if( is_array($value) && in_array($post_id2, $value) ) continue;
+  }
 
 
-			// load existing related posts
-			$value2 = get_field($field_name, $post_id2, false);
+  // find posts which have been removed
+  $old_value = get_field($field_name, $post_id, false);
+
+  if( is_array($old_value) ) {
+
+    foreach( $old_value as $post_id2 ) {
+
+      // bail early if this value has not been removed
+      if( is_array($value) && in_array($post_id2, $value) ) continue;
 
 
-			// bail early if no value
-			if( empty($value2) ) continue;
+      // load existing related posts
+      $value2 = get_field($field_name, $post_id2, false);
 
 
-			// find the position of $post_id within $value2 so we can remove it
-			$pos = array_search($post_id, $value2);
+      // bail early if no value
+      if( empty($value2) ) continue;
 
 
-			// remove
-			unset( $value2[ $pos] );
+      // find the position of $post_id within $value2 so we can remove it
+      $pos = array_search($post_id, $value2);
 
 
-			// update the un-selected post's value
-			update_field($field_name, $value2, $post_id2);
-
-		}
-
-	}
+      // remove
+      unset( $value2[ $pos] );
 
 
-	// reset global varibale to allow this filter to function as per normal
-	$GLOBALS[ $global_name ] = 0;
+      // update the un-selected post's value
+      update_field($field_name, $value2, $post_id2);
+
+    }
+
+  }
 
 
-	// return
+  // reset global varibale to allow this filter to function as per normal
+  $GLOBALS[ $global_name ] = 0;
+
+
+  // return
     return $value;
 
 }

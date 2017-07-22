@@ -16,7 +16,7 @@ if ( ! defined( 'ABSPATH' ) ) exit;
 
 // Register and load the widget
 function gpc_load_sub_menu_widget() {
-	register_widget( 'gpc_sub_menu_widget' );
+  register_widget( 'gpc_sub_menu_widget' );
 }
 add_action( 'widgets_init', 'gpc_load_sub_menu_widget' );
 
@@ -40,7 +40,7 @@ class gpc_sub_menu_widget extends WP_Widget {
   // Creating widget front-end
   public function widget( $args, $instance ) {
     $title = isset( $instance[ 'title' ] ) ? $instance[ 'title' ] : 'In this section';
-		$menu_theme_location = isset( $instance[ 'menu_theme_location' ] ) ? $instance[ 'menu_theme_location' ] : 'primary';
+    $menu_theme_location = isset( $instance[ 'menu_theme_location' ] ) ? $instance[ 'menu_theme_location' ] : 'primary';
 
     require get_stylesheet_directory() . '/inc/sub-menu.php';
     $sub_menu_output = wp_nav_menu( array( 'theme_location' => $menu_theme_location, 'sub_menu' => true, 'echo' => false ) );
@@ -60,7 +60,7 @@ class gpc_sub_menu_widget extends WP_Widget {
   // Widget Backend 
   public function form( $instance ) {
     $title = isset( $instance[ 'title' ] ) ? $instance[ 'title' ] : 'In this section';
-		$menu_theme_location = isset( $instance[ 'menu_theme_location' ] ) ? $instance[ 'menu_theme_location' ] : 'primary';
+    $menu_theme_location = isset( $instance[ 'menu_theme_location' ] ) ? $instance[ 'menu_theme_location' ] : 'primary';
     // Get menu theme locations
     $menus = get_registered_nav_menus();
 
@@ -87,13 +87,13 @@ class gpc_sub_menu_widget extends WP_Widget {
   // Updating widget replacing old instances with new
   public function update( $new_instance, $old_instance ) {
     $instance = array();
-		if ( ! empty( $new_instance['title'] ) ) {
-			$instance['title'] = sanitize_text_field( $new_instance['title'] );
-		}
-		if ( ! empty( $new_instance['menu_theme_location'] ) ) {
-			$instance['menu_theme_location'] = sanitize_text_field( $new_instance['menu_theme_location'] );
-		}
-		return $instance;
+    if ( ! empty( $new_instance['title'] ) ) {
+      $instance['title'] = sanitize_text_field( $new_instance['title'] );
+    }
+    if ( ! empty( $new_instance['menu_theme_location'] ) ) {
+      $instance['menu_theme_location'] = sanitize_text_field( $new_instance['menu_theme_location'] );
+    }
+    return $instance;
   }
 
 } // Class gpc_sub_menu_widget ends here

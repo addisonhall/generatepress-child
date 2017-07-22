@@ -21,8 +21,8 @@ show_admin_bar( false );
  */
 add_action( 'wp_enqueue_scripts', 'gpc_scripts' );
 function gpc_scripts() {
-	wp_enqueue_style( 'gpc-base', get_stylesheet_directory_uri() . '/css/base.css', false, GPC_VERSION, 'all');
-	wp_enqueue_script( 'gpc-scripts', get_stylesheet_directory_uri() . '/js/scripts.js', array( 'jquery' ), GPC_VERSION, true );
+  wp_enqueue_style( 'gpc-base', get_stylesheet_directory_uri() . '/css/base.css', false, GPC_VERSION, 'all');
+  wp_enqueue_script( 'gpc-scripts', get_stylesheet_directory_uri() . '/js/scripts.js', array( 'jquery' ), GPC_VERSION, true );
 }
 
 /**
@@ -39,9 +39,9 @@ function gpc_body_classes( $classes ) {
  */
 add_action( 'generate_before_header','gpc_add_js_class' );  
 function gpc_add_js_class() { ?> 
-	<script>
-		jQuery('html').addClass('has-js');
-	</script>
+  <script>
+    jQuery('html').addClass('has-js');
+  </script>
 <?php }
 
 /**
@@ -50,7 +50,7 @@ function gpc_add_js_class() { ?>
 add_filter( 'embed_oembed_html', 'gpc_embed_html', 10, 3 );
 add_filter( 'video_embed_html', 'gpc_embed_html' ); // Jetpack
 function gpc_embed_html( $html ) {
-	return '<div class="video-container">' . $html . '</div>';
+  return '<div class="video-container">' . $html . '</div>';
 }
 
 /**

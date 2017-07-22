@@ -31,7 +31,7 @@ function gpc_custom_taxonomy_filter_func() {
     <?php wp_list_categories( $args ); ?>
   </ul>
   <?php
-	return ob_get_clean();
+  return ob_get_clean();
 }
 add_shortcode( 'gpc_custom_taxonomy_filter', 'gpc_custom_taxonomy_filter_func' );
 

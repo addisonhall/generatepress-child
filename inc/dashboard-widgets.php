@@ -13,7 +13,7 @@
  * Display video tutorials link.
  */
 function gpc_tutorials_dashboard_widget() {
-	wp_add_dashboard_widget(
+  wp_add_dashboard_widget(
     'gpc_tutorials_dashboard_widget', // Widget slug.
     'Video Tutorials', // Title.
     'gpc_tutorials_dashboard_widget_function' // Display function.
@@ -30,7 +30,7 @@ function gpc_tutorials_dashboard_widget_function() {
  * Display custom shortcodes.
  */
 function gpc_shortcodes_dashboard_widget() {
-	wp_add_dashboard_widget(
+  wp_add_dashboard_widget(
     'gpc_shortcodes_dashboard_widget', // Widget slug.
     'Shortcodes', // Title.
     'gpc_shortcodes_dashboard_widget_function' // Display function.

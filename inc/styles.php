@@ -26,7 +26,7 @@ if ( !function_exists( 'gpc_base_inline_css' ) ) :
       
       // Form button-outline
       '.button.button-outline,
-			.button.button-outline:visited,
+      .button.button-outline:visited,
       .woocommerce .button.button-outline,
       .woocommerce .button.button-outline:visited' => array(
         'border-color' => $gpc_settings['form_button_background_color'],
@@ -35,7 +35,7 @@ if ( !function_exists( 'gpc_base_inline_css' ) ) :
       
       // Form button-outline hover
       '.button.button-outline:hover,
-			.button.button-outline:focus,
+      .button.button-outline:focus,
       .woocommerce .button.button-outline:hover,
       .woocommerce .button.button-outline:focus' => array(
         'border-color' => $gpc_settings['form_button_background_color_hover'],
@@ -45,34 +45,34 @@ if ( !function_exists( 'gpc_base_inline_css' ) ) :
     );
 
     // Output the above CSS
-		$output = '';
-		foreach($gpc_visual_css as $k => $properties) {
-			if(!count($properties))
-				continue;
-			$temporary_output = $k . ' {';
-			$elements_added = 0;
-			foreach($properties as $p => $v) {
-				if(empty($v))
-					continue;
-				$elements_added++;
-				$temporary_output .= $p . ': ' . $v . '; ';
-			}
-			$temporary_output .= "}";
-			if($elements_added > 0)
-				$output .= $temporary_output;
-		}
-		
-		$output = str_replace(array("\r", "\n", "\t"), '', $output);
-		return $output;
+    $output = '';
+    foreach($gpc_visual_css as $k => $properties) {
+      if(!count($properties))
+        continue;
+      $temporary_output = $k . ' {';
+      $elements_added = 0;
+      foreach($properties as $p => $v) {
+        if(empty($v))
+          continue;
+        $elements_added++;
+        $temporary_output .= $p . ': ' . $v . '; ';
+      }
+      $temporary_output .= "}";
+      if($elements_added > 0)
+        $output .= $temporary_output;
+    }
+    
+    $output = str_replace(array("\r", "\n", "\t"), '', $output);
+    return $output;
 
   }
 
   /**
-	 * Enqueue scripts and styles
-	 */
-	add_action( 'wp_enqueue_scripts', 'gpc_inline_dynamic_scripts' );
-	function gpc_inline_dynamic_scripts() {
-		wp_add_inline_style( 'gpc-inline-dynamic', gpc_base_inline_css() );
-	}
+   * Enqueue scripts and styles
+   */
+  add_action( 'wp_enqueue_scripts', 'gpc_inline_dynamic_scripts' );
+  function gpc_inline_dynamic_scripts() {
+    wp_add_inline_style( 'gpc-inline-dynamic', gpc_base_inline_css() );
+  }
 
 endif;
