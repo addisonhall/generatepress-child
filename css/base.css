@@ -39,21 +39,22 @@ input[type="submit"],
 .button,
 .button:visited {
   border: 1px solid transparent; /* so that default buttons are same size as outline buttons */
+  cursor: pointer;
 }
 
 /* Button Sizes */
 
-.button-small {
-  padding: .25rem .5rem;
+.button.button-small {
+  padding: .25rem 1rem !important;
 }
 
-.button-big {
-  padding: 1rem 1.25rem;
+.button.button-big {
+  padding: 1rem 1.75rem !important;
 }
 
-.button-narrow {
-  padding-left: .5rem;
-  padding-right: .5rem;
+.button.button-narrow {
+  padding-left: .5rem !important;
+  padding-right: .5rem !important;
 }
 
 /* Button Outline */
