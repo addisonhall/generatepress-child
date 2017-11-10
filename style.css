@@ -67,7 +67,7 @@ CONTENTS:
 .gallery-columns-7 .gallery-item,
 .gallery-columns-8 .gallery-item,
 .gallery-columns-9 .gallery-item {
-	max-width: 100%;
+  max-width: 100%;
 }
 @media screen and (min-width: 480px) {
   .gallery-columns-3 .gallery-item,
@@ -77,8 +77,8 @@ CONTENTS:
   .gallery-columns-7 .gallery-item,
   .gallery-columns-8 .gallery-item,
   .gallery-columns-9 .gallery-item {
-		max-width: 50%;
-	}
+    max-width: 50%;
+  }
 }
 @media screen and (min-width: 640px) {
   .gallery-columns-3 .gallery-item,
@@ -88,28 +88,28 @@ CONTENTS:
   .gallery-columns-7 .gallery-item,
   .gallery-columns-8 .gallery-item,
   .gallery-columns-9 .gallery-item {
-		max-width: 33.33%;
-	}
+    max-width: 33.33%;
+  }
 }
 @media screen and (min-width: 992px) {
-	.gallery-columns-4 .gallery-item {
-		max-width: 25%;
-	}
-	.gallery-columns-5 .gallery-item {
-		max-width: 20%;
-	}
-	.gallery-columns-6 .gallery-item {
-		max-width: 16.66%;
-	}
-	.gallery-columns-7 .gallery-item {
-		max-width: 14.28%;
-	}
-	.gallery-columns-8 .gallery-item {
-		max-width: 12.5%;
-	}
-	.gallery-columns-9 .gallery-item {
-		max-width: 11.11%;
-	}
+  .gallery-columns-4 .gallery-item {
+    max-width: 25%;
+  }
+  .gallery-columns-5 .gallery-item {
+    max-width: 20%;
+  }
+  .gallery-columns-6 .gallery-item {
+    max-width: 16.66%;
+  }
+  .gallery-columns-7 .gallery-item {
+    max-width: 14.28%;
+  }
+  .gallery-columns-8 .gallery-item {
+    max-width: 12.5%;
+  }
+  .gallery-columns-9 .gallery-item {
+    max-width: 11.11%;
+  }
 }
 
 /* size of ACF Google map */
