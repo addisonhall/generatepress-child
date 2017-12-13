@@ -36,10 +36,9 @@ CONTENTS:
 =! HEADER AND NAV
 ------------------------------------------ */
 
-/* define width of logo */
-.site-header .header-image {
+/* define width of logo in large header */
+.site-header > .inside-header > .site-logo > a > .header-image {
   width: 300px;
-  height: auto;
 }
 
 /* ==========================================
@@ -67,18 +66,7 @@ CONTENTS:
 .gallery-columns-7 .gallery-item,
 .gallery-columns-8 .gallery-item,
 .gallery-columns-9 .gallery-item {
-  max-width: 100%;
-}
-@media screen and (min-width: 480px) {
-  .gallery-columns-3 .gallery-item,
-  .gallery-columns-4 .gallery-item,
-  .gallery-columns-5 .gallery-item,
-  .gallery-columns-6 .gallery-item,
-  .gallery-columns-7 .gallery-item,
-  .gallery-columns-8 .gallery-item,
-  .gallery-columns-9 .gallery-item {
-    max-width: 50%;
-  }
+  max-width: 50%;
 }
 @media screen and (min-width: 640px) {
   .gallery-columns-3 .gallery-item,
@@ -150,18 +138,16 @@ CONTENTS:
 =! OTHER
 ------------------------------------------ */
 
-/* Reset grid margins */
-.grid-reset {
-  margin-left: -10px;
-  margin-right: -10px;
-}
 
-/* Lightweight Grid Columns spacing fix */
+/* Plugin: Lightweight Grid Columns spacing fix */
 .has-js .lgc-column { visibility: hidden; }
 .lgc-row .lgc-column { visibility: visible; }
 @media (min-width: 768px) {
   .lgc-row {
-    margin-left: -10px;
-    margin-right: -10px;
+    margin-left: -20px;
+    margin-right: -20px;
   }
+}
+.lgc-row .inside-grid-column {
+  padding: 0 20px;
 }

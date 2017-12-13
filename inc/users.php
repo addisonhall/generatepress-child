@@ -26,6 +26,8 @@ function gpc_editor_menu_page_removing() {
   global $gpc_current_user;
   if ( array_intersect( array( 'editor', 'shop_manager' ), (array) $gpc_current_user->roles ) ) {
     remove_menu_page( 'themes.php' );
+    remove_menu_page( 'edit.php?post_type=wp_show_posts' );
+    remove_menu_page( 'edit.php?post_type=generate_page_header' );
     add_menu_page( 'Menus', 'Menus', 'edit_theme_options', 'nav-menus.php', '', 'dashicons-menu', 60 );
     add_menu_page( 'Widgets', 'Widgets', 'edit_theme_options', 'widgets.php', '', 'dashicons-layout', 61 );
   }

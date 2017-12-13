@@ -58,15 +58,6 @@ function gpc_gp_custom_metabox_capability() {
 add_action( 'add_meta_boxes', 'gpc_remove_meta_boxes', 999 );
 function gpc_remove_meta_boxes() {
   // Posts
+	remove_meta_box('generate_layout_options_meta_box', 'post', 'normal'); // Disable all layout options
 	remove_meta_box('_generate_use_sections_metabox', 'post', 'side'); // Disable sections
-	remove_meta_box('generate_de_meta_box', 'post', 'side'); // Disable elements
-	remove_meta_box('generate_footer_widget_meta_box', 'post', 'side'); // Footer widgets
-	remove_meta_box('generate_layout_meta_box', 'post', 'side'); // Sidebar layout
-	remove_meta_box('generate_page_builder_meta_box', 'post', 'side'); // Page builder integration
-	remove_meta_box('generate_page_header_meta_box', 'post', 'normal'); // Page header
-  remove_meta_box('generate_select_page_header_meta_box', 'post', 'normal'); // Page header select
-  // Pages
-  remove_meta_box('generate_footer_widget_meta_box', 'page', 'side'); // Footer widgets
-  remove_meta_box('generate_layout_meta_box', 'page', 'side'); // Sidebar layout
-  remove_meta_box('generate_page_builder_meta_box', 'page', 'side'); // Page builder integration
 }

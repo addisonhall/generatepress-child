@@ -23,6 +23,7 @@ $custom_taxonomies = array( 'custom_taxonomy', 'custom_taxonomy_2' );
  */
 add_action( 'pre_get_posts', 'gpc_remove_archive_title' );
 function gpc_remove_archive_title() {
+  global $post_types, $custom_taxonomies;
   if ( is_post_type_archive( $post_types ) || is_tax( $custom_taxonomies ) ) {
     remove_action( 'generate_archive_title', 'generate_archive_title' );
   }
@@ -33,6 +34,7 @@ function gpc_remove_archive_title() {
  */
 add_action( 'generate_after_entry_header', 'gpc_remove_default_archive_image', 5 );
 function gpc_remove_default_archive_image() {
+  global $post_types, $custom_taxonomies;
   if ( is_post_type_archive( $post_types ) || is_tax( $custom_taxonomies ) ) {
     remove_action( 'generate_after_entry_header', 'generate_blog_post_image' );
   }
@@ -56,6 +58,7 @@ function gpc_remove_default_single_image() {
  */
 add_action( 'generate_before_main_content', 'gpc_add_custom_archive_title' );
 function gpc_add_custom_archive_title() {
+  global $post_types, $custom_taxonomies;
   // custom post type
   if ( is_post_type_archive( $post_types ) ) {
     echo '<header class="page-header"><h1 class="page-title">';
@@ -63,7 +66,7 @@ function gpc_add_custom_archive_title() {
     echo '</h1></header>';
   }
   // custom taxonomies
-  if ( is_tax( 'custom_taxonomy' ) || is_tax( 'custom_taxonomy_2' ) ) {
+  if ( is_tax( $custom_taxonomies ) ) {
     echo '<header class="page-header"><h1 class="page-title">Custom Taxonomy: ';
     single_term_title();
     echo '</h1></header>';

@@ -15,6 +15,11 @@ jQuery(document).ready(function ($) {
     });
   }
 
+  // Reset grid column height after Gravity Forms ajax submit
+  $(document).bind('gform_post_render', function() {
+    $('.lgc-equal-heights').matchHeight();
+  });
+
   // =========================================
   // SCROLL DOWN ON CLICK
   // -----------------------------------------

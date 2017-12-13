@@ -23,6 +23,7 @@ The `style.css` file is where I include all of my custom styling. I have not inc
 Only one JavaScript file is present, `js/scripts.js`, for all of my javascript goodies. As of now it includes:
 
 - a small margin "fix" for the Lightweight Grid Columns plugin (see explanation below)
+- a simple function that recalls matchHeight so that ajax Gravity Forms don't bork the layout
 - a simple scroll-to function for inline anchor links
 - a generic Google Maps function for Advanced Custom Fields (see Plugins below)
 
@@ -30,7 +31,7 @@ I plan on simply editing this file as needed.
 
 ### Functions
 
-**Note:** I've recently rearranged some things here in the latest update. The idea is to compartmentalize things as much as possible.
+**Note:** I've ~~recently~~ rearranged some things here in the latest update. The idea is to compartmentalize things as much as possible.
 
 The `functions.php` file and everything within the `inc` folder go together. You'll find the usual within `functions.php`, but the `inc` folder includes some optional files that can be "required" as needed.
 
@@ -40,7 +41,7 @@ It will probably be easiest to check the comments in each file to find out what'
 - `cpt-output-custom.php`: Tells custom post types and taxonomies to use specified template partials (stored within `partials`)
 - `cpt-output-reset.php`: Heads off the default display of custom post types and taxonomies so that our custom partials can be used instead
 - `dashboard-widgets.php`: Where my dashboard widgets live
-- `generatepress.php`: Some customizations for GeneratePress
+- `generatepress.php`: Some customizations for GeneratePress. I've updated some things here for GP 2.0.
 - `image-sizes.php`: Optional custom image sizes
 - `optimizations.php`: Some stuff to make our site lean and mean
 - `shortcodes.php`: Where my shortcodes live
@@ -48,6 +49,8 @@ It will probably be easiest to check the comments in each file to find out what'
 - `sub-menu-widget.php`: Creates a contextual sub menu widget that pulls from the specified menu theme location. Defaults to `primary`.
 - `sub-menu.php`: Function for adding contextual sub menus. Used by `sub-menu-widget.php`.
 - `users.php`: Currently defines what the admin looks like for the `editor` and `shop_manager` roles. Requires the [Members plugin](https://wordpress.org/plugins/members/) by Justin Tadlock.
+- `woocommerce.php`: Customizations, if necessary, for WooCommerce.
+- `wp-show-posts.php`: Customizations, if necessary, for [WP Show Posts](https://wpshowposts.com/). This currently only contains a filter for removing all links for occasions where you only require a list (but not links, obviously).
 
 ### Partials
 
@@ -71,9 +74,12 @@ Lightweight Grid Columns is an outstanding plugin for creating grid columns with
 - [Lightweight Grid Columns](https://wordpress.org/plugins/lightweight-grid-columns/)
 - [Advanced Custom Fields](https://www.advancedcustomfields.com/)
 - [Custom Post Type UI](https://wordpress.org/plugins/custom-post-type-ui/)
+- [WP Show Posts](https://wpshowposts.com/)
+- [Dynamic Widgets](https://wordpress.org/plugins/dynamic-widgets/)
 - [Gravity Forms](http://www.gravityforms.com/) or [Formidable Pro](https://formidablepro.com/)
 - [Members](https://wordpress.org/plugins/members/)
-- [Display Widgets](https://wordpress.org/plugins/display-widgets/)
-- [Black Studio TinyMCE Widget](https://wordpress.org/plugins/black-studio-tinymce-widget/)
 - [WP Featherlight](https://wordpress.org/plugins/wp-featherlight/)
+- [Soliloquy](https://soliloquywp.com/)
 - [Autoptimize](https://wordpress.org/plugins/autoptimize/)
+- ~~[Display Widgets](https://wordpress.org/plugins/display-widgets/)~~
+- ~~[Black Studio TinyMCE Widget](https://wordpress.org/plugins/black-studio-tinymce-widget/)~~
