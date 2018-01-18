@@ -9,12 +9,21 @@
 
 if ( ! defined( 'ABSPATH' ) ) exit;
 
+add_filter( 'wpsp_disable_image_link', 'tu_disable_links', 10, 2 );
+add_filter( 'wpsp_disable_title_link', 'tu_disable_links', 10, 2 );
+function tu_disable_links( $output, $settings ) {
+    if ( 1746 === $settings['list_id'] ) {
+      return true;
+    }
+  return $output;
+}
+
 /**
  * Remove permalinks from WP Show Posts output using DOMDocument and DOMXpath.
  * @link https://stackoverflow.com/questions/36096834/selectivly-replace-certain-html-tags-via-php-while-keeping-some
  * @link https://techsparx.com/software-development/wordpress/dom-document-pitfalls.html
  */
-add_filter( 'the_content', 'gpc_remove_wpshowposts_permalinks', 20 );
+// add_filter( 'the_content', 'gpc_remove_wpshowposts_permalinks', 20 );
 function gpc_remove_wpshowposts_permalinks( $content ) {
 
   // EDIT HERE!
