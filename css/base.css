@@ -858,6 +858,15 @@ input[type="submit"],
 
 /* Basscss Responsive Type Scale */
 
+.h00 { font-size: 4rem !important }
+.h0 { font-size: 3rem !important }
+.h1 { font-size: 2rem !important }
+.h2 { font-size: 1.5rem !important }
+.h3 { font-size: 1.25rem !important }
+.h4 { font-size: 1rem !important }
+.h5 { font-size: .875rem !important }
+.h6 { font-size: .75rem !important }
+
 @media (max-width: 767px) {
   .mobile-h00 { font-size: 4rem !important }
   .mobile-h0 { font-size: 3rem !important }
