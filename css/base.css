@@ -310,14 +310,20 @@ input[type="submit"],
 
 @media (max-width: 767px){
   .mobile-flex{ display:-webkit-box; display:-webkit-flex; display:-ms-flexbox; display:flex }
+  .mobile-flex-column{ -webkit-box-orient:vertical; -webkit-box-direction:normal; -webkit-flex-direction:column; -ms-flex-direction:column; flex-direction:column }
+  .mobile-flex-wrap{ -webkit-flex-wrap:wrap; -ms-flex-wrap:wrap; flex-wrap:wrap }
 }
 
 @media (min-width: 768px) and (max-width: 1024px){
   .tablet-flex{ display:-webkit-box; display:-webkit-flex; display:-ms-flexbox; display:flex }
+  .tablet-flex-column{ -webkit-box-orient:vertical; -webkit-box-direction:normal; -webkit-flex-direction:column; -ms-flex-direction:column; flex-direction:column }
+  .tablet-flex-wrap{ -webkit-flex-wrap:wrap; -ms-flex-wrap:wrap; flex-wrap:wrap }
 }
 
 @media (min-width: 1025px){
   .desktop-flex{ display:-webkit-box; display:-webkit-flex; display:-ms-flexbox; display:flex }
+  .desktop-flex-column{ -webkit-box-orient:vertical; -webkit-box-direction:normal; -webkit-flex-direction:column; -ms-flex-direction:column; flex-direction:column }
+  .desktop-flex-wrap{ -webkit-flex-wrap:wrap; -ms-flex-wrap:wrap; flex-wrap:wrap }
 }
 
 .flex-column{ -webkit-box-orient:vertical; -webkit-box-direction:normal; -webkit-flex-direction:column; -ms-flex-direction:column; flex-direction:column }
