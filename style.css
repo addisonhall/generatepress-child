@@ -30,7 +30,10 @@ CONTENTS:
 =! DEFAULTS
 ------------------------------------------ */
 
-
+/* Underline links in content area */
+.inside-article .entry-content a {
+  border-bottom: 1px dotted;
+}
 
 /* ==========================================
 =! HEADER AND NAV
