@@ -72,6 +72,21 @@ input[type="submit"],
   border-style: solid;
 }
 
+.button.button-outline-reverse,
+.button.button-outline-reverse:visited,
+.button.button-outline-reverse:hover,
+.button.button-outline-reverse:active,
+.woocommerce .button.button-outline-reverse,
+.woocommerce .button.button-outline-reverse:visited,
+.woocommerce .button.button-outline-reverse:hover,
+.woocommerce .button.button-outline-reverse:active {
+  background-color: transparent;
+  border-width: 1px;
+  border-style: solid;
+  border-color: #ffffff;
+  color: #fff;
+}
+
 .button.button-outline:disabled,
 .button.button-outline.is-disabled,
 .woocommerce .button.button-outline:disabled,
