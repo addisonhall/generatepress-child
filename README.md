@@ -49,6 +49,7 @@ It will probably be easiest to check the comments in each file to find out what'
 - `sub-menu-widget.php`: Creates a contextual sub menu widget that pulls from the specified menu theme location. Defaults to `primary`.
 - `sub-menu.php`: Function for adding contextual sub menus. Used by `sub-menu-widget.php`.
 - `users.php`: Currently defines what the admin looks like for the `editor` and `shop_manager` roles. Requires the [Members plugin](https://wordpress.org/plugins/members/) by Justin Tadlock.
+- `widgets.php`: Easily hide unwanted widgets.
 - `woocommerce.php`: Customizations, if necessary, for WooCommerce.
 - `wp-show-posts.php`: Customizations, if necessary, for [WP Show Posts](https://wpshowposts.com/). This currently only contains a filter for removing all links for occasions where you only require a list (but not links, obviously).
 
@@ -63,6 +64,10 @@ These partials are called from within `inc/cpt-custom-output.php`.
 I've included an [Affinity Designer](https://affinity.serif.com/en-us/) file to create the `screenshot.png` for the child theme. Of course you can use whatever you like to make your 1200x900 PNG or JPEG file to suit your needs.
 
 ### Other
+
+#### How I use the Members plugin
+
+To enable the settings I have in place for the Editor role, all that currently needs to be done is to enable the "Edit Theme Options" under "Appearance" for the Editor role (start by looking under Users > Roles in WordPress). This will enable Menus and Widgets for Editors in WordPress.
 
 #### Margin fix for Lightweight Grid Columns
 
