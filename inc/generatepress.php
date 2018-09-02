@@ -12,6 +12,8 @@ if ( ! defined( 'ABSPATH' ) ) exit;
 
 /**
  * Access GP Premium beta plugins.
+ * This can now be done from within WordPress:
+ * @link https://docs.generatepress.com/article/beta-testing/
  */
 // add_action( 'after_setup_theme','gpc_beta_tester' );
 function gpc_beta_tester() {

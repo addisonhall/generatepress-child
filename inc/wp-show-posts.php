@@ -9,6 +9,10 @@
 
 if ( ! defined( 'ABSPATH' ) ) exit;
 
+/**
+ * Remove permalinks from WP Show Posts output
+ * @link https://wpshowposts.com/support/topic/selectively-disable-title-link/
+ */
 add_filter( 'wpsp_disable_image_link', 'tu_disable_links', 10, 2 );
 add_filter( 'wpsp_disable_title_link', 'tu_disable_links', 10, 2 );
 function tu_disable_links( $output, $settings ) {
@@ -20,6 +24,9 @@ function tu_disable_links( $output, $settings ) {
 
 /**
  * Remove permalinks from WP Show Posts output using DOMDocument and DOMXpath.
+ * NOTE: This may not be necessary any longer thanks to the built in filters
+ * as show in the function above. Even if removed, it will live on in the Gist below.
+ * @link https://gist.github.com/addisonhall/a9d6756de4835018e6ac80a2531e754a
  * @link https://stackoverflow.com/questions/36096834/selectivly-replace-certain-html-tags-via-php-while-keeping-some
  * @link https://techsparx.com/software-development/wordpress/dom-document-pitfalls.html
  */

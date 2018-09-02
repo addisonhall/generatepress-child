@@ -1,6 +1,8 @@
 <?php
 /**
  * Theme and WordPress optimizations.
+ * 
+ * Note that Fontawesome is no longer included in GeneratePress.
  *
  * Must be included in functions.php
  *
@@ -9,14 +11,6 @@
  */
 
 if ( ! defined( 'ABSPATH' ) ) exit;
-
-/**
- * Only include essential Font Awesome
- */
-// add_filter( 'generate_fontawesome_essentials', 'generate_fontawesome_essentials' );
-function generate_fontawesome_essentials() {
-  return true;
-}
 
 /**
  * Remove query strings

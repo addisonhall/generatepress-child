@@ -39,7 +39,7 @@ It will probably be easiest to check the comments in each file to find out what'
 
 - `advanced-custom-fields.php`: Helpers for Google Maps and bi-directional relationships in Advanced Custom Fields
 - `cpt-output-custom.php`: Tells custom post types and taxonomies to use specified template partials (stored within `partials`)
-- `cpt-output-reset.php`: Heads off the default display of custom post types and taxonomies so that our custom partials can be used instead
+- `cpt-output-reset.php`: ~~Heads off the default display of custom post types and taxonomies so that our custom partials can be used instead~~ This is no longer necessary thanks to the Elements Module introduced in GP Premium 1.7
 - `dashboard-widgets.php`: Where my dashboard widgets live
 - `generatepress.php`: Some customizations for GeneratePress. I've updated some things here for GP 2.0.
 - `image-sizes.php`: Optional custom image sizes
