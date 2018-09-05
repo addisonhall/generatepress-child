@@ -38,6 +38,7 @@ The `functions.php` file and everything within the `inc` folder go together. You
 It will probably be easiest to check the comments in each file to find out what's going on, but basically, it's:
 
 - `advanced-custom-fields.php`: Helpers for Google Maps and bi-directional relationships in Advanced Custom Fields
+- `breadcrumbs.php`: Add a simple visual breadcrumb trail using hooks (Note that this does not add stuctured data &mdash; I recommend a plugin like [SEO Framework](https://wordpress.org/plugins/autodescription/) for that)
 - `cpt-output-custom.php`: Tells custom post types and taxonomies to use specified template partials (stored within `partials`)
 - `cpt-output-reset.php`: ~~Heads off the default display of custom post types and taxonomies so that our custom partials can be used instead~~ This is no longer necessary thanks to the Elements Module introduced in GP Premium 1.7
 - `dashboard-widgets.php`: Where my dashboard widgets live
@@ -86,5 +87,6 @@ Lightweight Grid Columns is an outstanding plugin for creating grid columns with
 - [WP Featherlight](https://wordpress.org/plugins/wp-featherlight/)
 - [Soliloquy](https://soliloquywp.com/)
 - [Autoptimize](https://wordpress.org/plugins/autoptimize/)
+- [The SEO Framework](https://wordpress.org/plugins/autodescription/)
 - ~~[Display Widgets](https://wordpress.org/plugins/display-widgets/)~~
 - ~~[Black Studio TinyMCE Widget](https://wordpress.org/plugins/black-studio-tinymce-widget/)~~
