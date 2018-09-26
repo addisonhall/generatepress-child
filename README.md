@@ -18,6 +18,8 @@ By the way, GeneratePress implements [Unsemantic](http://unsemantic.com/) for it
 
 The `style.css` file is where I include all of my custom styling. I have not included any preprocessor setup, so feel free to rig up whatever you prefer.
 
+I've begun adding Gutenburg-specific classes so that styling those elements on the front-end is a little easier.
+
 ### JavaScript
 
 Only one JavaScript file is present, `js/scripts.js`, for all of my javascript goodies. As of now it includes:
@@ -39,6 +41,7 @@ It will probably be easiest to check the comments in each file to find out what'
 
 - `advanced-custom-fields.php`: Helpers for Google Maps and bi-directional relationships in Advanced Custom Fields
 - `breadcrumbs.php`: Add a simple visual breadcrumb trail using hooks (Note that this does not add stuctured data &mdash; I recommend a plugin like [SEO Framework](https://wordpress.org/plugins/autodescription/) for that)
+- `colors.php`: Allows you to add your own colors to the color fields used by GeneratePress
 - `cpt-output-custom.php`: Tells custom post types and taxonomies to use specified template partials (stored within `partials`)
 - `cpt-output-reset.php`: ~~Heads off the default display of custom post types and taxonomies so that our custom partials can be used instead~~ This is no longer necessary thanks to the Elements Module introduced in GP Premium 1.7
 - `dashboard-widgets.php`: Where my dashboard widgets live

@@ -64,6 +64,7 @@ add_filter( 'widget_text' , 'do_shortcode' );
 require get_stylesheet_directory() . '/inc/users.php';
 require get_stylesheet_directory() . '/inc/generatepress.php';
 require get_stylesheet_directory() . '/inc/styles.php';
+require get_stylesheet_directory() . '/inc/colors.php';
 require get_stylesheet_directory() . '/inc/dashboard-widgets.php';
 require get_stylesheet_directory() . '/inc/widgets.php';
 require get_stylesheet_directory() . '/inc/sub-menu-widget.php';

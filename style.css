@@ -30,6 +30,14 @@ CONTENTS:
 =! DEFAULTS
 ------------------------------------------ */
 
+/* --- Foreground colors --- */
+.color-black { color: #000; }
+.color-white { color: #fff; }
+
+/* --- Background colors --- */
+.bg-color-black { background-color: #000; }
+.bg-color-white { background-color: #fff; }
+
 /* Underline links in content area */
 .inside-article .entry-content a {
   border-bottom: 1px dotted;
@@ -124,6 +132,36 @@ CONTENTS:
 .breadcrumbs {
   font-size: 14px;
   margin-bottom: 10px;
+}
+
+/* --- gutenberg columns --- */
+@media (max-width: 767.999px) {
+  .wp-block-columns {
+    display: block;
+  }
+}
+@media (min-width: 768px) {
+  .wp-block-columns {
+    margin-left: -15px;
+    margin-right: -15px;
+  }
+  .wp-block-column {
+    padding-left: 15px;
+    padding-right: 15px;
+  }
+}
+
+/* --- gutenberg file download --- */
+.gpc .wp-block-file .wp-block-file__button,
+.gpc .wp-block-file a.wp-block-file__button:visited {
+  border-style: unset;
+  border-width: 0;
+}
+.gpc .wp-block-file a.wp-block-file__button:active,
+.gpc .wp-block-file a.wp-block-file__button:focus,
+.gpc .wp-block-file a.wp-block-file__button:hover {
+  box-shadow: none;
+  text-decoration: none;
 }
 
 /* ==========================================
