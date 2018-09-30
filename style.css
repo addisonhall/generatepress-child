@@ -38,7 +38,7 @@ CONTENTS:
 .bg-color-black { background-color: #000; }
 .bg-color-white { background-color: #fff; }
 
-/* Underline links in content area */
+/* --- Underline links in content area --- */
 .inside-article .entry-content a {
   border-bottom: 1px dotted;
 }
@@ -47,7 +47,7 @@ CONTENTS:
 =! HEADER AND NAV
 ------------------------------------------ */
 
-/* define width of logo in large header */
+/* --- define width of logo in large header --- */
 .site-header > .inside-header > .site-logo > a > .header-image {
   width: 300px;
 }
@@ -68,7 +68,7 @@ CONTENTS:
 =! COMPONENTS
 ------------------------------------------ */
 
-/* WordPress gallery */
+/* --- WordPress gallery --- */
 .gallery-columns-2 .gallery-item,
 .gallery-columns-3 .gallery-item,
 .gallery-columns-4 .gallery-item,
@@ -111,7 +111,7 @@ CONTENTS:
   }
 }
 
-/* size of ACF Google map */
+/* --- size of ACF Google map --- */
 .acf-map {
   width: 100%;
   height: 400px;
@@ -119,16 +119,16 @@ CONTENTS:
   margin: 20px 0;
 }
 
-/* fixes potential theme css conflict */
+/* --- fixes potential theme css conflict --- */
 .acf-map img {
   max-width: inherit !important;
 }
 
-/* responsive video */
+/* --- responsive video --- */
 .video-container { position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden; }
 .video-container iframe, .video-container object, .video-container embed, .video-container video { position: absolute; top: 0; left: 0; width: 100%; height: 100%; }
 
-/* breadcrumbs */
+/* --- breadcrumbs --- */
 .breadcrumbs {
   font-size: 14px;
   margin-bottom: 10px;
@@ -168,7 +168,7 @@ CONTENTS:
 =! WIDGETS
 ------------------------------------------ */
 
-/* GPC Sub Menu Widget */
+/* --- GPC Sub Menu Widget --- */
 .widget_gpc_sub_menu_widget .dropdown-menu-toggle { display: none; }
 .widget_gpc_sub_menu_widget .menu-item-has-children .sub-menu { margin-left: 1.2em; }
 .widget_gpc_sub_menu_widget .menu-item-has-children .sub-menu li { list-style: disc; }
@@ -184,8 +184,7 @@ CONTENTS:
 =! OTHER
 ------------------------------------------ */
 
-
-/* Plugin: Lightweight Grid Columns spacing fix */
+/* --- Plugin: Lightweight Grid Columns spacing fix --- */
 .has-js .lgc-column { visibility: hidden; }
 .lgc-row .lgc-column { visibility: visible; }
 @media (min-width: 768px) {
