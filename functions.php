@@ -22,6 +22,7 @@ show_admin_bar( false );
 add_action( 'wp_enqueue_scripts', 'gpc_scripts' );
 function gpc_scripts() {
   wp_enqueue_style( 'gpc-base', get_stylesheet_directory_uri() . '/css/base.css', false, GPC_VERSION, 'all');
+  wp_enqueue_style( 'gpc-gutenberg', get_stylesheet_directory_uri() . '/css/gutenberg.css', false, GPC_VERSION, 'all');
   wp_enqueue_script( 'gpc-scripts', get_stylesheet_directory_uri() . '/js/scripts.js', array( 'jquery' ), GPC_VERSION, true );
 }
 
@@ -65,6 +66,7 @@ require get_stylesheet_directory() . '/inc/users.php';
 require get_stylesheet_directory() . '/inc/generatepress.php';
 require get_stylesheet_directory() . '/inc/styles.php';
 require get_stylesheet_directory() . '/inc/colors.php';
+require get_stylesheet_directory() . '/inc/fonts.php';
 require get_stylesheet_directory() . '/inc/dashboard-widgets.php';
 require get_stylesheet_directory() . '/inc/widgets.php';
 require get_stylesheet_directory() . '/inc/sub-menu-widget.php';

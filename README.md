@@ -12,13 +12,13 @@ I've tried to be thorough with comments at the top of each file, but here's the 
 
 ### CSS
 
-As of now, there's only `base.css` within the `css` folder, and just as it's named, its only purpose is to provide some "base" styles not already included in GeneratePress. Much of it is pulled from [Basscss](http://basscss.com/), but I've modified and added here and there to make it more in line with GeneratePress styling.
+First, there is `base.css` within the `css` folder, and just as it's named, its only purpose is to provide some "base" styles not already included in GeneratePress. Much of it is pulled from [Basscss](http://basscss.com/), but I've modified and added here and there to make it more in line with GeneratePress styling.
 
-By the way, GeneratePress implements [Unsemantic](http://unsemantic.com/) for its layout styling. The additional [default styling](https://github.com/tomusborne/generatepress/blob/master/style.unmin.css) is on Github.
+Secondly, there is also `gutenberg.css` where I've decided to place all Gutenberg-specific styling. You may easily inlcude these in the main `style.css` file, but I prefer to keep them separate and use a plugin like [Autoptimize](https://wordpress.org/plugins/autoptimize/) to merge them all together at launch.
+
+GeneratePress implements [Unsemantic](http://unsemantic.com/) for its layout styling. The additional [default styling](https://github.com/tomusborne/generatepress/blob/master/style.unmin.css) is on Github.
 
 The `style.css` file is where I include all of my custom styling. I have not included any preprocessor setup, so feel free to rig up whatever you prefer.
-
-I've begun adding Gutenburg-specific classes so that styling those elements on the front-end is a little easier.
 
 ### JavaScript
 
@@ -45,6 +45,7 @@ It will probably be easiest to check the comments in each file to find out what'
 - `cpt-output-custom.php`: Tells custom post types and taxonomies to use specified template partials (stored within `partials`)
 - `cpt-output-reset.php`: ~~Heads off the default display of custom post types and taxonomies so that our custom partials can be used instead~~ This is no longer necessary thanks to the Elements Module introduced in GP Premium 1.7
 - `dashboard-widgets.php`: Where my dashboard widgets live
+- `fonts.php`: Font-related functions for GeneratePress. Here are the beginnings of a method that allows the inclusion of fonts in the Customizer outside of Google Fonts.
 - `generatepress.php`: Some customizations for GeneratePress. I've updated some things here for GP 2.0.
 - `image-sizes.php`: Optional custom image sizes
 - `optimizations.php`: Some stuff to make our site lean and mean

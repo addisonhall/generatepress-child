@@ -21,15 +21,6 @@ function gpc_beta_tester() {
 }
 
 /**
- * Show all the Google fonts.
- * @link https://docs.generatepress.com/article/customizing-the-google-font-list/
- */
-add_filter( 'generate_number_of_fonts', 'gp_show_all_available_google_fonts' );
-function gp_show_all_available_google_fonts() {
-  return 'all';
-}
-
-/**
  * Move logo above title and tagline
  * @link https://gist.github.com/generatepress/4cfa628cec96088dcbf8dd8cf399b83e
  */
