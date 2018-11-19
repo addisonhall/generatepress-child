@@ -45,7 +45,7 @@ It will probably be easiest to check the comments in each file to find out what'
 - `cpt-output-custom.php`: Tells custom post types and taxonomies to use specified template partials (stored within `partials`)
 - `cpt-output-reset.php`: ~~Heads off the default display of custom post types and taxonomies so that our custom partials can be used instead~~ This is no longer necessary thanks to the Elements Module introduced in GP Premium 1.7
 - `dashboard-widgets.php`: Where my dashboard widgets live
-- `fonts.php`: Font-related functions for GeneratePress. Here are the beginnings of a method that allows the inclusion of fonts in the Customizer outside of Google Fonts.
+- `fonts.php`: Font-related functions for GeneratePress. Here are the beginnings of a method that allows the inclusion of fonts in the Customizer outside of Google Fonts (or including missing Google Fonts).
 - `generatepress.php`: Some customizations for GeneratePress. I've updated some things here for GP 2.0.
 - `image-sizes.php`: Optional custom image sizes
 - `optimizations.php`: Some stuff to make our site lean and mean
