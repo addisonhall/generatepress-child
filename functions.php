@@ -74,7 +74,6 @@ require get_stylesheet_directory() . '/inc/breadcrumbs.php';
 require get_stylesheet_directory() . '/inc/optimizations.php';
 require get_stylesheet_directory() . '/inc/image-sizes.php';
 require get_stylesheet_directory() . '/inc/cpt-output-reset.php';
-// require get_stylesheet_directory() . '/inc/generatepress.php';
 require get_stylesheet_directory() . '/inc/wp-show-posts.php';
 // require get_stylesheet_directory() . '/inc/cpt-output-custom.php';
 // require get_stylesheet_directory() . '/inc/advanced-custom-fields.php';
