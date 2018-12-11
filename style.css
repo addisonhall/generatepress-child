@@ -62,7 +62,10 @@ CONTENTS:
 =! CONTENT
 ------------------------------------------ */
 
-
+/* --- help container width line up with footer --- */
+/* .gpc .site.container {
+  max-width: 1180px;
+} */
 
 /* ==========================================
 =! COMPONENTS
