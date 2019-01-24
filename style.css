@@ -39,8 +39,17 @@ CONTENTS:
 .bg-color-white { background-color: #fff; }
 
 /* --- Underline links in content area --- */
-.inside-article .entry-content a {
+.inside-article .entry-content a:not(.no-link-styling):not(.button):not(.button-subtle):not(.wp-block-button__link),
+.generate-sections-container:not(.no-link-styling) a:not(.button):not(.button-subtle):not(.wp-block-button__link) {
   border-bottom: 1px dotted;
+}
+
+/* --- remove underline in undesirable places --- */
+.gpc .inside-article .entry-content .addtoany_content a,
+.gpc .inside-article .entry-content .attachment a,
+.gpc .inside-article .entry-content .wp-block-image figure > a,
+.gpc .inside-article .entry-content .wp-block-gallery figure > a {
+    border-bottom: none !important;
 }
 
 /* ==========================================
