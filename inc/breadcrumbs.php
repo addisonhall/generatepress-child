@@ -3,7 +3,7 @@
  * Include breadcrumb trails.
  *
  * Must be included in functions.php
- *
+ * 
  * @package GenerateChild
  */
 
@@ -12,7 +12,7 @@ if ( ! defined( 'ABSPATH' ) ) exit;
 /**
  * Add breadcrumb after header
  */
-add_action( 'generate_before_content', 'gpc_add_breadcrumb' );
+add_action( 'generate_after_header', 'gpc_add_breadcrumb' );
 function gpc_add_breadcrumb() {
   gpc_breadcrumbs();
 }
@@ -31,11 +31,11 @@ function gpc_breadcrumbs() {
   $after = '</span>'; // tag after the current crumb
  
   global $post;
-  $homeLink = get_bloginfo('url');
+  $homeLink = get_bloginfo( 'url' );
  
-  if (is_home() || is_front_page()) {
+  if ( is_home() || is_front_page() ) {
  
-    if ($showOnHome == 1) echo '<div id="crumbs" class="breadcrumbs"><a href="' . $homeLink . '">' . $home . '</a></div>';
+    if ( $showOnHome == 1 ) echo '<div id="crumbs" class="breadcrumbs"><a href="' . $homeLink . '">' . $home . '</a></div>';
  
   } else {
  
@@ -82,8 +82,12 @@ function gpc_breadcrumbs() {
     } elseif ( is_attachment() ) {
       $parent = get_post($post->post_parent);
       $cat = get_the_category($parent->ID); $cat = $cat[0];
-      echo get_category_parents($cat, TRUE, ' ' . $delimiter . ' ');
-      echo '<a href="' . get_permalink($parent) . '">' . $parent->post_title . '</a>';
+      if ( ! is_wp_error( get_category_parents($cat, TRUE, ' ' . $delimiter . ' ') ) ) {
+          echo get_category_parents($cat, TRUE, ' ' . $delimiter . ' ');
+        }
+      if ( ! is_wp_error( get_permalink($parent) ) ) {
+        echo '<a href="' . get_permalink($parent) . '">' . $parent->post_title . '</a>';
+      }
       if ($showCurrent == 1) echo ' ' . $delimiter . ' ' . $before . get_the_title() . $after;
  
     } elseif ( is_page() && !$post->post_parent ) {
