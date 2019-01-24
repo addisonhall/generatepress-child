@@ -22,3 +22,11 @@ function gpc_add_image_sizes( $sizes ) {
   $newsizes = array_merge( $sizes, $addsizes );
   return $newsizes;
 }
+
+/**
+ * Resize attachment page image
+ */
+add_filter( 'prepend_attachment', 'gpc_prepend_attachment' );
+function gpc_prepend_attachment( $p ) {
+   return '<p class="attachment">' . wp_get_attachment_link( 0, 'large', false ) . '</p>';
+}
