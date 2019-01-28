@@ -82,6 +82,12 @@ function gpc_wp_nav_menu_objects_sub_menu( $sorted_menu_items, $args ) {
     if ( function_exists( 'generate_menu_search_icon' ) ) {
       remove_filter( 'wp_nav_menu_items', 'generate_menu_search_icon', 10, 2 );
     }
+  
+    // Remove the WooCommerce cart from our sub menu
+    add_filter( 'generate_woocommerce_menu_item_location', 'gpc_move_menu_cart_item' );
+    function gpc_move_menu_cart_item() {
+      return false;
+    }
     
     return $sorted_menu_items;
   } else {
