@@ -60,6 +60,11 @@ function gpc_embed_html( $html ) {
 add_filter( 'widget_text' , 'do_shortcode' );
 
 /**
+ * Enable excerpts in pages.
+ */
+add_post_type_support( 'page', 'excerpt' );
+
+/**
  * Include other functions as needed from the `inc` folder.
  */
 require get_stylesheet_directory() . '/inc/users.php';
