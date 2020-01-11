@@ -34,7 +34,7 @@ function gpc_acf_init() {
 }
 
 /**
- * Initialize ACF blocks.
+ * Initialize ACF Gutenberg blocks.
  * @link https://www.advancedcustomfields.com/resources/acf_register_block_type/
  */
 add_action( 'acf/init', 'gpc_register_acf_blocks' );
@@ -47,7 +47,7 @@ function gpc_register_acf_blocks() {
         acf_register_block_type(array(
             'name'              => 'staff',
             'title'             => __('Staff'),
-            'description'       => __('HBAJ Staff Block.'),
+            'description'       => __('Staff Block.'),
             'render_template'   => 'template-parts/blocks/staff/staff.php',
             'icon'              => 'smiley',
             'category'          => 'formatting',

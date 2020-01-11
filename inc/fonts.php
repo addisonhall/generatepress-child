@@ -16,7 +16,7 @@ if ( ! defined( 'ABSPATH' ) ) exit;
  */
 add_filter( 'generate_number_of_fonts', 'gp_adjust_google_fonts_list' );
 function gp_adjust_google_fonts_list() {
-  return all; // set to 'all' or a number
+    return 'all'; // set to 'all' or a number
 }
 
 /**
@@ -25,7 +25,7 @@ function gp_adjust_google_fonts_list() {
  */
 // add_action( 'wp_enqueue_scripts', 'gpc_remove_google_fonts', 10 );
 function gpc_remove_google_fonts() {
-  wp_dequeue_style( 'generate-fonts' );
+    wp_dequeue_style( 'generate-fonts' );
 }
 
 /**
