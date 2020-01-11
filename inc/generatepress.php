@@ -52,5 +52,6 @@ add_action( 'add_meta_boxes', 'gpc_remove_meta_boxes', 999 );
 function gpc_remove_meta_boxes() {
   // Posts
 	remove_meta_box('generate_layout_options_meta_box', 'post', 'normal'); // Disable all layout options
+	remove_meta_box('generate_layout_options_meta_box', 'post', 'side'); // Disable all layout options
 	remove_meta_box('_generate_use_sections_metabox', 'post', 'side'); // Disable sections
 }

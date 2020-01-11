@@ -3,6 +3,14 @@ WordPress Gutenberg-specific styling
 https://wordpress.org/gutenberg/
 */
 
+/* --- colors --- */
+.has-white-color, .wp-block-button__link.has-text-color.has-white-color { color: #ffffff; }
+.has-light-gray-color, .wp-block-button__link.has-text-color.has-light-gray-color { color: #E3E6EB; }
+.has-black-color, .wp-block-button__link.has-text-color.has-black-color { color: #000000; }
+.has-white-background-color { background-color: #ffffff; }
+.has-light-gray-background-color { background-color: #E3E6EB; }
+.has-black-background-color { background-color: #000000; }
+
 /* --- gutenberg columns --- */
 @media (max-width: 767.999px) {
   .wp-block-columns {

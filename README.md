@@ -39,9 +39,9 @@ The `functions.php` file and everything within the `inc` folder go together. You
 
 It will probably be easiest to check the comments in each file to find out what's going on, but basically, it's:
 
-- `advanced-custom-fields.php`: Helpers for Google Maps and bi-directional relationships in Advanced Custom Fields
+- `advanced-custom-fields.php`: Helpers for Google Maps and Gutenberg blocks in Advanced Custom Fields
 - `breadcrumbs.php`: Add a simple visual breadcrumb trail using hooks (Note that this does not add stuctured data &mdash; I recommend a plugin like [SEO Framework](https://wordpress.org/plugins/autodescription/) for that)
-- `colors.php`: Allows you to add your own colors to the color fields used by GeneratePress
+- `colors.php`: Allows you to add your own colors to the color fields used by GeneratePress, and now Gutenberg
 - `cpt-output-custom.php`: Tells custom post types and taxonomies to use specified template partials (stored within `partials`)
 - `cpt-output-reset.php`: ~~Heads off the default display of custom post types and taxonomies so that our custom partials can be used instead~~ This is no longer necessary thanks to the Elements Module introduced in GP Premium 1.7
 - `dashboard-widgets.php`: Where my dashboard widgets live
@@ -62,7 +62,11 @@ It will probably be easiest to check the comments in each file to find out what'
 
 Within `partials` you'll find a couple of sample template files for setting up a custom layout for custom post types. I prefer this method (for now, anyway) instead of the [template hierarchy](https://developer.wordpress.org/themes/basics/template-hierarchy/) convention so that my template files won't necessarily require tweaking as the result of a theme update. This may be dumb, so I'll revisit if that's the case.
 
-These partials are called from within `inc/cpt-custom-output.php`.
+These partials are called from within `inc/cpt-custom-output.php` and sometimes `inc/shortcodes.php`.
+
+### Template-parts
+
+The `template-parts` folder is much like the `partials` folder, but it's more organized. I now try to use this folder to organize all of my Gutenberg block templates and shortcode templates.
 
 ### Screenshot
 
@@ -76,7 +80,7 @@ To enable the settings I have in place for the Editor role, all that currently n
 
 #### Margin fix for Lightweight Grid Columns
 
-Lightweight Grid Columns is an outstanding plugin for creating grid columns within your content. The only issue I've found is that it creates a small ten pixel margin difference if used with content not placed in a grid column. There's now a small bit of JavaScript that wraps sets of columns in a div (`.lgc-row`) along with some CSS that provides negative left and right margins to even things out. This is the same technique that Bootstrap 3.x uses.
+(NOTE: I'm phasing this out thanks to Gutenberg blocks.) Lightweight Grid Columns is an outstanding plugin for creating grid columns within your content. The only issue I've found is that it creates a small ten pixel margin difference if used with content not placed in a grid column. There's now a small bit of JavaScript that wraps sets of columns in a div (`.lgc-row`) along with some CSS that provides negative left and right margins to even things out. This is the same technique that Bootstrap 3.x uses.
 
 ## Plugins I normally use
 
