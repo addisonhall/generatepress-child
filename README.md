@@ -22,14 +22,7 @@ The `style.css` file is where I include all of my custom styling. I have not inc
 
 ### JavaScript
 
-Only one JavaScript file is present, `js/scripts.js`, for all of my javascript goodies. As of now it includes:
-
-- a small margin "fix" for the Lightweight Grid Columns plugin (see explanation below)
-- a simple function that recalls matchHeight so that ajax Gravity Forms don't bork the layout
-- a simple scroll-to function for inline anchor links
-- a generic Google Maps function for Advanced Custom Fields (see Plugins below)
-
-I plan on simply editing this file as needed.
+Only one JavaScript file is present, `js/scripts.js`, for all of my javascript goodies. As of now it only includes the document ready function. Have at it.
 
 ### Functions
 
