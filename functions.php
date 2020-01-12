@@ -9,7 +9,7 @@
 
 if ( ! defined( 'ABSPATH' ) ) exit;
 
-define( 'GPC_VERSION', '1.0.0');
+define( 'GPC_VERSION', '1.0.0' );
 
 /**
  * Hide admin bar.
