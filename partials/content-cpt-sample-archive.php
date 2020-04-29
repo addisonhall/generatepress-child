@@ -9,7 +9,8 @@
 
 if ( ! defined( 'ABSPATH' ) ) exit; ?>
 
-<div class="grid-parent clearfix">
+<!-- content-cpt-sample-archive -->
+<div class="grid-parent clearfix content-archive-for-projects">
 
   <div class="grid-33">
     <?php if ( has_post_thumbnail() ) : ?>
@@ -18,6 +19,7 @@ if ( ! defined( 'ABSPATH' ) ) exit; ?>
   </div>
 
   <div class="grid-66">
+    <p><strong>content-ctp-sample-archive</strong></p>
     <h3><a href="<?php the_permalink(); ?>"><?php the_title(); ?></a></h3>
   </div>
 

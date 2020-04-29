@@ -9,7 +9,8 @@
 
 if ( ! defined( 'ABSPATH' ) ) exit; ?>
 
-<div class="grid-parent clearfix">
+<!-- content-cpt-sample-single -->
+<div class="grid-parent clearfix content-for-project">
 
   <div class="grid-33">
     <?php
@@ -20,6 +21,7 @@ if ( ! defined( 'ABSPATH' ) ) exit; ?>
   </div>
 
   <div class="grid-66">
+    <p><strong>content-ctp-sample-single</strong></p>
     <?php echo $content; ?>
   </div>
 
