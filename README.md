@@ -34,7 +34,7 @@ It will probably be easiest to check the comments in each file to find out what'
 
 - `advanced-custom-fields.php`: Helpers for Google Maps and Gutenberg blocks in Advanced Custom Fields
 - `breadcrumbs.php`: Add a simple visual breadcrumb trail using hooks (Note that this does not add stuctured data &mdash; I recommend a plugin like [SEO Framework](https://wordpress.org/plugins/autodescription/) for that)
-- `colors.php`: Allows you to add your own colors to the color fields used by GeneratePress, and now Gutenberg
+- `colors.php`: Allows you to add your own colors to the color fields used by GeneratePress, and now Gutenberg. UPDATE: Now all theme colors are pulled from a single array.
 - `cpt-output-custom.php`: Tells custom post types and taxonomies to use specified template partials (stored within `partials`)
 - `cpt-output-reset.php`: ~~Heads off the default display of custom post types and taxonomies so that our custom partials can be used instead~~ This is no longer necessary thanks to the Elements Module introduced in GP Premium 1.7
 - `dashboard-widgets.php`: Where my dashboard widgets live
@@ -43,7 +43,7 @@ It will probably be easiest to check the comments in each file to find out what'
 - `image-sizes.php`: Optional custom image sizes
 - `optimizations.php`: Some stuff to make our site lean and mean
 - `shortcodes.php`: Where my shortcodes live
-- `styles.php`: Creates additional inline styles from colors set within the customizer of GeneratePress
+- `styles.php`: Creates additional inline styles from colors set within the customizer of GeneratePress. UPDATE: Now pulls from colors in `inc/colors.php` to generate custom color properties and standard WP color classes automatically.
 - `sub-menu-widget.php`: Creates a contextual sub menu widget that pulls from the specified menu theme location. Defaults to `primary`.
 - `sub-menu.php`: Function for adding contextual sub menus. Used by `sub-menu-widget.php`.
 - `users.php`: Currently defines what the admin looks like for the `editor` and `shop_manager` roles. Requires the [Members plugin](https://wordpress.org/plugins/members/) by Justin Tadlock.
