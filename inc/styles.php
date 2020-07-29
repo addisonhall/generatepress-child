@@ -26,6 +26,25 @@ if ( ! function_exists( 'gpc_base_inline_css_func' ) ) :
         // Initiate our CSS class
         $gpc_css = new GeneratePress_CSS;
         
+        // Grab our theme colors from inc/colors.php
+        global $gpc_theme_colors;
+        
+        // Add theme color custom properties
+        $gpc_css->set_selector( ':root' );
+        for( $i = 0; $i < count( $gpc_theme_colors ); $i++ ) {
+            $gpc_css->add_property( '--' . esc_attr( $gpc_theme_colors[$i]['slug'] ), esc_attr( $gpc_theme_colors[$i]['color'] ) );
+        }
+        
+        // Add standard WP classes based on our theme colors
+        for( $i = 0; $i < count( $gpc_theme_colors ); $i++ ) {
+            $color_slug = esc_attr( $gpc_theme_colors[$i]['slug'] );
+            $color_hex = esc_attr( $gpc_theme_colors[$i]['color'] );
+            $gpc_css->set_selector( '.has-' . $color_slug . '-color, .wp-block-button__link.has-text-color.has-' . $color_slug . '-color' );
+            $gpc_css->add_property( 'color', $color_hex );
+            $gpc_css->set_selector( '.has-' . $color_slug . '-background-color' );
+            $gpc_css->add_property( 'background-color', $color_hex );
+        }
+        
         // Form button-outline
         $gpc_css->set_selector( '.button.button-outline, .button.button-outline:visited, .woocommerce .button.button-outline, .woocommerce .button.button-outline:visited' );
         $gpc_css->add_property( 'border-color', esc_attr( $gpc_settings[ 'form_button_background_color' ] ) );
@@ -35,7 +54,7 @@ if ( ! function_exists( 'gpc_base_inline_css_func' ) ) :
         $gpc_css->set_selector( '.button.button-outline:hover, .button.button-outline:focus, .woocommerce .button.button-outline:hover, .woocommerce .button.button-outline:focus' );
         $gpc_css->add_property( 'border-color', esc_attr( $gpc_settings[ 'form_button_background_color_hover' ] ) );
         $gpc_css->add_property( 'color', esc_attr( $gpc_settings[ 'form_button_background_color_hover' ] ) );
-        
+
         // Allow us to hook CSS into our output
         // do_action( 'gpc_base_inline_css', $gpc_css );
         
