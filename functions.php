@@ -46,15 +46,6 @@ function gpc_add_js_class() { ?>
 <?php }
 
 /**
- * Responsive embedded video.
- */
-add_filter( 'embed_oembed_html', 'gpc_embed_html', 10, 3 );
-add_filter( 'video_embed_html', 'gpc_embed_html' ); // Jetpack
-function gpc_embed_html( $html ) {
-    return '<div class="embed-container">' . $html . '</div>';
-}
-
-/**
  * Enable shortcodes in widgets.
  */
 add_filter( 'widget_text' , 'do_shortcode' );
