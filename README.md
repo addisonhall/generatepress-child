@@ -67,18 +67,22 @@ I've included an [Affinity Designer](https://affinity.serif.com/en-us/) file to 
 
 ### Other
 
+#### GenerateBlocks for general page layout
+
+Amazing new blocks plugin from the GeneratePress guys. If you like page builders, you need to at least give this a try. Check out this [introductory video](https://youtu.be/V6TzewpRxQ0) and [download GenerateBlocks](https://generateblocks.com/) now.
+
 #### How I use the Members plugin
 
 To enable the settings I have in place for the Editor role, all that currently needs to be done is to enable the "Edit Theme Options" under "Appearance" for the Editor role (start by looking under Users > Roles in WordPress). This will enable Menus and Widgets for Editors in WordPress.
 
 #### Margin fix for Lightweight Grid Columns
 
-(NOTE: I'm phasing this out thanks to Gutenberg blocks.) Lightweight Grid Columns is an outstanding plugin for creating grid columns within your content. The only issue I've found is that it creates a small ten pixel margin difference if used with content not placed in a grid column. There's now a small bit of JavaScript that wraps sets of columns in a div (`.lgc-row`) along with some CSS that provides negative left and right margins to even things out. This is the same technique that Bootstrap 3.x uses.
+(NOTE: I'm phasing this out thanks to Gutenberg blocks.) Still a good plugin, but [GenerateBlocks](https://generateblocks.com/) is far better.
 
 ## Plugins I normally use
 
 - [GeneratePress Premium](https://generatepress.com/premium/)
-- [Lightweight Grid Columns](https://wordpress.org/plugins/lightweight-grid-columns/)
+- [GenerateBlocks](https://generateblocks.com/)
 - [Advanced Custom Fields](https://www.advancedcustomfields.com/)
 - [Custom Post Type UI](https://wordpress.org/plugins/custom-post-type-ui/)
 - [WP Show Posts](https://wpshowposts.com/)
@@ -89,5 +93,6 @@ To enable the settings I have in place for the Editor role, all that currently n
 - [Soliloquy](https://soliloquywp.com/)
 - [Autoptimize](https://wordpress.org/plugins/autoptimize/)
 - [The SEO Framework](https://wordpress.org/plugins/autodescription/)
+- ~~[Lightweight Grid Columns](https://wordpress.org/plugins/lightweight-grid-columns/)~~
 - ~~[Display Widgets](https://wordpress.org/plugins/display-widgets/)~~
 - ~~[Black Studio TinyMCE Widget](https://wordpress.org/plugins/black-studio-tinymce-widget/)~~
