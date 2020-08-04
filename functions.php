@@ -27,6 +27,13 @@ function gpc_scripts() {
 }
 
 /**
+ * Add custom editor styles.
+ */
+add_theme_support( 'wp-block-styles' );
+add_theme_support( 'editor-styles' );
+add_editor_style( 'css/gutenberg.css' );
+
+/**
  * Add body classes.
  */
 add_filter( 'body_class', 'gpc_body_classes' );
