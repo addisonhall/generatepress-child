@@ -37,7 +37,7 @@ It will probably be easiest to check the comments in each file to find out what'
 - `cpt-output-reset.php`: ~~Heads off the default display of custom post types and taxonomies so that our custom partials can be used instead~~ This is no longer necessary thanks to the Elements Module introduced in GP Premium 1.7
 - `dashboard-widgets.php`: Where my dashboard widgets live
 - `fonts.php`: Font-related functions for GeneratePress. Here are the beginnings of a method that allows the inclusion of fonts in the Customizer outside of Google Fonts (or including missing Google Fonts).
-- `generateblocks.php`: **NEW!** You can now set defaults for GenerateBlocks! This file currently contains the code to sync up GenerateBlocks' button styling with GeneratePress, but you can do more. For all available options, take a look at the [default settings]('https://github.com/tomusborne/generateblocks/blob/master/includes/defaults.php') in GenerateBlocks.
+- `generateblocks.php`: **NEW!** You can now set defaults for GenerateBlocks! This file currently contains the code to sync up GenerateBlocks' button styling with GeneratePress, but you can do more. For all available options, take a look at the [default settings](https://github.com/tomusborne/generateblocks/blob/master/includes/defaults.php) in GenerateBlocks.
 - `generatepress.php`: Some customizations for GeneratePress. I've updated some things here for GP 2.0.
 - `image-sizes.php`: Optional custom image sizes
 - `optimizations.php`: Some stuff to make our site lean and mean
