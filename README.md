@@ -52,6 +52,7 @@ It will probably be easiest to check the comments in each file to find out what'
 - `fonts.php`: Font-related functions for GeneratePress. Here are the beginnings of a method that allows the inclusion of fonts in the Customizer outside of Google Fonts (or including missing Google Fonts).
 - `generateblocks.php`: **NEW!** You can now set defaults for GenerateBlocks! This file currently contains the code to sync up GenerateBlocks' button styling with GeneratePress, but you can do more. For all available options, take a look at the [default settings](https://github.com/tomusborne/generateblocks/blob/master/includes/defaults.php) in GenerateBlocks.
 - `generatepress.php`: Some customizations for GeneratePress. I've updated some things here for GP 2.0.
+- `helper-functions.php`: Home for any helpful functions that need to be accessible from anywhere in the child theme
 - `image-sizes.php`: Optional custom image sizes
 - `optimizations.php`: Some stuff to make our site lean and mean
 - `shortcodes.php`: Where my shortcodes live
