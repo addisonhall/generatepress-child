@@ -20,9 +20,22 @@ GeneratePress implements [Unsemantic](http://unsemantic.com/) for its layout sty
 
 The `style.css` file is where I include all of my custom styling. I have not included any preprocessor setup, so feel free to rig up whatever you prefer.
 
+#### Entrance Animation Classes
+
+A few small animations classes are now included in `styles.css` that let you fade in elements in a few different ways. You can even use the "Advanced > CSS Classes" field in the WordPress editor. For example:
+
+- Fade in element on page load: `fade-in prep-animation`
+- Fade in element from bottom when it scrolls into view: `scroll-fade-in-bottom prep-scroll-animation`
+
+If you're fading in multiple items, you may want them to fade in one at a time. The you can use the `delay-` classes. Like so:
+
+- Fade in after 250 ms: `fade-in-right delay-250 prep-animation`
+
+Check out the ANIMATIONS portion of `styles.css` to learn more.
+
 ### JavaScript
 
-Only one JavaScript file is present, `js/scripts.js`, for all of my javascript goodies. As of now it only includes the document ready function. Have at it.
+Only one JavaScript file is present, `js/scripts.js`, for all of my javascript goodies. As of now it only includes some stuff to make the animation CSS classes work.
 
 ### Functions
 
