@@ -12,7 +12,7 @@ if ( ! defined( 'ABSPATH' ) ) exit;
 /**
  * Add breadcrumb after header
  */
-add_action( 'generate_after_header', 'gpc_add_breadcrumb' );
+add_action( 'generate_before_content', 'gpc_add_breadcrumb' );
 function gpc_add_breadcrumb() {
     gpc_breadcrumbs();
 }
