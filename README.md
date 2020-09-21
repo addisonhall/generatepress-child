@@ -20,6 +20,45 @@ GeneratePress implements [Unsemantic](http://unsemantic.com/) for its layout sty
 
 The `style.css` file is where I include all of my custom styling. I have not included any preprocessor setup, so feel free to rig up whatever you prefer.
 
+#### Default Color Classes
+
+Any custom colors added to the `$gpc_theme_colors` array in `inc/colors.php` will now be added as both CSS properties (like variables) and WordPress color classes (i.e. `has-dark-gray-color`). Let's say you add a custom color called "Dark Gray." The CSS will look something like this:
+
+```css
+:root {
+    --dark-gray:#666666;
+}
+
+.has-dark-gray-color,
+.wp-block-button__link.has-text-color.has-dark-gray-color {
+    color:#666666;
+}
+
+.has-dark-gray-background-color {
+    background-color:#666666;
+}
+```
+
+This all happens in `inc/styles.php`. Outlined button classes are also added based on the button colors assigned in GeneratePress:
+
+```css
+.button.button-outline,
+.button.button-outline:visited,
+.woocommerce .button.button-outline,
+.woocommerce .button.button-outline:visited {
+    border-color:#3580b2;
+    color:#3580b2;
+}
+
+.button.button-outline:hover,
+.button.button-outline:focus,
+.woocommerce .button.button-outline:hover,
+.woocommerce .button.button-outline:focus {
+    border-color:#3f3f3f;
+    color:#3f3f3f;
+}
+```
+
 #### Entrance Animation Classes
 
 A few small animations classes are now included in `styles.css` that let you fade in elements in a few different ways. You can even use the "Advanced > CSS Classes" field in the WordPress editor. For example:
@@ -45,7 +84,7 @@ It will probably be easiest to check the comments in each file to find out what'
 
 - `advanced-custom-fields.php`: Helpers for Google Maps and Gutenberg blocks in Advanced Custom Fields
 - `breadcrumbs.php`: Add a simple visual breadcrumb trail using hooks (Note that this does not add stuctured data &mdash; I recommend a plugin like [SEO Framework](https://wordpress.org/plugins/autodescription/) for that)
-- `colors.php`: Allows you to add your own colors to the color fields used by GeneratePress, and now Gutenberg. UPDATE: Now all theme colors are pulled from a single array.
+- `colors.php`: Allows you to add your own colors to the color fields used by GeneratePress, and now Gutenberg. UPDATE: Now all theme colors are pulled from a single array. Several CSS color classes are also added automatically.
 - `cpt-output-custom.php`: Tells custom post types and taxonomies to use specified template partials (stored within `partials`)
 - `cpt-output-reset.php`: ~~Heads off the default display of custom post types and taxonomies so that our custom partials can be used instead~~ This is no longer necessary thanks to the Elements Module introduced in GP Premium 1.7
 - `dashboard-widgets.php`: Where my dashboard widgets live
