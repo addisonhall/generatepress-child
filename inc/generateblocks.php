@@ -28,13 +28,25 @@ add_filter( 'generateblocks_defaults', function( $defaults ) {
 
     $og_defaults = generate_get_default_fonts( false );
 
+    /** Uncomment and view source to see values */
+    /*
+    echo '<!--';
+    echo 'og_defaults: ';
+    print_r( $og_defaults );
+    echo 'gpc_theme_settings: ';
+    print_r( $gpc_theme_settings );
+    echo '-->';
+    */
+
+    // should be 'inherit' by default
     $buttons_family = $og_defaults['font_buttons'];
     if ( $og_defaults['font_buttons'] !== $gpc_theme_settings['font_buttons'] ) {
         $buttons_family = $gpc_theme_settings['font_buttons'];
     }
 
+    // should be empty by default
     $buttons_font_size = $og_defaults['buttons_font_size'];
-    if ( '' !== $gpc_theme_settings['buttons_font_size'] ) {
+    if ( $gpc_theme_settings['buttons_font_size'] !== '' ) {
         $buttons_font_size = absint( $gpc_theme_settings['buttons_font_size'] );
     }
 
