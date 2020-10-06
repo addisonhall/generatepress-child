@@ -28,8 +28,22 @@ $gpc_current_user = wp_get_current_user();
         remove_menu_page( 'themes.php' );
         remove_menu_page( 'edit.php?post_type=wp_show_posts' );
         remove_menu_page( 'edit.php?post_type=generate_page_header' );
+        remove_menu_page( 'edit-comments.php' );
+        remove_menu_page( 'tools.php' );
         add_menu_page( 'Menus', 'Menus', 'edit_theme_options', 'nav-menus.php', '', 'dashicons-menu', 60 );
         add_menu_page( 'Widgets', 'Widgets', 'edit_theme_options', 'widgets.php', '', 'dashicons-layout', 61 );
+    }
+}
+
+/**
+ * Remove items from the admin bar.
+ */
+add_action( 'admin_bar_menu', 'gpc_remove_from_admin_bar', 999 );
+function gpc_remove_from_admin_bar( $wp_admin_bar ) {
+    global $gpc_current_user;
+    if ( array_intersect( array( 'editor', 'shop_manager' ), (array) $gpc_current_user->roles ) ) {
+        $wp_admin_bar->remove_node( 'comments' );
+        $wp_admin_bar->remove_node( 'customize' );
     }
 }
 
