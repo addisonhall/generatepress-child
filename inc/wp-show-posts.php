@@ -13,8 +13,8 @@ if ( ! defined( 'ABSPATH' ) ) exit;
  * Remove permalinks from WP Show Posts output
  * @link https://wpshowposts.com/support/topic/selectively-disable-title-link/
  */
-add_filter( 'wpsp_disable_image_link', 'tu_disable_links', 10, 2 );
-add_filter( 'wpsp_disable_title_link', 'tu_disable_links', 10, 2 );
+// add_filter( 'wpsp_disable_image_link', 'tu_disable_links', 10, 2 );
+// add_filter( 'wpsp_disable_title_link', 'tu_disable_links', 10, 2 );
 function tu_disable_links( $output, $settings ) {
     if ( 1746 === $settings['list_id'] ) {
         return true;
