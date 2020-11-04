@@ -6,6 +6,8 @@ If you've never heard of GeneratePress, it's a solid, flexible, and lightweight 
 
 GeneratePress itself is free, but I highly recommend the [premium add-ons](https://generatepress.com/premium/). It's easily money well spent.
 
+I've posted an overview video on YouTube: https://youtu.be/sDia_U0fNyU (it's about 35 minutes)
+
 ## What's included
 
 I've tried to be thorough with comments at the top of each file, but here's the gist of it.
