@@ -143,117 +143,101 @@ CONTENTS:
      }
  }
 
-/**
- * ----------------------------------------
- * animation fade-in-left
- * ----------------------------------------
- */
- @-webkit-keyframes fade-in-left {
+/* --- animation fade-in-left --- */
+@-webkit-keyframes fade-in-left {
     0% {
-      -webkit-transform: translateX(-75px);
-              transform: translateX(-75px);
-      opacity: 0;
+        -webkit-transform: translateX(-75px);
+                transform: translateX(-75px);
+        opacity: 0;
     }
     100% {
-      -webkit-transform: translateX(0);
-              transform: translateX(0);
-      opacity: 1;
+        -webkit-transform: translateX(0);
+                transform: translateX(0);
+        opacity: 1;
     }
-  }
-  @keyframes fade-in-left {
+}
+@keyframes fade-in-left {
     0% {
-      -webkit-transform: translateX(-75px);
-              transform: translateX(-75px);
-      opacity: 0;
+        -webkit-transform: translateX(-75px);
+                transform: translateX(-75px);
+        opacity: 0;
     }
     100% {
-      -webkit-transform: translateX(0);
-              transform: translateX(0);
-      opacity: 1;
+        -webkit-transform: translateX(0);
+                transform: translateX(0);
+        opacity: 1;
     }
-  }
+}
 
-/**
- * ----------------------------------------
- * animation fade-in
- * ----------------------------------------
- */
+/* --- animation fade-in --- */
 @-webkit-keyframes fade-in {
     0% {
-      opacity: 0;
+        opacity: 0;
     }
     100% {
-      opacity: 1;
+        opacity: 1;
     }
-  }
-  @keyframes fade-in {
+}
+@keyframes fade-in {
     0% {
-      opacity: 0;
+        opacity: 0;
     }
     100% {
-      opacity: 1;
+        opacity: 1;
     }
-  }
+}
 
-  /**
- * ----------------------------------------
- * animation fade-in-bottom
- * ----------------------------------------
- */
+/* --- animation fade-in-bottom --- */
 @-webkit-keyframes fade-in-bottom {
     0% {
-      -webkit-transform: translateY(75px);
-              transform: translateY(75px);
-      opacity: 0;
+        -webkit-transform: translateY(75px);
+                transform: translateY(75px);
+        opacity: 0;
     }
     100% {
-      -webkit-transform: translateY(0);
-              transform: translateY(0);
-      opacity: 1;
+        -webkit-transform: translateY(0);
+                transform: translateY(0);
+        opacity: 1;
     }
-  }
-  @keyframes fade-in-bottom {
+}
+@keyframes fade-in-bottom {
     0% {
-      -webkit-transform: translateY(75px);
-              transform: translateY(75px);
-      opacity: 0;
+        -webkit-transform: translateY(75px);
+                transform: translateY(75px);
+        opacity: 0;
     }
     100% {
-      -webkit-transform: translateY(0);
-              transform: translateY(0);
-      opacity: 1;
+        -webkit-transform: translateY(0);
+                transform: translateY(0);
+        opacity: 1;
     }
-  }  
+}  
 
-/**
- * ----------------------------------------
- * animation fade-in-right
- * ----------------------------------------
- */
+/* --- animation fade-in-right --- */
 @-webkit-keyframes fade-in-right {
     0% {
-      -webkit-transform: translateX(75px);
-              transform: translateX(75px);
-      opacity: 0;
+        -webkit-transform: translateX(75px);
+                transform: translateX(75px);
+        opacity: 0;
     }
     100% {
-      -webkit-transform: translateX(0);
-              transform: translateX(0);
-      opacity: 1;
+        -webkit-transform: translateX(0);
+                transform: translateX(0);
+        opacity: 1;
     }
-  }
-  @keyframes fade-in-right {
+}
+@keyframes fade-in-right {
     0% {
-      -webkit-transform: translateX(75px);
-              transform: translateX(75px);
-      opacity: 0;
+        -webkit-transform: translateX(75px);
+                transform: translateX(75px);
+        opacity: 0;
     }
     100% {
-      -webkit-transform: translateX(0);
-              transform: translateX(0);
-      opacity: 1;
+        -webkit-transform: translateX(0);
+                transform: translateX(0);
+        opacity: 1;
     }
-  }
+}
   
   
 /* --- delay classes --- */
