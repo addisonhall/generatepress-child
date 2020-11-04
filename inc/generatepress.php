@@ -36,6 +36,7 @@ endif;
  * Decide what capability your admin users need to see GeneratePress meta boxes.
  * Requires GeneratPress addons:
  * @link https://generatepress.com/premium/
+ * @link https://docs.generatepress.com/article/generate_metabox_capability/
  */
 // add_filter( 'generate_metabox_capability', 'gpc_custom_metabox_capability', 10 );
 function gpc_gp_custom_metabox_capability() {
