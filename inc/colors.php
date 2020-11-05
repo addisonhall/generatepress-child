@@ -52,5 +52,7 @@ function gpc_custom_color_palettes( $palettes ) {
 
 /**
  * Custom Gutenberg colors
+ * See "Registering your colors" in this post:
+ * @link https://www.billerickson.net/wordpress-color-palette-button-styling-gutenberg/
  */
 add_theme_support( 'editor-color-palette', $gpc_theme_colors );
