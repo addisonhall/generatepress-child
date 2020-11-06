@@ -44,6 +44,7 @@ function gpc_add_custom_local_fonts( $fonts ) {
  */
 // add_filter( 'generate_typography_customize_list', 'gpc_add_custom_google_fonts' );
 function gpc_add_custom_google_fonts( $fonts ) {
+    // $fonts[ 'font_name' ] must use underscore and NOT dash
 	$fonts[ 'barlow' ] = array( 
 		'name' => 'Barlow',
 		'variants' => array( '300', '300i', '400', '400i', '700', '700i' ),
