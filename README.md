@@ -6,6 +6,10 @@ If you've never heard of GeneratePress, it's a solid, flexible, and lightweight 
 
 GeneratePress itself is free, but I highly recommend the [premium add-ons](https://generatepress.com/premium/). It's easily money well spent.
 
+## Video Overview
+
+[![GeneratePress Child Theme Overview on YouTube](img/git/GP-Child-Overview-Card.jpg)](https://youtu.be/sDia_U0fNyU)
+
 I've posted an overview video on YouTube: https://youtu.be/sDia_U0fNyU (it's about 35 minutes)
 
 ## What's included
