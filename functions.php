@@ -27,6 +27,23 @@ function gpc_scripts() {
 }
 
 /**
+ * Enqueue Gutenberg scripts and styles.
+ * @link https://www.billerickson.net/how-to-remove-core-wordpress-blocks/
+ */
+add_action( 'enqueue_block_editor_assets', 'gpc_gutenberg_scripts' );
+function gpc_gutenberg_scripts() {
+
+    // Load editor scripts for all post types
+    wp_enqueue_script( 'gpc-editor', get_stylesheet_directory_uri() . '/admin/js/editor.js', array( 'wp-blocks', 'wp-dom' ), GPC_VERSION, true );
+    
+    // Load editor scripts for specific post types
+    global $current_screen;
+    if ( $current_screen->post_type == 'post' ) {
+        wp_enqueue_script( 'gpc-editor-post', get_stylesheet_directory_uri() . '/admin/js/editor-post.js', array( 'wp-blocks', 'wp-dom' ), GPC_VERSION, true );
+    }
+}
+
+/**
  * Add custom editor styles.
  */
 add_theme_support( 'wp-block-styles' );
