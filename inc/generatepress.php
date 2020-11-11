@@ -48,6 +48,7 @@ function gpc_gp_custom_metabox_capability() {
  * Requires GeneratPress addons:
  * @link https://generatepress.com/premium/
  * @link https://generatepress.com/forums/topic/hide-screen-options-on-custom-post-type/#post-238774
+ * @link https://generatepress.com/forums/reply/469741/
  */
 add_action( 'add_meta_boxes', 'gpc_remove_meta_boxes', 999 );
 function gpc_remove_meta_boxes() {
