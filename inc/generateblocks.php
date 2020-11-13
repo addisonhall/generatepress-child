@@ -46,7 +46,7 @@ add_filter( 'generateblocks_defaults', function( $defaults ) {
 
     // should be empty by default
     $buttons_font_size = $og_defaults['buttons_font_size'];
-    if ( $gpc_theme_settings['buttons_font_size'] !== '' ) {
+    if ( isset( $gpc_theme_settings['buttons_font_size'] ) && !empty( $gpc_theme_settings['buttons_font_size'] ) ) {
         $buttons_font_size = absint( $gpc_theme_settings['buttons_font_size'] );
     }
 
