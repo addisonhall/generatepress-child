@@ -65,7 +65,8 @@ function gpc_body_classes( $classes ) {
 add_action( 'generate_before_header','gpc_add_js_class' );  
 function gpc_add_js_class() { ?> 
     <script>
-        jQuery('html').addClass('has-js');
+        const htmlEl = document.documentElement;
+        htmlEl.classList.add('has-js');
     </script>
 <?php }
 
