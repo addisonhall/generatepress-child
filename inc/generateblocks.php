@@ -40,7 +40,7 @@ add_filter( 'generateblocks_defaults', function( $defaults ) {
 
     // should be 'inherit' by default
     $buttons_family = $og_defaults['font_buttons'];
-    if ( $og_defaults['font_buttons'] !== $gpc_theme_settings['font_buttons'] ) {
+    if ( isset( $gpc_theme_settings['font_buttons'] ) && !empty( $gpc_theme_settings['font_buttons'] ) ) {
         $buttons_family = $gpc_theme_settings['font_buttons'];
     }
 
