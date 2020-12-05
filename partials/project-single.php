@@ -20,7 +20,7 @@ if ( ! defined( 'ABSPATH' ) ) exit; ?>
   </div>
 
   <div class="grid-66">
-    <?php echo $content; ?>
+    <?php the_content(); ?>
   </div>
 
 </div>

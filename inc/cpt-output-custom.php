@@ -16,16 +16,16 @@
 if ( ! defined( 'ABSPATH' ) ) exit;
 
 /**
- * Sample custom post type, use partial for output instead of default.
+ * Sample custom post type using generate_do_template_part(), use partial for output instead of default.
  */
-// add_filter( 'the_content', 'gpc_cpt_content' );
-function gpc_cpt_content( $content ) {
-    if ( is_singular( 'custom_post_type_name' ) && is_main_query() && in_the_loop() ) {
-        include get_stylesheet_directory() . '/partials/content-cpt-sample-single.php';
-    } elseif ( is_post_type_archive( 'custom_post_type_name' ) && is_main_query() ) {
-        include get_stylesheet_directory() . '/partials/content-cpt-sample-archive.php';
+add_filter( 'generate_do_template_part', 'gpc_custom_post_template' );
+function gpc_custom_post_template( $do ) {
+    if ( is_singular( 'project' ) && is_main_query() && in_the_loop() ) {
+        include get_stylesheet_directory() . '/partials/project-single.php';
+    } elseif ( is_post_type_archive( 'project' ) && is_main_query() ) {
+        include get_stylesheet_directory() . '/partials/projects-archive.php';
     } else {
-        return $content;
+        return $do;
     }
 }
 
