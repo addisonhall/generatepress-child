@@ -80,7 +80,7 @@ Check out the ANIMATIONS portion of `styles.css` to learn more.
 
 ### JavaScript
 
-Only one JavaScript file is present, `js/scripts.js`, for all of my javascript goodies. As of now it only includes some stuff to make the animation CSS classes work.
+**No longer requires jQuery!** Only one JavaScript file is present, `js/scripts.js`, for all of my javascript goodies. As of now it only includes some stuff to make the animation CSS classes work.
 
 ### Functions
 
