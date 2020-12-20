@@ -1,60 +1,71 @@
 /**
  * All the javascripts.
+ * 
+ * Some handy resources:
+ * - @link iterating over nodeList: https://attacomsian.com/blog/javascript-loop-dom-elements
  */
 
 /**
- * Remove preload using the trick good ol' Chris taught us.
- * @link https://css-tricks.com/transitions-only-after-page-load/
+ * Stuff to do when everything is loaded
  */
-jQuery(window).load(function() {
-    jQuery('body').removeClass('preload').addClass('loaded');
+window.addEventListener('load', function(event)  {
+
+    // Indicate when everything is loaded
+    var bodyEl = document.querySelector('body');
+    bodyEl.classList.remove('preload');
+    bodyEl.classList.add('loaded');
     
     // Activate all prepped animations
-    jQuery('.prep-animation').removeClass('.prep-animation').addClass("do-animation");
-});
-
-jQuery(document).ready(function($) {
-
-    /**
-     * Scroll into view function courtesy of Scott Dowding
-     * @link http://stackoverflow.com/questions/487073/check-if-element-is-visible-after-scrolling
-     */
-
-    // Check if element is scrolled into view
-    function isScrolledIntoView(elem) {
-        var docViewTop = $(window).scrollTop();
-        var docViewBottom = docViewTop + $(window).height();
-        var elemOffsetTop = $(elem).offset().top;
-        var elemHeight = $(elem).height()
-        var elemTop = elemOffsetTop;
-        var elemBottom = elemTop + elemHeight;
-        return elemBottom <= docViewBottom && elemTop >= docViewTop;
+    var animEls = document.querySelectorAll('.prep-animation');
+    for (const animEl of animEls) {
+        animEl.classList.remove('.prep-animation');
+        animEl.classList.add('.do-animation');
     }
 
-    /**
-     * Trigger animations when element scrolls into view
-     */
-    $(window).scroll(function() {
-        $(".scroll-fade-in-left").each(function() {
-            if (isScrolledIntoView(this) === true) {
-                $(this).addClass("fade-in-left do-scroll-animation");
-            }
-        });
-        $(".scroll-fade-in").each(function() {
-            if (isScrolledIntoView(this) === true) {
-                $(this).addClass("fade-in do-scroll-animation");
-            }
-        });
-        $(".scroll-fade-in-bottom").each(function() {
-            if (isScrolledIntoView(this) === true) {
-                $(this).addClass("fade-in-bottom do-scroll-animation");
-            }
-        });
-        $(".scroll-fade-in-right").each(function() {
-            if (isScrolledIntoView(this) === true) {
-                $(this).addClass("fade-in-right do-scroll-animation");
-            }
-        });
-    });
-    
 });
+
+/**
+ * Scroll into view function
+ */
+
+// If portion of element is in view
+function isVisible (ele) {
+    const { top, bottom } = ele.getBoundingClientRect();
+    const vHeight = (window.innerHeight || document.documentElement.clientHeight);
+    return ((top > 0 || bottom > 0) && top < vHeight);
+}
+
+/**
+ * Trigger animations when element scrolls into view
+ */
+window.onscroll = function() {
+
+    var scrollLeftEls = document.querySelectorAll('.scroll-fade-in-left');
+    for (const scrollLeftEl of scrollLeftEls) {
+        if (isVisible(scrollLeftEl)) {
+            scrollLeftEl.classList.add('fade-in-left', 'do-scroll-animation');
+        }
+    }
+
+    var scrollFadeInEls = document.querySelectorAll('.scroll-fade-in');
+    for (const scrollFadeInEl of scrollFadeInEls) {
+        if (isVisible(scrollFadeInEl)) {
+            scrollFadeInEl.classList.add('fade-in', 'do-scroll-animation');
+        }
+    }
+
+    var scrollFadeBottomEls = document.querySelectorAll('.scroll-fade-in-bottom');
+    for (const scrollFadeBottomEl of scrollFadeBottomEls) {
+        if (isVisible(scrollFadeBottomEl)) {
+            scrollFadeBottomEl.classList.add('fade-in-bottom', 'do-scroll-animation');
+        }
+    }
+
+    var scrollFadeRightEls = document.querySelectorAll('.scroll-fade-in-right');
+    for (const scrollFadeRightEl of scrollFadeRightEls) {
+        if (isVisible(scrollFadeRightEl)) {
+            scrollFadeRightEl.classList.add('fade-in-right', 'do-scroll-animation');
+        }
+    }
+    
+};
