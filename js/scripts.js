@@ -18,8 +18,8 @@ window.addEventListener('load', function(event)  {
     // Activate all prepped animations
     var animEls = document.querySelectorAll('.prep-animation');
     for (const animEl of animEls) {
-        animEl.classList.remove('.prep-animation');
-        animEl.classList.add('.do-animation');
+        animEl.classList.remove('prep-animation');
+        animEl.classList.add('do-animation');
     }
 
 });
