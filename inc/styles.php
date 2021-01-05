@@ -39,9 +39,9 @@ if ( ! function_exists( 'gpc_base_inline_css_func' ) ) :
         for( $i = 0; $i < count( $gpc_theme_colors ); $i++ ) {
             $color_slug = esc_attr( $gpc_theme_colors[$i]['slug'] );
             $color_hex = esc_attr( $gpc_theme_colors[$i]['color'] );
-            $gpc_css->set_selector( '.has-' . $color_slug . '-color, .wp-block-button__link.has-text-color.has-' . $color_slug . '-color' );
+            $gpc_css->set_selector( '.has-' . $color_slug . '-color, body .editor-styles-wrapper .has-' . $color_slug . '-color, .wp-block-button__link.has-text-color.has-' . $color_slug . '-color' );
             $gpc_css->add_property( 'color', $color_hex );
-            $gpc_css->set_selector( '.has-' . $color_slug . '-background-color' );
+            $gpc_css->set_selector( '.has-' . $color_slug . '-background-color, body .editor-styles-wrapper .has-' . $color_slug . '-background-color' );
             $gpc_css->add_property( 'background-color', $color_hex );
         }
         
@@ -68,5 +68,13 @@ endif;
 add_action( 'wp_enqueue_scripts', 'gpc_add_inline_styles' );
 function gpc_add_inline_styles() {
     $gpc_css = gpc_base_inline_css_func();
+    // this must reference an already queued stylesheet
     wp_add_inline_style( 'gpc-base', $gpc_css );
+}
+
+add_action( 'admin_enqueue_scripts', 'gpc_add_inline_admin_styles' );
+function gpc_add_inline_admin_styles() {
+    $gpc_admin_css = gpc_base_inline_css_func();
+    // this must reference an already queued stylesheet
+    wp_add_inline_style( 'gpc-editor', $gpc_admin_css );
 }

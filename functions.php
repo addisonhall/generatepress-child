@@ -27,6 +27,14 @@ function gpc_scripts() {
 }
 
 /**
+ * Enqueue admin scripts and styles.
+ */
+add_action( 'admin_enqueue_scripts', 'gpc_admin_scripts' );
+function gpc_admin_scripts() {
+    wp_enqueue_style( 'gpc-editor', get_stylesheet_directory_uri() . '/admin/css/editor.css', false, GPC_VERSION, 'all');
+}
+
+/**
  * Enqueue Gutenberg scripts and styles.
  * @link https://www.billerickson.net/how-to-remove-core-wordpress-blocks/
  */
