@@ -43,7 +43,11 @@ class gpc_sub_menu_widget extends WP_Widget {
         $menu_theme_location = isset( $instance[ 'menu_theme_location' ] ) ? $instance[ 'menu_theme_location' ] : 'primary';
         
         require get_stylesheet_directory() . '/inc/sub-menu.php';
-        $sub_menu_output = wp_nav_menu( array( 'theme_location' => $menu_theme_location, 'sub_menu' => true, 'echo' => false ) );
+        $sub_menu_output = wp_nav_menu( array(
+            'theme_location' => $menu_theme_location,
+            'sub_menu' => true,
+            'echo' => false
+        ) );
         
         if ( $sub_menu_output ) {
             // before and after widget arguments are defined by themes
