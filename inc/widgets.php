@@ -35,3 +35,14 @@ function remove_calendar_widget() {
 	// unregister_widget('WP_Nav_Menu_Widget');
 	// unregister_widget('WP_Widget_Custom_HTML');
 }
+
+/**
+ * Remove widget title if starts with !
+ */
+add_filter( 'widget_title', 'gpc_remove_widget_title' );
+function gpc_remove_widget_title( $widget_title ) {
+    if ( substr ( $widget_title, 0, 1 ) == '!' )
+        return;
+    else
+        return ( $widget_title );
+}
