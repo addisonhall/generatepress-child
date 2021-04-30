@@ -39,7 +39,7 @@ class gpc_sub_menu_widget extends WP_Widget {
     
     // Creating widget front-end
     public function widget( $args, $instance ) {
-        $title = isset( $instance[ 'title' ] ) ? $instance[ 'title' ] : 'In this section';
+        $title = apply_filters( 'widget_title', isset( $instance[ 'title' ] ) ? $instance[ 'title' ] : 'In this section' );
         $menu_theme_location = isset( $instance[ 'menu_theme_location' ] ) ? $instance[ 'menu_theme_location' ] : 'primary';
         
         require get_stylesheet_directory() . '/inc/sub-menu.php';
@@ -52,8 +52,9 @@ class gpc_sub_menu_widget extends WP_Widget {
         if ( $sub_menu_output ) {
             // before and after widget arguments are defined by themes
             echo $args['before_widget'];
-            if ( ! empty( $title ) )
-            echo $args['before_title'] . $title . $args['after_title'];
+            if ( ! empty( $title ) ) {
+                echo $args['before_title'] . $title . $args['after_title'];
+            }
             
             // This is where you run the code and display the output
             echo $sub_menu_output;
@@ -63,7 +64,7 @@ class gpc_sub_menu_widget extends WP_Widget {
     
     // Widget Backend 
     public function form( $instance ) {
-        $title = isset( $instance[ 'title' ] ) ? $instance[ 'title' ] : 'In this section';
+        $title = apply_filters( 'widget_title', isset( $instance[ 'title' ] ) ? $instance[ 'title' ] : 'In this section' );
         $menu_theme_location = isset( $instance[ 'menu_theme_location' ] ) ? $instance[ 'menu_theme_location' ] : 'primary';
         // Get menu theme locations
         $menus = get_registered_nav_menus();
