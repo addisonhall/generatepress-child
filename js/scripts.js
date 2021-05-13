@@ -8,38 +8,53 @@
 /**
  * Stuff to do when everything is loaded
  */
-window.addEventListener('load', function(event)  {
+window.addEventListener('load', function()  {
 
     // Indicate when everything is loaded
+    bodyLoaded();
+    
+    // Activate all prepped animations
+    doAnimations();
+
+    // Check scroll animations
+    checkScrollAnimations();
+
+});
+
+/**
+ * Do stuff on scroll
+ */
+window.onscroll = function() {
+    
+    // Check scroll animations
+    checkScrollAnimations();
+    
+};
+
+/**
+ * Indicate when everything is loaded with body class
+ */
+function bodyLoaded() {
     var bodyEl = document.querySelector('body');
     bodyEl.classList.remove('preload');
     bodyEl.classList.add('loaded');
-    
-    // Activate all prepped animations
+}
+
+/**
+ * Activate all prepped animations
+ */
+function doAnimations() {
     var animEls = document.querySelectorAll('.prep-animation');
     for (const animEl of animEls) {
         animEl.classList.remove('prep-animation');
         animEl.classList.add('do-animation');
     }
-
-});
-
-/**
- * Scroll into view function
- */
-
-// If portion of element is in view
-function isVisible (ele) {
-    const { top, bottom } = ele.getBoundingClientRect();
-    const vHeight = (window.innerHeight || document.documentElement.clientHeight);
-    return ((top > 0 || bottom > 0) && top < vHeight);
 }
 
 /**
  * Trigger animations when element scrolls into view
  */
-window.onscroll = function() {
-
+function checkScrollAnimations() {
     var scrollLeftEls = document.querySelectorAll('.scroll-fade-in-left');
     for (const scrollLeftEl of scrollLeftEls) {
         if (isVisible(scrollLeftEl)) {
@@ -67,5 +82,13 @@ window.onscroll = function() {
             scrollFadeRightEl.classList.add('fade-in-right', 'do-scroll-animation');
         }
     }
-    
-};
+}
+
+/**
+ * Check to see if element is in view
+ */
+function isVisible (ele) {
+    const { top, bottom } = ele.getBoundingClientRect();
+    const vHeight = (window.innerHeight || document.documentElement.clientHeight);
+    return ((top > 0 || bottom > 0) && top < vHeight);
+}

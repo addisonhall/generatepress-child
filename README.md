@@ -78,6 +78,8 @@ If you're fading in multiple items, you may want them to fade in one at a time. 
 
 Check out the ANIMATIONS portion of `styles.css` to learn more.
 
+**Update:** The `scroll-fade-in` classes will now also work if an element is already in within the viewport. If it is NOT within the viewport, the animation will wait until it is to play. The scripts will check for animations on both scroll and page load events. Technically, you could use the `scroll-fade-in` classes for everything and they will work.
+
 ### JavaScript
 
 **No longer requires jQuery!** Only one JavaScript file is present, `js/scripts.js`, for all of my javascript goodies. As of now it only includes some stuff to make the animation CSS classes work.
