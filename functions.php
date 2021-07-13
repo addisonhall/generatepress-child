@@ -98,6 +98,7 @@ require get_stylesheet_directory() . '/inc/colors.php'; // should be before styl
 require get_stylesheet_directory() . '/inc/styles.php';
 require get_stylesheet_directory() . '/inc/fonts.php';
 require get_stylesheet_directory() . '/inc/generateblocks.php';
+require get_stylesheet_directory() . '/inc/login.php';
 require get_stylesheet_directory() . '/inc/dashboard-widgets.php';
 require get_stylesheet_directory() . '/inc/widgets.php';
 require get_stylesheet_directory() . '/inc/sub-menu-widget.php';
