@@ -31,7 +31,8 @@ $gpc_current_user = wp_get_current_user();
         remove_menu_page( 'edit-comments.php' );
         remove_menu_page( 'tools.php' );
         add_menu_page( 'Menus', 'Menus', 'edit_theme_options', 'nav-menus.php', '', 'dashicons-menu', 60 );
-        add_menu_page( 'Widgets', 'Widgets', 'edit_theme_options', 'widgets.php', '', 'dashicons-layout', 61 );
+        add_menu_page( 'Widgets', 'Widgets', 'edit_theme_options', 'widgets.php', '', 'dashicons-block-default', 61 );
+        add_menu_page( 'Elements', 'Elements', 'edit_theme_options', 'edit.php?post_type=gp_elements', '', 'dashicons-layout', 61 );
     }
 }
 
