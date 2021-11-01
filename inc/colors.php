@@ -1,6 +1,7 @@
 <?php
 /**
  * Include specific colors in WordPress customizer.
+ * NOT NECESSARY WITH GP 3.1!
  *
  * Must be included in functions.php
  *

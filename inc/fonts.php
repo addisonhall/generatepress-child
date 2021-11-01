@@ -1,6 +1,7 @@
 <?php
 /**
  * Font functions for GeneratePress.
+ * NOT NECESSARY WITH GP 3.1!
  *
  * Must be included in functions.php
  *

@@ -94,9 +94,9 @@ add_post_type_support( 'page', 'excerpt' );
 require get_stylesheet_directory() . '/inc/helper-functions.php';
 require get_stylesheet_directory() . '/inc/users.php';
 require get_stylesheet_directory() . '/inc/generatepress.php';
-require get_stylesheet_directory() . '/inc/colors.php'; // should be before styles.php to access colors
-require get_stylesheet_directory() . '/inc/styles.php';
-require get_stylesheet_directory() . '/inc/fonts.php';
+// require get_stylesheet_directory() . '/inc/colors.php'; // should be before styles.php to access colors
+// require get_stylesheet_directory() . '/inc/styles.php';
+// require get_stylesheet_directory() . '/inc/fonts.php';
 require get_stylesheet_directory() . '/inc/generateblocks.php';
 require get_stylesheet_directory() . '/inc/login.php';
 require get_stylesheet_directory() . '/inc/dashboard-widgets.php';

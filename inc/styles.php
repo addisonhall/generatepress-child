@@ -1,6 +1,7 @@
 <?php
 /**
  * Additional inline styles.
+ * BEST TO USE BUILT-IN STYLING WITH GP 3.1 AND GENERATEBLOCKS
  *
  * These additional styles pull styling
  * info from customizations in GeneratePress.
