@@ -28,6 +28,8 @@ The `style.css` file is where I include all of my custom styling. I have not inc
 
 #### Default Color Classes
 
+**NOTE:** This all now happens automagically with the release GeneratePress 3.1. Thank you, Tom and team!
+
 Any custom colors added to the `$gpc_theme_colors` array in `inc/colors.php` will now be added as both CSS properties (like variables) and WordPress color classes (i.e. `has-dark-gray-color`). Let's say you add a custom color called "Dark Gray." The CSS will look something like this:
 
 ```css
