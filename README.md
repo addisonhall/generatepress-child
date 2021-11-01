@@ -92,18 +92,18 @@ It will probably be easiest to check the comments in each file to find out what'
 
 - `advanced-custom-fields.php`: Helpers for Google Maps and Gutenberg blocks in Advanced Custom Fields
 - `breadcrumbs.php`: Add a simple visual breadcrumb trail using hooks (Note that this does not add stuctured data &mdash; I recommend a plugin like [SEO Framework](https://wordpress.org/plugins/autodescription/) for that)
-- `colors.php`: Allows you to add your own colors to the color fields used by GeneratePress, and now Gutenberg. UPDATE: Now all theme colors are pulled from a single array. Several CSS color classes are also added automatically.
+- `colors.php`: ~~Allows you to add your own colors to the color fields used by GeneratePress, and now Gutenberg. UPDATE: Now all theme colors are pulled from a single array. Several CSS color classes are also added automatically.~~ No longer necessary thanks to GP 3.1!
 - `cpt-output-custom.php`: Tells custom post types and taxonomies to use specified template partials (stored within `partials`)
 - `cpt-output-reset.php`: ~~Heads off the default display of custom post types and taxonomies so that our custom partials can be used instead~~ This is no longer necessary thanks to the Elements Module introduced in GP Premium 1.7
 - `dashboard-widgets.php`: Where my dashboard widgets live
-- `fonts.php`: Font-related functions for GeneratePress. Here are the beginnings of a method that allows the inclusion of fonts in the Customizer outside of Google Fonts (or including missing Google Fonts).
+- `fonts.php`: ~~Font-related functions for GeneratePress. Here are the beginnings of a method that allows the inclusion of fonts in the Customizer outside of Google Fonts (or including missing Google Fonts).~~ No longer necessary thanks to GP 3.1!
 - `generateblocks.php`: **NEW!** You can now set defaults for GenerateBlocks! This file currently contains the code to sync up GenerateBlocks' button styling with GeneratePress, but you can do more. For all available options, take a look at the [default settings](https://github.com/tomusborne/generateblocks/blob/master/includes/defaults.php) in GenerateBlocks.
 - `generatepress.php`: Some customizations for GeneratePress. I've updated some things here for GP 2.0.
 - `helper-functions.php`: Home for any helpful functions that need to be accessible from anywhere in the child theme
 - `image-sizes.php`: Optional custom image sizes
 - `optimizations.php`: Some stuff to make our site lean and mean
 - `shortcodes.php`: Where my shortcodes live
-- `styles.php`: Creates additional inline styles from colors set within the customizer of GeneratePress. UPDATE: Now pulls from colors in `inc/colors.php` to generate custom color properties and standard WP color classes automatically.
+- `styles.php`: ~~Creates additional inline styles from colors set within the customizer of GeneratePress. UPDATE: Now pulls from colors in `inc/colors.php` to generate custom color properties and standard WP color classes automatically.~~ Just use global styles in GenerateBlocks Pro. It's much easier.
 - `sub-menu-widget.php`: Creates a contextual sub menu widget that pulls from the specified menu theme location. Defaults to `primary`.
 - `sub-menu.php`: Function for adding contextual sub menus. Used by `sub-menu-widget.php`.
 - `users.php`: Currently defines what the admin looks like for the `editor` and `shop_manager` roles. Requires the [Members plugin](https://wordpress.org/plugins/members/) by Justin Tadlock.
