@@ -89,6 +89,32 @@ add_filter( 'widget_text' , 'do_shortcode' );
 add_post_type_support( 'page', 'excerpt' );
 
 /**
+ * Don't reveal any user information!
+ * Redirect author pages and restrict JSON API to admins only.
+ */
+add_action( 'template_redirect', 'gpc_disable_author_page' );
+function gpc_disable_author_page() {
+    global $wp_query;
+    if ( is_author() ) {
+        // Redirect to homepage, set status to 301 permenant redirect. 
+        wp_redirect( get_option('home'), 301 ); 
+        exit; 
+    }
+}
+add_filter( 'rest_authentication_errors', function( $result ) {
+    if ( ! empty( $result ) ) {
+      return $result;
+    }
+    if ( ! is_user_logged_in() ) {
+      return new WP_Error( 'rest_not_logged_in', 'You are not currently logged in.', array( 'status' => 401 ) );
+    }
+    if ( ! current_user_can( 'administrator' ) ) {
+      return new WP_Error( 'rest_not_admin', 'You are not an administrator.', array( 'status' => 401 ) );
+    }
+    return $result;
+});
+
+/**
  * Include other functions as needed from the `inc` folder.
  */
 require get_stylesheet_directory() . '/inc/helper-functions.php';
