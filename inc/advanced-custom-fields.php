@@ -56,6 +56,24 @@ function gpc_register_acf_blocks() {
             'keywords'          => array( 'team', 'profile')
         ));
 
+        // Register an image slider block.
+        acf_register_block_type(array(
+            'name'              => 'image_slider',
+            'title'             => __('Image Slider'),
+            'description'       => __('Basic image slider block.'),
+            'render_template'   => 'template-parts/blocks/image-slider/image-slider.php',
+            'icon'              => 'images-alt',
+            'category'          => 'formatting',
+            'supports'          => array( 'align' => false ),
+            'mode'              => 'auto',
+            'keywords'          => array( 'gallery', 'image', 'slider'),
+            'enqueue_assets' => function(){
+                wp_enqueue_style( 'gpc-swiper', 'https://cdn.jsdelivr.net/npm/swiper@8.0.3/swiper-bundle.min.css', false, '8.0.3', 'all' );
+                wp_enqueue_script( 'gpc-swiper', 'https://cdn.jsdelivr.net/npm/swiper@8.0.3/swiper-bundle.min.js', '', '8.0.3', true );
+                wp_enqueue_script( 'gpc-swiper-init', get_stylesheet_directory_uri() . '/template-parts/blocks/image-slider/image-slider.js', '', '8.0.3', true );
+            },
+        ));
+
     }
 }
 
