@@ -115,6 +115,11 @@ add_filter( 'rest_authentication_errors', function( $result ) {
 });
 
 /**
+ * Hide Wordpress version from source view
+ */
+remove_action( 'wp_head', 'wp_generator' );
+
+/**
  * Include other functions as needed from the `inc` folder.
  */
 require get_stylesheet_directory() . '/inc/helper-functions.php';
@@ -123,12 +128,12 @@ require get_stylesheet_directory() . '/inc/generatepress.php';
 // require get_stylesheet_directory() . '/inc/colors.php'; // should be before styles.php to access colors
 // require get_stylesheet_directory() . '/inc/styles.php';
 // require get_stylesheet_directory() . '/inc/fonts.php';
-require get_stylesheet_directory() . '/inc/generateblocks.php';
+// require get_stylesheet_directory() . '/inc/generateblocks.php';
 require get_stylesheet_directory() . '/inc/login.php';
 require get_stylesheet_directory() . '/inc/dashboard-widgets.php';
 require get_stylesheet_directory() . '/inc/widgets.php';
 require get_stylesheet_directory() . '/inc/sub-menu-widget.php';
-require get_stylesheet_directory() . '/inc/breadcrumbs.php';
+// require get_stylesheet_directory() . '/inc/breadcrumbs.php';
 require get_stylesheet_directory() . '/inc/optimizations.php';
 require get_stylesheet_directory() . '/inc/image-sizes.php';
 // require get_stylesheet_directory() . '/inc/wp-show-posts.php';
