@@ -52,6 +52,14 @@ function gpc_gutenberg_scripts() {
 }
 
 /**
+ * Remove all default block patterns from Gutenberg editor
+ * @see https://github.com/WordPress/gutenberg/issues/26667
+ */
+add_action( 'init', function() {
+	remove_theme_support( 'core-block-patterns' );
+}, 9 );
+
+/**
  * Add custom editor styles.
  */
 add_theme_support( 'wp-block-styles' );
