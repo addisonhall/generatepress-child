@@ -97,6 +97,18 @@ add_filter( 'widget_text' , 'do_shortcode' );
 add_post_type_support( 'page', 'excerpt' );
 
 /**
+ * Ability to remove extra archive pages, if we want to.
+ */
+// add_action( 'template_redirect', 'gpc_remove_wp_archives' );
+ function gpc_remove_wp_archives(){
+  //If we are on category or tag or date or author archive
+  if( is_category() || is_tag() || is_date() || is_author() ) {
+    global $wp_query;
+    $wp_query->set_404(); //set to 404 not found page
+  }
+}
+
+/**
  * Don't reveal any user information!
  * Redirect author pages and restrict JSON API to admins only.
  */
