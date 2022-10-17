@@ -97,6 +97,18 @@ add_filter( 'widget_text' , 'do_shortcode' );
 add_post_type_support( 'page', 'excerpt' );
 
 /**
+ * Customize CPT title fields.
+ */
+//add_filter( 'enter_title_here', 'gpc_change_title_text' );
+function gpc_change_title_text( $title ){
+    $screen = get_current_screen();
+    if ( 'staff' == $screen->post_type ) {
+        $title = 'Enter staff name here';
+    }
+    return $title;
+}
+
+/**
  * Ability to remove extra archive pages, if we want to.
  */
 // add_action( 'template_redirect', 'gpc_remove_wp_archives' );
