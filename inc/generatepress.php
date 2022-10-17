@@ -56,4 +56,8 @@ function gpc_remove_meta_boxes() {
 	remove_meta_box('generate_layout_options_meta_box', $excluded_post_types, 'normal'); // Disable all layout options
 	remove_meta_box('generate_layout_options_meta_box', $excluded_post_types, 'side'); // Disable all layout options
 	remove_meta_box('_generate_use_sections_metabox', $excluded_post_types, 'side'); // Disable sections
+
+    // remove members meta box on selected post types
+    $members_excluded_post_types = array( 'page', 'post', );
+    remove_meta_box( 'members-cp', $members_excluded_post_types, 'advanced' );
 }
