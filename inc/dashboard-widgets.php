@@ -12,12 +12,15 @@
 /**
  * Display video tutorials link.
  */
- function gpc_tutorials_dashboard_widget() {
-    wp_add_dashboard_widget(
-        'gpc_tutorials_dashboard_widget', // Widget slug.
-        'Video Tutorials', // Title.
-        'gpc_tutorials_dashboard_widget_function' // Display function.
-    );	
+function gpc_tutorials_dashboard_widget() {
+    $gpc_current_user = wp_get_current_user();
+    if ( array_intersect( array( 'editor', 'shop_manager', 'administrator' ), (array) $gpc_current_user->roles ) ) {
+        wp_add_dashboard_widget(
+            'gpc_tutorials_dashboard_widget', // Widget slug.
+            'Video Tutorials', // Title.
+            'gpc_tutorials_dashboard_widget_function' // Display function.
+        );
+    }
 }
 add_action( 'wp_dashboard_setup', 'gpc_tutorials_dashboard_widget' );
 function gpc_tutorials_dashboard_widget_function() {
