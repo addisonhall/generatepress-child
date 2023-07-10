@@ -28,6 +28,13 @@
  *   'sub_menu'       => true,
  *   'show_parent'    => true
  * ) );
+ * 
+ * // Specify parent id to show specific sub-menu
+ * wp_nav_menu( array(
+ *   'theme_location' => 'primary',
+ *   'sub_menu'       => true,
+ *   'parent_id'      => 12 // id of parent menu item
+ * ) );
  *
  * @package GenerateChild
  * @link https://christianvarga.com/how-to-get-submenu-items-from-a-wordpress-menu-based-on-parent-or-sibling/
@@ -40,14 +47,19 @@ add_filter( 'wp_nav_menu_objects', 'gpc_wp_nav_menu_objects_sub_menu', 10, 2 );
 // filter_hook function to react on sub_menu flag
 function gpc_wp_nav_menu_objects_sub_menu( $sorted_menu_items, $args ) {
     if ( isset( $args->sub_menu ) ) {
-        $root_id = 0;
-    
-        // find the current menu item
-        foreach ( $sorted_menu_items as $menu_item ) {
-            if ( $menu_item->current ) {
-                // set the root id based on whether the current menu item has a parent or not
-                $root_id = ( $menu_item->menu_item_parent ) ? $menu_item->menu_item_parent : $menu_item->ID;
-                break;
+
+        // see if a parent id was provided
+        if ( $args->parent_id ) {
+            $root_id = (int)$args->parent_id;
+        } else {
+            $root_id = 0;
+            // find the current menu item
+            foreach ( $sorted_menu_items as $menu_item ) {
+                if ( $menu_item->current ) {
+                    // set the root id based on whether the current menu item has a parent or not
+                    $root_id = ( $menu_item->menu_item_parent ) ? $menu_item->menu_item_parent : $menu_item->ID;
+                    break;
+                }
             }
         }
     
@@ -84,9 +96,11 @@ function gpc_wp_nav_menu_objects_sub_menu( $sorted_menu_items, $args ) {
         }
     
         // Remove the WooCommerce cart from our sub menu
-        add_filter( 'generate_woocommerce_menu_item_location', 'gpc_move_menu_cart_item' );
-        function gpc_move_menu_cart_item() {
-            return false;
+        if ( ! has_filter( 'generate_woocommerce_menu_item_location', 'gpc_move_menu_cart_item' ) ) {
+            add_filter( 'generate_woocommerce_menu_item_location', 'gpc_move_menu_cart_item' );
+            function gpc_move_menu_cart_item() {
+                return false;
+            }
         }
         
         return $sorted_menu_items;

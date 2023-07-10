@@ -14,6 +14,30 @@
 if ( ! defined( 'ABSPATH' ) ) exit;
 
 /**
+ * Submenu shortcode.
+ * [gpc_submenu menu='primary' parent_id=12 menu_class='class-names']
+ */
+function gpc_submenu_func( $atts ) {
+    $atts = shortcode_atts( array(
+        'menu' => 'primary',
+        'parent_id' => null,
+        'menu_class' => 'gpc-sub-menu',
+    ), $atts );
+    $menu = $atts['menu'];
+    $parent_id = $atts['parent_id'];
+    $menu_class = $atts['menu_class'];
+    $sub_menu_output = wp_nav_menu( array(
+		'theme_location' => $menu,
+		'sub_menu' => true,
+        'parent_id' => $parent_id,
+		'menu_class' => $menu_class,
+		'echo' => false
+	) );
+	return $sub_menu_output;
+}
+add_shortcode( 'gpc_submenu', 'gpc_submenu_func' );
+
+/**
  * Menu to filter custom taxonomy.
  * [gpc_custom_taxonomy_filter]
  */

@@ -24,6 +24,9 @@ function gpc_scripts() {
     wp_enqueue_style( 'gpc-base', get_stylesheet_directory_uri() . '/css/base.css', false, GPC_VERSION, 'all');
     wp_enqueue_style( 'gpc-gutenberg', get_stylesheet_directory_uri() . '/css/gutenberg.css', false, GPC_VERSION, 'all');
     wp_enqueue_script( 'gpc-scripts', get_stylesheet_directory_uri() . '/js/scripts.js', '', GPC_VERSION, true );
+    
+    // register block styles and scripts
+    wp_register_style( 'gpc-team-styles', get_stylesheet_directory_uri() . '/template-parts/blocks/team/team.css', false, GPC_VERSION, 'all');
 }
 
 /**
@@ -32,6 +35,9 @@ function gpc_scripts() {
 add_action( 'admin_enqueue_scripts', 'gpc_admin_scripts' );
 function gpc_admin_scripts() {
     wp_enqueue_style( 'gpc-editor', get_stylesheet_directory_uri() . '/admin/css/editor.css', false, GPC_VERSION, 'all');
+    
+    // register block styles and scripts
+    wp_register_style( 'gpc-team-admin-styles', get_stylesheet_directory_uri() . '/template-parts/blocks/team/team.css', false, GPC_VERSION, 'all');
 }
 
 /**
@@ -50,6 +56,12 @@ function gpc_gutenberg_scripts() {
         wp_enqueue_script( 'gpc-editor-post', get_stylesheet_directory_uri() . '/admin/js/editor-post.js', array( 'wp-blocks', 'wp-dom' ), GPC_VERSION, true );
     }
 }
+
+/**
+ * Initialize ACF Gutenberg blocks.
+ * @link https://www.advancedcustomfields.com/resources/acf_register_block_type/
+ */
+register_block_type( __DIR__ . '/blocks/team/block.json' );
 
 /**
  * Remove all default block patterns from Gutenberg editor
@@ -89,7 +101,7 @@ function gpc_add_js_class() { ?>
 /**
  * Enable shortcodes in widgets.
  */
-add_filter( 'widget_text' , 'do_shortcode' );
+// add_filter( 'widget_text' , 'do_shortcode' );
 
 /**
  * Enable excerpts in pages.
@@ -164,7 +176,8 @@ require get_stylesheet_directory() . '/inc/generatepress.php';
 require get_stylesheet_directory() . '/inc/login.php';
 require get_stylesheet_directory() . '/inc/dashboard-widgets.php';
 require get_stylesheet_directory() . '/inc/widgets.php';
-require get_stylesheet_directory() . '/inc/sub-menu-widget.php';
+require get_stylesheet_directory() . '/inc/sub-menu.php';
+// require get_stylesheet_directory() . '/inc/sub-menu-widget.php';
 // require get_stylesheet_directory() . '/inc/breadcrumbs.php';
 require get_stylesheet_directory() . '/inc/optimizations.php';
 require get_stylesheet_directory() . '/inc/image-sizes.php';
@@ -172,4 +185,4 @@ require get_stylesheet_directory() . '/inc/image-sizes.php';
 // require get_stylesheet_directory() . '/inc/cpt-output-custom.php';
 // require get_stylesheet_directory() . '/inc/advanced-custom-fields.php';
 // require get_stylesheet_directory() . '/inc/woocommerce.php';
-// require get_stylesheet_directory() . '/inc/shortcodes.php';
+require get_stylesheet_directory() . '/inc/shortcodes.php';

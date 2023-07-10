@@ -1,0 +1,14 @@
+{
+    "name": "acf/team",
+    "title": "Team",
+    "description": "A simple team member block",
+    "style": "gpc-team-styles",
+    "editorStyle": "gpc-team-admin-styles",
+    "category": "formatting",
+    "icon": "businessperson",
+    "keywords": ["team", "staff", "employee"],
+    "acf": {
+        "mode": "preview",
+        "renderTemplate": "template-parts/blocks/team/team.php"
+    }
+}
