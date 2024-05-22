@@ -152,7 +152,7 @@ add_filter( 'rest_authentication_errors', function( $result ) {
     if ( ! is_user_logged_in() ) {
       return new WP_Error( 'rest_not_logged_in', 'You are not currently logged in.', array( 'status' => 401 ) );
     }
-    if ( ! current_user_can( 'administrator' ) ) {
+    if ( ! current_user_can( 'edit_posts' ) ) {
       return new WP_Error( 'rest_not_admin', 'You are not an administrator.', array( 'status' => 401 ) );
     }
     return $result;
