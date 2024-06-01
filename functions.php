@@ -79,6 +79,18 @@ add_theme_support( 'editor-styles' );
 add_editor_style( 'css/gutenberg.css' );
 
 /**
+ * Allow SVGs
+ * TODO: need to sanitize? better to use plugin?
+ */
+add_filter( 'upload_mimes', 'gpc_add_file_types_to_uploads' );
+function gpc_add_file_types_to_uploads( $file_types ) {
+    $new_filetypes = array();
+    $new_filetypes['svg'] = 'image/svg+xml';
+    $file_types = array_merge( $file_types, $new_filetypes );
+    return $file_types;
+}
+
+/**
  * Add body classes.
  */
 add_filter( 'body_class', 'gpc_body_classes' );
