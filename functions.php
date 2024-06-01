@@ -24,6 +24,11 @@ function gpc_scripts() {
     wp_enqueue_style( 'gpc-base', get_stylesheet_directory_uri() . '/css/base.css', false, GPC_VERSION, 'all');
     wp_enqueue_style( 'gpc-gutenberg', get_stylesheet_directory_uri() . '/css/gutenberg.css', false, GPC_VERSION, 'all');
     wp_enqueue_script( 'gpc-scripts', get_stylesheet_directory_uri() . '/js/scripts.js', '', GPC_VERSION, true );
+
+    // add 'has-js' class to html element
+    wp_register_script( 'gpc-html-js', '', );
+    wp_enqueue_script( 'gpc-html-js' );
+    wp_add_inline_script( 'gpc-html-js', "document.documentElement.classList.add('has-js');" );
     
     // register block styles and scripts
     wp_register_style( 'gpc-team-styles', get_stylesheet_directory_uri() . '/template-parts/blocks/team/team.css', false, GPC_VERSION, 'all');
@@ -98,17 +103,6 @@ function gpc_body_classes( $classes ) {
     $classes[] = 'gpc';
     return $classes;
 }
-
-/**
- * Add .has-js class to html element.
- */
-add_action( 'generate_before_header','gpc_add_js_class' );  
-function gpc_add_js_class() { ?> 
-    <script>
-        const htmlEl = document.documentElement;
-        htmlEl.classList.add('has-js');
-    </script>
-<?php }
 
 /**
  * Enable shortcodes in widgets.
