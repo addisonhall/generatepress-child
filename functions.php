@@ -165,6 +165,11 @@ add_filter( 'rest_authentication_errors', function( $result ) {
 });
 
 /**
+ * Disable xmlrpc
+ */
+add_filter( 'xmlrpc_enabled', '__return_false' );
+
+/**
  * Hide Wordpress version from source view
  */
 remove_action( 'wp_head', 'wp_generator' );
