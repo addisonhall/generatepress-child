@@ -66,7 +66,7 @@ function gpc_gutenberg_scripts() {
  * Initialize ACF Gutenberg blocks.
  * @link https://www.advancedcustomfields.com/resources/acf_register_block_type/
  */
-register_block_type( __DIR__ . '/blocks/team/block.json' );
+// register_block_type( __DIR__ . '/blocks/team/block.json' );
 
 /**
  * Remove all default block patterns from Gutenberg editor

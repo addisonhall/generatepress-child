@@ -43,7 +43,7 @@ wp.domReady( () => {
         'core/archives',
         'core/calendar',
         'core/categories',
-        'core/html',
+        // 'core/html',
         'core/latest-comments',
         'core/latest-posts',
         'core/page-list',
