@@ -72,6 +72,7 @@ $csp_settings_arr = array(
  */
 add_action( 'send_headers', 'gpc_add_content_security_header' );
 function gpc_add_content_security_header() {
+    if ( is_admin() ) return;
     global $csp_settings_arr;
     $csp_settings_str = '';
     foreach( $csp_settings_arr as $setting => $values ) {
@@ -85,31 +86,29 @@ function gpc_add_content_security_header() {
 }
 
 /**
- * Add nonce to all scripts for CSP.
- */
-add_filter( 'script_loader_tag', 'gpc_add_nonce_to_scripts' );
-function gpc_add_nonce_to_scripts( $html ) {
-    if ( ! is_admin() ) {
-        global $csp_nonce;
-        $html = str_replace( '<script', '<script nonce="' . $csp_nonce . '"', $html );
-    }
-    return $html;
-}
-
-/**
  * Add nonce to all inline scripts for CSP.
  */
 add_filter( 'wp_inline_script_attributes', 'gpc_add_nonce_to_inline_scripts' );
 function gpc_add_nonce_to_inline_scripts( $attr ) {
+    if ( is_admin() ) return $attr;
     $attr = array();
-    if ( ! is_admin() ) {
-        global $csp_nonce;
-        $attr = array(
-            'type' => 'text/javascript',
-            'nonce' => $csp_nonce,
-        );
-    }
+    global $csp_nonce;
+    $attr = array(
+        'type' => 'text/javascript',
+        'nonce' => $csp_nonce,
+    );
     return $attr;
+}
+
+/**
+ * Add nonce to all scripts for CSP.
+ */
+add_filter( 'script_loader_tag', 'gpc_add_nonce_to_scripts' );
+function gpc_add_nonce_to_scripts( $html ) {
+    if ( is_admin() || ( strpos( $html, 'nonce=') ) ) return $html;
+    global $csp_nonce;
+    $html = str_replace( '<script', '<script nonce="' . $csp_nonce . '"', $html );
+    return $html;
 }
 
 /**

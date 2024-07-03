@@ -31,7 +31,7 @@ function gpc_scripts() {
     wp_add_inline_script( 'gpc-html-js', "document.documentElement.classList.add('has-js');" );
     
     // register block styles and scripts
-    wp_register_style( 'gpc-team-styles', get_stylesheet_directory_uri() . '/template-parts/blocks/team/team.css', false, GPC_VERSION, 'all');
+    // wp_register_style( 'gpc-team-styles', get_stylesheet_directory_uri() . '/template-parts/blocks/team/team.css', false, GPC_VERSION, 'all');
 }
 
 /**
@@ -42,7 +42,7 @@ function gpc_admin_scripts() {
     wp_enqueue_style( 'gpc-editor', get_stylesheet_directory_uri() . '/admin/css/editor.css', false, GPC_VERSION, 'all');
     
     // register block styles and scripts
-    wp_register_style( 'gpc-team-admin-styles', get_stylesheet_directory_uri() . '/template-parts/blocks/team/team.css', false, GPC_VERSION, 'all');
+    // wp_register_style( 'gpc-team-admin-styles', get_stylesheet_directory_uri() . '/template-parts/blocks/team/team.css', false, GPC_VERSION, 'all');
 }
 
 /**
