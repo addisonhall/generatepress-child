@@ -1,6 +1,6 @@
 <?php
 /**
- * WP security stuff.
+ * Content security policy with nonces. Doesn't work great with caching.
  *
  * Do some security stuff to harden WordPress.
  * Must be included in functions.php
@@ -11,12 +11,15 @@
 if ( ! defined( 'ABSPATH' ) ) exit;
 
 /**
+ * Set empty nonce variable
+ */
+$csp_nonce = '';
+
+/**
  * Generate nonce for Content Security Policy
  */
 if ( ! is_admin() ) {
-    $csp_timestamp = time();
-    $csp_date = date( 'Y-m-d', $csp_timestamp );
-    $csp_nonce = esc_html( wp_create_nonce( 'csp-nonce-==' . $csp_date ) );
+    $csp_nonce = bin2hex(openssl_random_pseudo_bytes(32));
 }
 
 /**
@@ -45,12 +48,11 @@ $csp_settings_arr = array(
         "https://www.cloudways.com"
     ),
     'script-src' => array(
-        "'self'",
         "'nonce-$csp_nonce'",
-        "https://www.google-analytics.com",
-        "https://www.googletagmanager.com",
-        "https://www.clarity.ms",
-        "https://www.cloudways.com"
+        "'strict-dynamic'",
+        "'unsafe-inline'",
+        "http:",
+        "https:",
     ),
     'img-src' => array(
         "'self'",
