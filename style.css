@@ -104,13 +104,10 @@ CONTENTS:
         -webkit-animation: none !important;
         animation: none !important;
     }
+    /* opacity will be set back to 1 by animations below */
     .has-js .prep-animation,
     .has-js .prep-scroll-animation {
-        visibility: hidden;
-    }
-    .has-js .do-animation,
-    .has-js .do-scroll-animation {
-        visibility: visible;
+        opacity: 0;
     }
 }
 
