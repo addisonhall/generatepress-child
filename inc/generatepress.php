@@ -58,6 +58,6 @@ function gpc_remove_meta_boxes() {
 	remove_meta_box('_generate_use_sections_metabox', $excluded_post_types, 'side'); // Disable sections
 
     // remove members meta box on selected post types
-    $members_excluded_post_types = array( 'page', 'post', );
+    $members_excluded_post_types = array( 'post' );
     remove_meta_box( 'members-cp', $members_excluded_post_types, 'advanced' );
 }

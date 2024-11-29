@@ -23,7 +23,7 @@ add_action( 'wp_enqueue_scripts', 'gpc_scripts' );
 function gpc_scripts() {
     wp_enqueue_style( 'gpc-base', get_stylesheet_directory_uri() . '/css/base.css', false, GPC_VERSION, 'all');
     wp_enqueue_style( 'gpc-gutenberg', get_stylesheet_directory_uri() . '/css/gutenberg.css', false, GPC_VERSION, 'all');
-    wp_enqueue_script( 'gpc-scripts', get_stylesheet_directory_uri() . '/js/scripts.js', '', GPC_VERSION, true );
+    wp_enqueue_script( 'gpc-scripts', get_stylesheet_directory_uri() . '/js/scripts.js', array( 'jquery' ), GPC_VERSION, true );
 
     // add 'has-js' class to html element
     wp_register_script( 'gpc-html-js', '', );
@@ -178,7 +178,7 @@ remove_action( 'wp_head', 'wp_generator' );
  * Include other functions as needed from the `inc` folder.
  */
 require get_stylesheet_directory() . '/inc/helper-functions.php';
-// require get_stylesheet_directory() . '/inc/security.php';
+require get_stylesheet_directory() . '/inc/security.php';
 require get_stylesheet_directory() . '/inc/users.php';
 require get_stylesheet_directory() . '/inc/generatepress.php';
 // require get_stylesheet_directory() . '/inc/colors.php'; // should be before styles.php to access colors

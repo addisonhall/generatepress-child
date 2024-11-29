@@ -103,12 +103,13 @@ It will probably be easiest to check the comments in each file to find out what'
 - `generatepress.php`: Some customizations for GeneratePress. I've updated some things here for GP 2.0.
 - `helper-functions.php`: Home for any helpful functions that need to be accessible from anywhere in the child theme
 - `image-sizes.php`: Optional custom image sizes
+- `login.php`: Some login customization stuff. Also helps with creating member-only logins.
 - `optimizations.php`: Some stuff to make our site lean and mean
 - `shortcodes.php`: Where my shortcodes live
 - `styles.php`: ~~Creates additional inline styles from colors set within the customizer of GeneratePress. UPDATE: Now pulls from colors in `inc/colors.php` to generate custom color properties and standard WP color classes automatically.~~ Just use global styles in GenerateBlocks Pro. It's much easier.
 - `sub-menu-widget.php`: Creates a contextual sub menu widget that pulls from the specified menu theme location. Defaults to `primary`.
 - `sub-menu.php`: Function for adding contextual sub menus. Used by `sub-menu-widget.php`.
-- `users.php`: Currently defines what the admin looks like for the `editor` and `shop_manager` roles. Requires the [Members plugin](https://wordpress.org/plugins/members/) by Justin Tadlock.
+- `users.php`: Currently defines what the admin looks like for the `editor` and `shop_manager` roles. Requires the [Members plugin](https://wordpress.org/plugins/members/).
 - `widgets.php`: Easily hide unwanted widgets.
 - `woocommerce.php`: Customizations, if necessary, for WooCommerce.
 - `wp-show-posts.php`: Customizations, if necessary, for [WP Show Posts](https://wpshowposts.com/). This currently only contains a filter for removing all links for occasions where you only require a list (but not links, obviously).
@@ -141,20 +142,22 @@ To enable the settings I have in place for the Editor role, all that currently n
 
 (NOTE: I'm phasing this out thanks to Gutenberg blocks.) Still a good plugin, but [GenerateBlocks](https://generateblocks.com/) is far better.
 
+### Creating Member-Only Login
+
+My setup requires the following plugins:
+
+- [Gravity Forms](http://www.gravityforms.com/) with the User Registration add-on
+- [Members](https://wordpress.org/plugins/members/) with the Block Permissions add-on
+- [User Menus](https://wordpress.org/plugins/user-menus/)
+
 ## Plugins I normally use
 
 - [GeneratePress Premium](https://generatepress.com/premium/)
 - [GenerateBlocks](https://generateblocks.com/)
 - [Advanced Custom Fields](https://www.advancedcustomfields.com/)
-- [Custom Post Type UI](https://wordpress.org/plugins/custom-post-type-ui/)
-- [WP Show Posts](https://wpshowposts.com/)
-- [Dynamic Widgets](https://wordpress.org/plugins/dynamic-widgets/)
-- [Gravity Forms](http://www.gravityforms.com/) or [Formidable Pro](https://formidablepro.com/)
+- [Gravity Forms](http://www.gravityforms.com/)
 - [Members](https://wordpress.org/plugins/members/)
+- [User Menus](https://wordpress.org/plugins/user-menus/)
 - [WP Featherlight](https://wordpress.org/plugins/wp-featherlight/)
 - [Soliloquy](https://soliloquywp.com/)
-- [Autoptimize](https://wordpress.org/plugins/autoptimize/)
 - [The SEO Framework](https://wordpress.org/plugins/autodescription/)
-- ~~[Lightweight Grid Columns](https://wordpress.org/plugins/lightweight-grid-columns/)~~
-- ~~[Display Widgets](https://wordpress.org/plugins/display-widgets/)~~
-- ~~[Black Studio TinyMCE Widget](https://wordpress.org/plugins/black-studio-tinymce-widget/)~~

@@ -27,17 +27,22 @@ if ( ! is_admin() ) {
  */
 $csp_settings_arr = array(
     "base-uri" => array(
-        "'self'"
+        "'self'",
     ),
     'default-src' => array(
-        "'self'"
+        "'self'",
     ),
     'object-src' => array(
-        "'none'"
+        "'none'",
     ),
     'style-src' => array(
         "'self'",
-        "'unsafe-inline'"
+        "'unsafe-inline'",
+        "https://fonts.googleapis.com",
+    ),
+    'font-src' => array(
+        "'self'",
+        "https://fonts.gstatic.com",
     ),
     'connect-src' => array(
         "'self'",
@@ -45,7 +50,7 @@ $csp_settings_arr = array(
         "https://www.analytics.google.com",
         "https://www.googletagmanager.com",
         "https://l.clarity.ms",
-        "https://www.cloudways.com"
+        "https://www.cloudways.com",
     ),
     'script-src' => array(
         "'nonce-$csp_nonce'",
@@ -61,11 +66,12 @@ $csp_settings_arr = array(
         "https://www.clarity.ms",
         "https://c.clarity.ms",
         "https://c.bing.com",
-        "https://www.cloudways.com"
+        "https://www.cloudways.com",
+        "https://patterns.generateblocks.com",
     ),
     'form-action' => array(
         "'self'",
-        "https://www.cloudways.com"
+        "https://www.cloudways.com",
     )
 );
 
@@ -90,7 +96,7 @@ function gpc_add_content_security_header() {
 /**
  * Add nonce to all inline scripts for CSP.
  */
-add_filter( 'wp_inline_script_attributes', 'gpc_add_nonce_to_inline_scripts' );
+add_filter( 'wp_inline_script_attributes', 'gpc_add_nonce_to_inline_scripts', 999 );
 function gpc_add_nonce_to_inline_scripts( $attr ) {
     if ( is_admin() ) return $attr;
     $attr = array();
@@ -103,27 +109,43 @@ function gpc_add_nonce_to_inline_scripts( $attr ) {
 }
 
 /**
- * Add nonce to all scripts for CSP.
+ * Add nonce to all registered scripts for CSP.
  */
-add_filter( 'script_loader_tag', 'gpc_add_nonce_to_scripts' );
+add_filter( 'script_loader_tag', 'gpc_add_nonce_to_scripts', 999 );
 function gpc_add_nonce_to_scripts( $html ) {
-    if ( is_admin() || ( strpos( $html, 'nonce=') ) ) return $html;
     global $csp_nonce;
-    $html = str_replace( '<script', '<script nonce="' . $csp_nonce . '"', $html );
-    return $html;
+    return gpc_add_nonce_to_dom_scripts( $html, $csp_nonce );
 }
 
 /**
- * Add nonce to GeneratePress A11y script.
+ * Add nonces to footer scripts that are inserted "manually".
  */
-add_filter( 'generate_print_a11y_script', 'gpc_add_nonce_to_a11y_script', 99 );
-function gpc_add_nonce_to_a11y_script( $print ) {
-    if ( ! is_admin() ) {
-        global $csp_nonce;
-        // Add GP's small a11y script inline, but with nonce.
-        printf(
-            '<script nonce="' . $csp_nonce . '" id="generate-a11y">%s</script>',
-            '!function(){"use strict";if("querySelector"in document&&"addEventListener"in window){var e=document.body;e.addEventListener("mousedown",function(){e.classList.add("using-mouse")}),e.addEventListener("keydown",function(){e.classList.remove("using-mouse")})}}();'
-        );
+add_action( 'wp_footer', 'gpc_start_footer_ob', 1 );
+function gpc_start_footer_ob() {
+    ob_start( 'gpc_end_footer_ob_callback' );
+}
+add_action( 'wp_footer', 'gpc_end_footer_ob', 9999 );
+function gpc_end_footer_ob() {
+    ob_end_flush();
+}
+function gpc_end_footer_ob_callback( $buffer ) {
+    global $csp_nonce;
+    return gpc_add_nonce_to_dom_scripts( $buffer, $csp_nonce );
+}
+
+/**
+ * Add nonces to scripts via DOMDocument
+ * 
+ * @see https://www.php.net/manual/en/book.libxml.php Requires libxml
+ */
+function gpc_add_nonce_to_dom_scripts( $html, $nonce ) {
+    $doc = new DOMDocument();
+    $doc->loadHTML( $html );
+    $xpath = new DOMXPath( $doc );
+    $nodes = $xpath->query('//script');
+    foreach( $nodes as $node ) {
+        $node->setAttribute( 'nonce', $nonce );
     }
+    $html = trim( preg_replace( '/^<!DOCTYPE.+?>/', '', str_replace( array( '<html>', '</html>', '<head>', '</head>', '<body>', '</body>' ), array( '', '', '', '', '', '' ), $doc->saveHTML() ) ) );
+    return $html;
 }
