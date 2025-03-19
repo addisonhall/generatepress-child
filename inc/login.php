@@ -35,7 +35,7 @@ function gpc_custom_login_logo() {
  *
  * @return string
  */
-add_filter( 'login_url', 'gpc_custom_login_url', 10, 3 );
+// add_filter( 'login_url', 'gpc_custom_login_url', 10, 3 );
 function gpc_custom_login_url( $login_url, $redirect, $force_reauth ){
     // This will append /custom-login/ to you main site URL as configured in general settings (ie https://domain.com/custom-login/)
     $login_url = site_url( '/sign-in/', 'login' );
