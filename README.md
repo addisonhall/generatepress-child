@@ -105,6 +105,7 @@ It will probably be easiest to check the comments in each file to find out what'
 - `image-sizes.php`: Optional custom image sizes
 - `login.php`: Some login customization stuff. Also helps with creating member-only logins.
 - `optimizations.php`: Some stuff to make our site lean and mean
+- `security.php`: Customize your own content security policy! Also includes additional HTTP headers.
 - `shortcodes.php`: Where my shortcodes live
 - `styles.php`: ~~Creates additional inline styles from colors set within the customizer of GeneratePress. UPDATE: Now pulls from colors in `inc/colors.php` to generate custom color properties and standard WP color classes automatically.~~ Just use global styles in GenerateBlocks Pro. It's much easier.
 - `sub-menu-widget.php`: Creates a contextual sub menu widget that pulls from the specified menu theme location. Defaults to `primary`.

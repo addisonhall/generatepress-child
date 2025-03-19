@@ -6,6 +6,8 @@
  * Must be included in functions.php
  *
  * @package GenerateChild
+ * @see https://content-security-policy.com/ Reference guide for content security policies
+ * @see https://csp-evaluator.withgoogle.com/ Test with Google's CSP Evaluator
  */
 
 if ( ! defined( 'ABSPATH' ) ) exit;
@@ -67,7 +69,6 @@ $csp_settings_arr = array(
         "https://c.clarity.ms",
         "https://c.bing.com",
         "https://www.cloudways.com",
-        "https://patterns.generateblocks.com",
     ),
     'form-action' => array(
         "'self'",
@@ -76,10 +77,13 @@ $csp_settings_arr = array(
 );
 
 /**
- * Generate header with Content Security Policy
+ * Generate header with Content Security Policy.
+ * Also add other headers if relevant.
+ * 
+ * @see https://developer.wordpress.org/reference/hooks/send_headers/ Docs for send_headers hook
  */
-add_action( 'send_headers', 'gpc_add_content_security_header' );
-function gpc_add_content_security_header() {
+add_action( 'send_headers', 'gpc_add_custom_headers' );
+function gpc_add_custom_headers() {
     if ( is_admin() ) return;
     global $csp_settings_arr;
     $csp_settings_str = '';
@@ -91,10 +95,17 @@ function gpc_add_content_security_header() {
         $csp_settings_str .= '; ';
     }
     header( "Content-Security-Policy: $csp_settings_str" );
+    header( 'Referrer-Policy: no-referrer-when-downgrade' );
+    header( 'Strict-Transport-Security: max-age=31536000; includeSubDomains' );
+    header( 'X-Frame-Options: SAMEORIGIN' );
+    header( 'X-Content-Type-Options: nosniff' );
+    // header( 'Permissions-Policy: fullscreen=(self "https://addisonhall.design"), geolocation=*' ); // change the URL to match the site!
 }
 
 /**
  * Add nonce to all inline scripts for CSP.
+ * 
+ * @see https://developer.wordpress.org/reference/hooks/wp_inline_script_attributes/ Docs for wp_inline_script_attributes filter
  */
 add_filter( 'wp_inline_script_attributes', 'gpc_add_nonce_to_inline_scripts', 999 );
 function gpc_add_nonce_to_inline_scripts( $attr ) {
@@ -119,6 +130,8 @@ function gpc_add_nonce_to_scripts( $html ) {
 
 /**
  * Add nonces to footer scripts that are inserted "manually".
+ * 
+ * @see https://wordpress.stackexchange.com/questions/161971/overwrite-or-replace-code-in-wp-footer Provided the output buffer solution using wp_footer
  */
 add_action( 'wp_footer', 'gpc_start_footer_ob', 1 );
 function gpc_start_footer_ob() {
@@ -137,6 +150,7 @@ function gpc_end_footer_ob_callback( $buffer ) {
  * Add nonces to scripts via DOMDocument
  * 
  * @see https://www.php.net/manual/en/book.libxml.php Requires libxml
+ * @see https://wordpress.stackexchange.com/questions/161971/overwrite-or-replace-code-in-wp-footer WP StackExchange that helped me write this function
  */
 function gpc_add_nonce_to_dom_scripts( $html, $nonce ) {
     $doc = new DOMDocument();
@@ -146,6 +160,6 @@ function gpc_add_nonce_to_dom_scripts( $html, $nonce ) {
     foreach( $nodes as $node ) {
         $node->setAttribute( 'nonce', $nonce );
     }
-    $html = trim( preg_replace( '/^<!DOCTYPE.+?>/', '', str_replace( array( '<html>', '</html>', '<head>', '</head>', '<body>', '</body>' ), array( '', '', '', '', '', '' ), $doc->saveHTML() ) ) );
+    $html = trim( preg_replace( '/^<!DOCTYPE.+?>/', '', str_replace( array( '<html>', '</html>', '<head>', '</head>', '<body>', '</body>' ), array( '', '', '', '', '', '' ), $doc->saveHTML() ) ) ); // DOMDocument will try to add doctype, html, etc., so strip these out if added.
     return $html;
 }
