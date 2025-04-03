@@ -99,7 +99,7 @@ function gpc_add_custom_headers() {
     header( 'Strict-Transport-Security: max-age=31536000; includeSubDomains' );
     header( 'X-Frame-Options: SAMEORIGIN' );
     header( 'X-Content-Type-Options: nosniff' );
-    header( 'Permissions-Policy: fullscreen=(self "http://generatepress-child.test"), geolocation=*' ); // change the URL to match the site!
+    header( 'Permissions-Policy: fullscreen=(self "' . site_url() . '"), geolocation=*' ); // change the URL to match the site!
 }
 
 /**
