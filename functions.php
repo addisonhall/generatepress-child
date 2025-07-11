@@ -182,7 +182,7 @@ require get_stylesheet_directory() . '/inc/security.php';
 require get_stylesheet_directory() . '/inc/users.php';
 require get_stylesheet_directory() . '/inc/generatepress.php';
 // require get_stylesheet_directory() . '/inc/colors.php'; // should be before styles.php to access colors
-// require get_stylesheet_directory() . '/inc/styles.php';
+require get_stylesheet_directory() . '/inc/styles.php';
 // require get_stylesheet_directory() . '/inc/fonts.php';
 // require get_stylesheet_directory() . '/inc/generateblocks.php';
 require get_stylesheet_directory() . '/inc/login.php';
