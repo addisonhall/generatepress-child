@@ -3,6 +3,7 @@
  * Custom editor block style variations.
  *
  * @package GenerateChild
+ * @link https://developer.wordpress.org/themes/features/block-style-variations/
  */
 
 if ( ! defined( 'ABSPATH' ) ) exit;
