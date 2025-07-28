@@ -110,12 +110,8 @@ function gpc_add_custom_headers() {
 add_filter( 'wp_inline_script_attributes', 'gpc_add_nonce_to_inline_scripts', 999 );
 function gpc_add_nonce_to_inline_scripts( $attr ) {
     if ( is_admin() ) return $attr;
-    $attr = array();
     global $csp_nonce;
-    $attr = array(
-        'type' => 'text/javascript',
-        'nonce' => $csp_nonce,
-    );
+    $attr['nonce'] = $csp_nonce;
     return $attr;
 }
 
