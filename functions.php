@@ -21,17 +21,13 @@ show_admin_bar( false );
  */
 add_action( 'wp_enqueue_scripts', 'gpc_scripts' );
 function gpc_scripts() {
-    wp_enqueue_style( 'gpc-base', get_stylesheet_directory_uri() . '/css/base.css', false, GPC_VERSION, 'all');
-    wp_enqueue_style( 'gpc-gutenberg', get_stylesheet_directory_uri() . '/css/gutenberg.css', false, GPC_VERSION, 'all');
-    wp_enqueue_script( 'gpc-scripts', get_stylesheet_directory_uri() . '/js/scripts.js', array( 'jquery' ), GPC_VERSION, true );
-
+    wp_enqueue_style( 'gpc-settings', get_stylesheet_directory_uri() . '/css/settings.css', false, GPC_VERSION, 'all');
+    wp_enqueue_script( 'gpc-scripts', get_stylesheet_directory_uri() . '/js/scripts.js', array(), GPC_VERSION, true );
+    
     // add 'has-js' class to html element
     wp_register_script( 'gpc-html-js', '', );
     wp_enqueue_script( 'gpc-html-js' );
     wp_add_inline_script( 'gpc-html-js', "document.documentElement.classList.add('has-js');" );
-    
-    // register block styles and scripts
-    // wp_register_style( 'gpc-team-styles', get_stylesheet_directory_uri() . '/template-parts/blocks/team/team.css', false, GPC_VERSION, 'all');
 }
 
 /**
@@ -40,9 +36,6 @@ function gpc_scripts() {
 add_action( 'admin_enqueue_scripts', 'gpc_admin_scripts' );
 function gpc_admin_scripts() {
     wp_enqueue_style( 'gpc-editor', get_stylesheet_directory_uri() . '/admin/css/editor.css', false, GPC_VERSION, 'all');
-    
-    // register block styles and scripts
-    // wp_register_style( 'gpc-team-admin-styles', get_stylesheet_directory_uri() . '/template-parts/blocks/team/team.css', false, GPC_VERSION, 'all');
 }
 
 /**
@@ -52,11 +45,15 @@ function gpc_admin_scripts() {
 add_action( 'enqueue_block_editor_assets', 'gpc_gutenberg_scripts' );
 function gpc_gutenberg_scripts() {
 
+    global $current_screen;
+    
+    wp_enqueue_style( 'gpc-settings', get_stylesheet_directory_uri() . '/css/settings.css', false, GPC_VERSION, 'all');
+    wp_enqueue_style( 'gpc-editor', get_stylesheet_directory_uri() . '/admin/css/editor.css', false, GPC_VERSION, 'all');
+
     // Load editor scripts for all post types
     wp_enqueue_script( 'gpc-editor', get_stylesheet_directory_uri() . '/admin/js/editor.js', array( 'wp-blocks', 'wp-dom' ), GPC_VERSION, true );
     
     // Load editor scripts for specific post types
-    global $current_screen;
     if ( $current_screen->post_type == 'post' ) {
         wp_enqueue_script( 'gpc-editor-post', get_stylesheet_directory_uri() . '/admin/js/editor-post.js', array( 'wp-blocks', 'wp-dom' ), GPC_VERSION, true );
     }
@@ -81,7 +78,6 @@ add_action( 'init', function() {
  */
 add_theme_support( 'wp-block-styles' );
 add_theme_support( 'editor-styles' );
-add_editor_style( 'css/gutenberg.css' );
 
 /**
  * Allow SVGs
@@ -139,19 +135,22 @@ function gpc_change_title_text( $title ){
 }
 
 /**
- * Don't reveal any user information!
- * Redirect author pages and restrict JSON API to admins only.
+ * Redirect author pages
  */
-add_action( 'template_redirect', 'gpc_disable_author_page' );
-function gpc_disable_author_page() {
-    global $wp_query;
-    if ( is_author() ) {
-        // Redirect to homepage, set status to 301 permenant redirect. 
-        wp_redirect( get_option('home'), 301 ); 
-        exit; 
-    }
+add_action( 'template_redirect', 'gpc_redirect_author_page' );
+function gpc_redirect_author_page() {
+    $is_author_set = get_query_var( 'author', '' );
+	if ( $is_author_set != '' && !is_admin() ) {
+		wp_redirect( home_url(), 301 );
+		exit;
+	}
 }
-add_filter( 'rest_authentication_errors', function( $result ) {
+
+/**
+ * Disable rest api unless authenticated
+ */
+add_filter( 'rest_authentication_errors', 'gpc_disable_rest_api' );
+function gpc_disable_res_api( $result ) {
     if ( ! empty( $result ) ) {
       return $result;
     }
@@ -159,10 +158,10 @@ add_filter( 'rest_authentication_errors', function( $result ) {
       return new WP_Error( 'rest_not_logged_in', 'You are not currently logged in.', array( 'status' => 401 ) );
     }
     if ( ! current_user_can( 'edit_posts' ) ) {
-      return new WP_Error( 'rest_not_admin', 'You are not an administrator.', array( 'status' => 401 ) );
+      return new WP_Error( 'rest_not_admin', 'You do not have the right privileges for this.', array( 'status' => 401 ) );
     }
     return $result;
-});
+};
 
 /**
  * Disable xmlrpc
