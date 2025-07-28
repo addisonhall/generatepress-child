@@ -107,7 +107,7 @@ CONTENTS:
 ------------------------------------------ */
 
 /* --- do all the preload stuff --- */
-@media (min-width: 768px) or (prefers-reduced-motion: reduce) {
+@media (min-width: 768px) {
     .preload * {
         -webkit-transition: none !important;
         transition: none !important;
@@ -118,6 +118,16 @@ CONTENTS:
     .has-js .prep-animation,
     .has-js .prep-scroll-animation {
         opacity: 0;
+    }
+}
+
+/* --- respect user preferences for motion --- */
+@media screen and (prefers-reduced-motion: reduce) {
+    body * {
+        -webkit-transition: none !important;
+        transition: none !important;
+        -webkit-animation: none !important;
+        animation: none !important;
     }
 }
 
