@@ -150,7 +150,7 @@ function gpc_redirect_author_page() {
  * Disable rest api unless authenticated
  */
 add_filter( 'rest_authentication_errors', 'gpc_disable_rest_api' );
-function gpc_disable_res_api( $result ) {
+function gpc_disable_rest_api( $result ) {
     if ( ! empty( $result ) ) {
       return $result;
     }
