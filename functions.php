@@ -22,7 +22,7 @@ show_admin_bar( false );
 add_action( 'wp_enqueue_scripts', 'gpc_scripts' );
 function gpc_scripts() {
     wp_enqueue_style( 'gpc-settings', get_stylesheet_directory_uri() . '/css/settings.css', false, GPC_VERSION, 'all');
-    wp_enqueue_script( 'gpc-scripts', get_stylesheet_directory_uri() . '/js/scripts.js', array(), GPC_VERSION, true );
+    wp_enqueue_script( 'gpc-scripts', get_stylesheet_directory_uri() . '/js/scripts.js', [ 'jquery' ], GPC_VERSION, true );
     
     // add 'has-js' class to html element
     wp_register_script( 'gpc-html-js', '', );
