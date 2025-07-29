@@ -63,6 +63,7 @@ $csp_settings_arr = array(
     ),
     'img-src' => array(
         "'self'",
+        "https://patterns.generatepress.com",
         "https://www.google-analytics.com",
         "https://www.googletagmanager.com",
         "https://www.clarity.ms",
