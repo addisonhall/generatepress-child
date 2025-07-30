@@ -8,33 +8,20 @@
 /**
  * Stuff to do when everything is loaded
  */
-window.addEventListener('load', function()  {
+window.addEventListener('load', () =>  {
 
     // Indicate when everything is loaded
     bodyLoaded();
     
     // Activate all prepped animations
-    doAnimations();
-
-    // Check scroll animations
-    checkScrollAnimations();
+    doScrollAnimations();
 
 });
 
 /**
- * Do stuff on scroll
- */
-window.onscroll = function() {
-    
-    // Check scroll animations
-    checkScrollAnimations();
-    
-};
-
-/**
  * Indicate when everything is loaded with body class
  */
-function bodyLoaded() {
+const bodyLoaded = () => {
     var bodyEl = document.querySelector('body');
     bodyEl.classList.remove('preload');
     bodyEl.classList.add('loaded');
@@ -43,7 +30,7 @@ function bodyLoaded() {
 /**
  * Activate all prepped animations
  */
-function doAnimations() {
+const prepAnimations = async () => {
     var animEls = document.querySelectorAll('.prep-animation');
     for (const animEl of animEls) {
         animEl.classList.remove('prep-animation');
@@ -52,43 +39,41 @@ function doAnimations() {
 }
 
 /**
- * Trigger animations when element scrolls into view
+ * Check to see if element is in view and animate
  */
-function checkScrollAnimations() {
-    var scrollLeftEls = document.querySelectorAll('.scroll-fade-in-left');
-    for (const scrollLeftEl of scrollLeftEls) {
-        if (isVisible(scrollLeftEl)) {
-            scrollLeftEl.classList.add('fade-in-left', 'do-scroll-animation');
-        }
-    }
+const doScrollAnimations = async () => {
+    const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    if (prefersReducedMotion) return;
 
-    var scrollFadeInEls = document.querySelectorAll('.scroll-fade-in');
-    for (const scrollFadeInEl of scrollFadeInEls) {
-        if (isVisible(scrollFadeInEl)) {
-            scrollFadeInEl.classList.add('fade-in', 'do-scroll-animation');
-        }
-    }
-
-    var scrollFadeBottomEls = document.querySelectorAll('.scroll-fade-in-bottom');
-    for (const scrollFadeBottomEl of scrollFadeBottomEls) {
-        if (isVisible(scrollFadeBottomEl)) {
-            scrollFadeBottomEl.classList.add('fade-in-bottom', 'do-scroll-animation');
-        }
-    }
-
-    var scrollFadeRightEls = document.querySelectorAll('.scroll-fade-in-right');
-    for (const scrollFadeRightEl of scrollFadeRightEls) {
-        if (isVisible(scrollFadeRightEl)) {
-            scrollFadeRightEl.classList.add('fade-in-right', 'do-scroll-animation');
-        }
-    }
-}
-
-/**
- * Check to see if element is in view
- */
-function isVisible (ele) {
-    const { top, bottom } = ele.getBoundingClientRect();
-    const vHeight = (window.innerHeight || document.documentElement.clientHeight);
-    return ((top > 0 || bottom > 0) && top < vHeight);
+    await prepAnimations();
+    
+    const targets = document.querySelectorAll('.scroll-fade-in, .scroll-fade-in-left, .scroll-fade-in-bottom, .scroll-fade-in-right');
+    
+    const observer = new IntersectionObserver((entries, observer) => {
+        entries.forEach(entry => {
+            if (
+                entry.isIntersecting &&
+                (
+                    entry.target.classList.contains('scroll-fade-in') ||
+                    entry.target.classList.contains('scroll-fade-in-left') ||
+                    entry.target.classList.contains('scroll-fade-in-bottom') ||
+                    entry.target.classList.contains('scroll-fade-in-right')
+                )
+            ) {
+                let modifier = '';
+                if (entry.target.classList.contains('scroll-fade-in-left')) modifier = '-left';
+                if (entry.target.classList.contains('scroll-fade-in-bottom')) modifier = '-bottom';
+                if (entry.target.classList.contains('scroll-fade-in-right')) modifier = '-right';
+                entry.target.classList.add('fade-in' + modifier, 'do-scroll-animation');
+                observer.unobserve(entry.target);
+            }
+        });
+    }, {
+        threshold: 0.1,
+        rootMargin: '0px 0px 0px 0px'
+    });
+    
+    targets.forEach(el => {
+        observer.observe(el);
+    });
 }
