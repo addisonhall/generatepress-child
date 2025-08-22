@@ -51,7 +51,10 @@ ol, ul {
 =! CONTENT
 ------------------------------------------ */
 
-
+/* --- search results --- */
+.gpc-search-query-term {
+    background-color: var(--highlight);
+}
 
 /* ==========================================
 =! COMPONENTS
