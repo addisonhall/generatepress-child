@@ -84,50 +84,93 @@ add_shortcode( 'gpc_custom_taxonomy_filter', 'gpc_custom_taxonomy_filter_func' )
 add_shortcode( 'gpc_output_custom_post_type', 'gpc_output_custom_post_type_func' );
 
 /**
- * Output sponsors.
- * EXAMPLE SHORTCODE FOR OUTPUTTING SPONSORS.
- * REQUIRES CUSTOM POST TYPE AND ADVANCED CUSTOM FIELDS.
- * @param string $layout "full" or "logos". Defaults to "full".
- * [site_sponsors layout=full]
+ * Output Relevanssi search results title
+ * @see https://www.relevanssi.com/user-manual/functions/relevanssi_the_title/
+ * 
+ * [gpc_relevanssi_search_title]
  */
-function gpc_output_foundation_sponsors_func( $atts ) {
-    $atts = shortcode_atts( array(
-        'layout' => 'full',
-    ), $atts );
-    $layout = $atts[ 'layout' ];
-    ob_start();
-    $args = array (
-        'post_type' => 'sponsor',
-        'order' => 'ASC',
-        'orderby' => 'menu_order',
-        'posts_per_page' => 50,
-    );
-    $query = new WP_Query( $args );
-    if ( $query->have_posts() ) {
-        echo '<!-- Layout: ' . $layout . ' -->';
-        if ( $layout == 'full' ) {
-            while ( $query->have_posts() ) : $query->the_post();
-                include get_stylesheet_directory() . '/template-parts/shortcodes/sponsors/sponsors.php';
-            endwhile;
-        } elseif ( $layout == 'logos' ) {
-            echo '<ul class="sponsor-logo-list">';
-            while ( $query->have_posts() ) : $query->the_post();
-                include get_stylesheet_directory() . '/template-parts/shortcodes/sponsors/sponsor-logos.php';
-            endwhile;
-            echo '</ul>';
+add_shortcode( 'gpc_relevanssi_search_title', 'gpc_relevanssi_search_title_func' );
+function gpc_relevanssi_search_title_func() {
+
+    // get post type
+    $post_id = get_the_ID();
+    $post_type = get_post_type( $post_id );
+    $post_type_obj = get_post_type_object( $post_type );
+    $post_type_singular_label = $post_type_obj->labels->singular_name;
+
+    // set default link target
+    $target = '_self';
+
+    // get default link
+    $post_link = get_the_permalink();
+
+    // possible post types:
+    // wms_document
+
+    // get link for Resources
+    if ( $post_type === 'helpful_resources' ) {
+        $resource_type = 'file';
+
+        if ( get_field( 'resource_type', $post_id ) ) {
+            $resource_type = get_field( 'resource_type', $post_id );
+            switch ( $resource_type ) {
+                case 'file':
+                    $file_field = get_field( 'resource_file', $post_id );
+                    $resource = $file_field['url'];
+                    $resource_id = $file_field['ID'];
+                    $target = '_blank';
+                    break;
+
+                case 'url':
+                    $resource = get_field( 'resource_url', $post_id );
+                    $target = '_blank';
+                    break;
+
+                case 'page':
+                    $resource = get_field( 'resource_page', $post_id );
+                    break;
+
+                default:
+                    $resource = false;
+                    break;
+            }
         }
-        wp_enqueue_style( 'gpc-sponsors' );
+        $post_link = $resource;
     }
-    wp_reset_postdata();
-    $output = ob_get_clean();
-    return $output;
+
+    // get link for Documents
+    if ( $post_type === 'wms_document' )  {
+        $doc_file_field = get_field( 'document_file', $post_id );
+        $doc_file_url = $doc_file_field['url'];
+        $doc_file_id = $doc_file_field['ID'];
+        $target = '_blank';
+        $post_link = $doc_file_url;
+    }
+
+    return '<div class="gbp-section__tagline">' . $post_type_singular_label . ':</div><a href="' . $post_link . '" target="' . $target . '">' . relevanssi_the_title( $echo = false ) . '</a>';
 }
-add_shortcode( 'site_sponsors', 'gpc_output_foundation_sponsors_func' );
 
 /**
- * Shortcode assets
+ * Output Wordpress excerpt
+ * [gpc_search_excerpt]
  */
-add_action( 'wp_enqueue_scripts', 'gpc_shortcode_assets' );
-function gpc_shortcode_assets() {
-	wp_register_style( 'gpc-sponsors', get_stylesheet_directory_uri() . '/template-parts/shortcodes/sponsors/sponsors.css', array(), '1.0.0' );
+add_shortcode( 'gpc_search_excerpt', 'gpc_search_excerpt_func' );
+function gpc_search_excerpt_func() {
+
+    // get post type
+    $post_id = get_the_ID();
+    $post_type = get_post_type( $post_id );
+
+    $excerpt = get_the_excerpt();
+
+    switch ( $post_type ) {
+        case 'wms_document':
+            $excerpt = get_field( 'document_description', $post_id );
+            break;
+        default:
+            $excerpt = get_the_excerpt();
+            break;
+    }
+
+    return $excerpt;
 }
