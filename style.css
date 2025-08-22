@@ -55,6 +55,9 @@ ol, ul {
 .gpc-search-query-term {
     background-color: var(--highlight);
 }
+.gpc.search-results .site-main > .dynamic-content-template {
+    margin-bottom: 0;
+}
 
 /* ==========================================
 =! COMPONENTS
