@@ -104,47 +104,10 @@ function gpc_relevanssi_search_title_func() {
     // get default link
     $post_link = get_the_permalink();
 
-    // possible post types:
-    // wms_document
-
-    // get link for Resources
-    if ( $post_type === 'helpful_resources' ) {
-        $resource_type = 'file';
-
-        if ( get_field( 'resource_type', $post_id ) ) {
-            $resource_type = get_field( 'resource_type', $post_id );
-            switch ( $resource_type ) {
-                case 'file':
-                    $file_field = get_field( 'resource_file', $post_id );
-                    $resource = $file_field['url'];
-                    $resource_id = $file_field['ID'];
-                    $target = '_blank';
-                    break;
-
-                case 'url':
-                    $resource = get_field( 'resource_url', $post_id );
-                    $target = '_blank';
-                    break;
-
-                case 'page':
-                    $resource = get_field( 'resource_page', $post_id );
-                    break;
-
-                default:
-                    $resource = false;
-                    break;
-            }
-        }
-        $post_link = $resource;
-    }
-
-    // get link for Documents
-    if ( $post_type === 'wms_document' )  {
-        $doc_file_field = get_field( 'document_file', $post_id );
-        $doc_file_url = $doc_file_field['url'];
-        $doc_file_id = $doc_file_field['ID'];
+    // if result is attachment, link directly to file in new tab
+    if ( $post_type === 'attachment' )  {
         $target = '_blank';
-        $post_link = $doc_file_url;
+        $post_link = wp_get_attachment_url( $post_id );
     }
 
     return '<div class="gbp-section__tagline">' . $post_type_singular_label . ':</div><a href="' . $post_link . '" target="' . $target . '">' . relevanssi_the_title( $echo = false ) . '</a>';
