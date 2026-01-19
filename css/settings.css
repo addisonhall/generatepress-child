@@ -47,3 +47,10 @@
     --grid-gutter: var(--space-s-l, clamp(1.125rem, 0.6362rem + 2.444vw, 2.625rem));
 
 }
+
+/* --- typographic defaults --- */
+.content-area {
+    p, ol, ul, h3, h4, h5, h6 {
+        max-width: 88ex;
+    }
+}
