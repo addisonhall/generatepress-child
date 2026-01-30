@@ -8,20 +8,82 @@
 /**
  * Stuff to do when everything is loaded
  */
-window.addEventListener('load', () =>  {
+window.addEventListener('load', function()  {
 
     // Indicate when everything is loaded
     bodyLoaded();
     
     // Activate all prepped animations
-    doScrollAnimations();
+    doAnimations();
+
+    // Check scroll animations
+    checkScrollAnimations();
+	
+	// Check for dynamic YouTube overlay request
+	doYouTubeDynamicOverlay();
 
 });
 
 /**
+ * Extracts the YouTube video ID from a given URL.
+ * Supports multiple YouTube URL formats.
+ * 
+ * @param {string} url - The YouTube URL.
+ * @returns {string|null} - The video ID if found, otherwise null.
+ */
+function getYouTubeVideoID(url) {
+    if (typeof url !== "string" || !url.trim()) {
+        console.error("Invalid input: URL must be a non-empty string.");
+        return null;
+    }
+
+    try {
+        // Ensure it's a valid URL
+        const parsedUrl = new URL(url);
+
+        // Case 1: Standard watch URL
+        if (parsedUrl.hostname.includes("youtube.com")) {
+            if (parsedUrl.searchParams.has("v")) {
+                return parsedUrl.searchParams.get("v");
+            }
+
+            // Case 2: Embed or Shorts format
+            const pathParts = parsedUrl.pathname.split("/");
+            const possibleID = pathParts[pathParts.length - 1];
+            if (possibleID && possibleID.length >= 11) {
+                return possibleID;
+            }
+        }
+
+        // Case 3: Shortened youtu.be URL
+        if (parsedUrl.hostname === "youtu.be") {
+            const id = parsedUrl.pathname.slice(1);
+            if (id && id.length >= 11) {
+                return id;
+            }
+        }
+
+        return null; // No valid ID found
+    } catch (e) {
+        console.error("Invalid URL format:", e.message);
+        return null;
+    }
+}
+
+/**
+ * Do stuff on scroll
+ */
+window.onscroll = function() {
+    
+    // Check scroll animations
+    checkScrollAnimations();
+    
+};
+
+/**
  * Indicate when everything is loaded with body class
  */
-const bodyLoaded = () => {
+function bodyLoaded() {
     var bodyEl = document.querySelector('body');
     bodyEl.classList.remove('preload');
     bodyEl.classList.add('loaded');
@@ -30,7 +92,7 @@ const bodyLoaded = () => {
 /**
  * Activate all prepped animations
  */
-const prepAnimations = async () => {
+function doAnimations() {
     var animEls = document.querySelectorAll('.prep-animation');
     for (const animEl of animEls) {
         animEl.classList.remove('prep-animation');
@@ -39,41 +101,69 @@ const prepAnimations = async () => {
 }
 
 /**
- * Check to see if element is in view and animate
+ * Trigger animations when element scrolls into view
  */
-const doScrollAnimations = async () => {
-    const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-    if (prefersReducedMotion) return;
+function checkScrollAnimations() {
+    var scrollLeftEls = document.querySelectorAll('.scroll-fade-in-left');
+    for (const scrollLeftEl of scrollLeftEls) {
+        if (isVisible(scrollLeftEl)) {
+            scrollLeftEl.classList.add('fade-in-left', 'do-scroll-animation');
+        }
+    }
 
-    await prepAnimations();
-    
-    const targets = document.querySelectorAll('.scroll-fade-in, .scroll-fade-in-left, .scroll-fade-in-bottom, .scroll-fade-in-right');
-    
-    const observer = new IntersectionObserver((entries, observer) => {
-        entries.forEach(entry => {
-            if (
-                entry.isIntersecting &&
-                (
-                    entry.target.classList.contains('scroll-fade-in') ||
-                    entry.target.classList.contains('scroll-fade-in-left') ||
-                    entry.target.classList.contains('scroll-fade-in-bottom') ||
-                    entry.target.classList.contains('scroll-fade-in-right')
-                )
-            ) {
-                let modifier = '';
-                if (entry.target.classList.contains('scroll-fade-in-left')) modifier = '-left';
-                if (entry.target.classList.contains('scroll-fade-in-bottom')) modifier = '-bottom';
-                if (entry.target.classList.contains('scroll-fade-in-right')) modifier = '-right';
-                entry.target.classList.add('fade-in' + modifier, 'do-scroll-animation');
-                observer.unobserve(entry.target);
-            }
-        });
-    }, {
-        threshold: 0.1,
-        rootMargin: '0px 0px 0px 0px'
-    });
-    
-    targets.forEach(el => {
-        observer.observe(el);
-    });
+    var scrollFadeInEls = document.querySelectorAll('.scroll-fade-in');
+    for (const scrollFadeInEl of scrollFadeInEls) {
+        if (isVisible(scrollFadeInEl)) {
+            scrollFadeInEl.classList.add('fade-in', 'do-scroll-animation');
+        }
+    }
+
+    var scrollFadeBottomEls = document.querySelectorAll('.scroll-fade-in-bottom');
+    for (const scrollFadeBottomEl of scrollFadeBottomEls) {
+        if (isVisible(scrollFadeBottomEl)) {
+            scrollFadeBottomEl.classList.add('fade-in-bottom', 'do-scroll-animation');
+        }
+    }
+
+    var scrollFadeRightEls = document.querySelectorAll('.scroll-fade-in-right');
+    for (const scrollFadeRightEl of scrollFadeRightEls) {
+        if (isVisible(scrollFadeRightEl)) {
+            scrollFadeRightEl.classList.add('fade-in-right', 'do-scroll-animation');
+        }
+    }
+}
+
+/**
+ * Check to see if element is in view
+ */
+function isVisible (ele) {
+    const { top, bottom } = ele.getBoundingClientRect();
+    const vHeight = (window.innerHeight || document.documentElement.clientHeight);
+    return ((top > 0 || bottom > 0) && top < vHeight);
+}
+
+/**
+ * Dynamic YouTube GP/GB overlay panel stuff
+ * 
+ * REMEMBER to replace 'gb-overlay-937' with the value of your overlay panel!
+ */
+function doYouTubeDynamicOverlay() {
+	
+	// check for presence of YT overlay
+	const youtubeOverlay = document.getElementById('gb-overlay-937');
+	
+	// check for overlay button triggers
+	const buttons = document.querySelectorAll('[data-gb-overlay="gb-overlay-937"]');
+	
+	// bail out if required elements aren't present
+	if (!buttons) return;	
+	
+	// watch for button clicks and load requested videos accordingly
+	buttons.forEach(function(button) {
+		button.addEventListener('click', function(e) {
+			let videoUrl = 'https://www.youtube.com/embed/' + getYouTubeVideoID(e.target.href) + '?feature=oembed&amp;autoplay=1';
+			let iframe = youtubeOverlay.querySelector('iframe');
+			iframe.setAttribute('src', videoUrl);
+		})
+	})
 }
