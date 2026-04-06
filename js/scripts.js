@@ -16,6 +16,12 @@ window.addEventListener('load', function()  {
     // Activate all prepped animations
     doAnimations();
 
+    // Make menus more accessible
+    doAccessibleNavMenu();
+
+    // Remove skip-to-content title
+    removeSkipToContentTitle();
+
     // Check scroll animations
     checkScrollAnimations();
 	
@@ -166,4 +172,28 @@ function doYouTubeDynamicOverlay() {
 			iframe.setAttribute('src', videoUrl);
 		})
 	})
+}
+
+/**
+ * Manipulate the main menu to be more accessible
+ */
+const doAccessibleNavMenu = () => {
+    const menuLinksRoleButton = document.querySelectorAll('.menu .menu-item.is-role-button > a');
+    if (!menuLinksRoleButton) return;
+    menuLinksRoleButton.forEach((menuItem) => {
+        let linkHref = menuItem.dataset.href;
+        menuItem.addEventListener('click', function(event) {
+            event.preventDefault();
+            location.href = linkHref;
+        })
+    });
+}
+
+/**
+ * Remove the redundant title attribute from the skip-to-content link
+ */
+const removeSkipToContentTitle = () => {
+    const skipToContent = document.querySelector('a.skip-link');
+    if (!skipToContent) return;
+    skipToContent.removeAttribute('title');
 }

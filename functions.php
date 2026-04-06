@@ -101,6 +101,19 @@ function gpc_body_classes( $classes ) {
 }
 
 /**
+ * Add role="button" to menu dropdown links when 'is-role-button' is first added class in WP menu
+ */
+function gpc_add_button_role_to_menu_parents( $atts, $item, $args, $depth ) {
+    if ( 'is-role-button' === $item->classes[0] ) {
+        $atts['role'] = 'button';
+        $atts['data-href'] = $atts['href'];
+        $atts['href'] = '#';
+    }
+    return $atts;
+}
+add_filter( 'nav_menu_link_attributes', 'gpc_add_button_role_to_menu_parents', 10, 4 );
+
+/**
  * Enable shortcodes in widgets.
  */
 // add_filter( 'widget_text' , 'do_shortcode' );
