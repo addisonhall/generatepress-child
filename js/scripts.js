@@ -174,17 +174,14 @@ window.addEventListener('load', () =>  {
     // Indicate when everything is loaded
     bodyLoaded();
     
-    // Activate all prepped animations
-    prepAnimations();
-
-    // Make menus more accessible
-    doAccessibleNavMenu();
-
     // Remove skip-to-content title
     removeSkipToContentTitle();
 
-    // Check scroll animations
-    checkScrollAnimations();
+    // Make menus more accessible
+    doAccessibleNavMenu();
+    
+    // Activate all prepped animations
+    prepAnimations();
 	
 	// Check for dynamic YouTube overlay request
 	doYouTubeDynamicOverlay();
