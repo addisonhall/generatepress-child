@@ -6,29 +6,93 @@
  */
 
 /**
- * Stuff to do when everything is loaded
+ * Indicate when everything is loaded with body class
  */
-window.addEventListener('load', function()  {
+const bodyLoaded = () => {
+    const bodyEl = document.querySelector('body');
+    if (!bodyEl) {
+        console.log('Where is the body element?');
+        return;
+    }
+    bodyEl.classList.remove('preload');
+    bodyEl.classList.add('loaded');
+}
 
-    // Indicate when everything is loaded
-    bodyLoaded();
+/**
+ * Remove the redundant title attribute from the skip-to-content link
+ */
+const removeSkipToContentTitle = () => {
+    const skipToContent = document.querySelector('a.skip-link');
+    if (!skipToContent) return;
+    skipToContent.removeAttribute('title');
+}
+
+/**
+ * Manipulate the main menu to be more accessible
+ */
+const doAccessibleNavMenu = () => {
+    const menuLinksRoleButton = document.querySelectorAll('.menu .menu-item.is-role-button > a');
+    if (!menuLinksRoleButton) return;
+    menuLinksRoleButton.forEach((menuItem) => {
+        let linkHref = menuItem.dataset.href;
+        menuItem.addEventListener('click', function(event) {
+            event.preventDefault();
+            location.href = linkHref;
+        })
+    });
+}
+
+/**
+ * Activate all prepped animations
+ */
+const prepAnimations = async () => {
+    const animEls = document.querySelectorAll('.prep-animation');
+    if (!animEls) return;
+    animEls.forEach((animEl) => {
+        animEl.classList.remove('prep-animation');
+        animEl.classList.add('do-animation');
+    });
+}
+
+/**
+ * Check to see if element is in view and animate
+ */
+const doScrollAnimations = async () => {
+    const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    if (prefersReducedMotion) return;
+
+    await prepAnimations();
     
-    // Activate all prepped animations
-    doAnimations();
-
-    // Make menus more accessible
-    doAccessibleNavMenu();
-
-    // Remove skip-to-content title
-    removeSkipToContentTitle();
-
-    // Check scroll animations
-    checkScrollAnimations();
-	
-	// Check for dynamic YouTube overlay request
-	doYouTubeDynamicOverlay();
-
-});
+    const targets = document.querySelectorAll('.scroll-fade-in, .scroll-fade-in-left, .scroll-fade-in-bottom, .scroll-fade-in-right');
+    
+    const observer = new IntersectionObserver((entries, observer) => {
+        entries.forEach(entry => {
+            if (
+                entry.isIntersecting &&
+                (
+                    entry.target.classList.contains('scroll-fade-in') ||
+                    entry.target.classList.contains('scroll-fade-in-left') ||
+                    entry.target.classList.contains('scroll-fade-in-bottom') ||
+                    entry.target.classList.contains('scroll-fade-in-right')
+                )
+            ) {
+                let modifier = '';
+                if (entry.target.classList.contains('scroll-fade-in-left')) modifier = '-left';
+                if (entry.target.classList.contains('scroll-fade-in-bottom')) modifier = '-bottom';
+                if (entry.target.classList.contains('scroll-fade-in-right')) modifier = '-right';
+                entry.target.classList.add('fade-in' + modifier, 'do-scroll-animation');
+                observer.unobserve(entry.target);
+            }
+        });
+    }, {
+        threshold: 0.1,
+        rootMargin: '0px 0px 0px 0px'
+    });
+    
+    targets.forEach(el => {
+        observer.observe(el);
+    });
+}
 
 /**
  * Extracts the YouTube video ID from a given URL.
@@ -37,7 +101,7 @@ window.addEventListener('load', function()  {
  * @param {string} url - The YouTube URL.
  * @returns {string|null} - The video ID if found, otherwise null.
  */
-function getYouTubeVideoID(url) {
+const getYouTubeVideoID = (url) => {
     if (typeof url !== "string" || !url.trim()) {
         console.error("Invalid input: URL must be a non-empty string.");
         return null;
@@ -77,83 +141,11 @@ function getYouTubeVideoID(url) {
 }
 
 /**
- * Do stuff on scroll
- */
-window.onscroll = function() {
-    
-    // Check scroll animations
-    checkScrollAnimations();
-    
-};
-
-/**
- * Indicate when everything is loaded with body class
- */
-function bodyLoaded() {
-    var bodyEl = document.querySelector('body');
-    bodyEl.classList.remove('preload');
-    bodyEl.classList.add('loaded');
-}
-
-/**
- * Activate all prepped animations
- */
-function doAnimations() {
-    var animEls = document.querySelectorAll('.prep-animation');
-    for (const animEl of animEls) {
-        animEl.classList.remove('prep-animation');
-        animEl.classList.add('do-animation');
-    }
-}
-
-/**
- * Trigger animations when element scrolls into view
- */
-function checkScrollAnimations() {
-    var scrollLeftEls = document.querySelectorAll('.scroll-fade-in-left');
-    for (const scrollLeftEl of scrollLeftEls) {
-        if (isVisible(scrollLeftEl)) {
-            scrollLeftEl.classList.add('fade-in-left', 'do-scroll-animation');
-        }
-    }
-
-    var scrollFadeInEls = document.querySelectorAll('.scroll-fade-in');
-    for (const scrollFadeInEl of scrollFadeInEls) {
-        if (isVisible(scrollFadeInEl)) {
-            scrollFadeInEl.classList.add('fade-in', 'do-scroll-animation');
-        }
-    }
-
-    var scrollFadeBottomEls = document.querySelectorAll('.scroll-fade-in-bottom');
-    for (const scrollFadeBottomEl of scrollFadeBottomEls) {
-        if (isVisible(scrollFadeBottomEl)) {
-            scrollFadeBottomEl.classList.add('fade-in-bottom', 'do-scroll-animation');
-        }
-    }
-
-    var scrollFadeRightEls = document.querySelectorAll('.scroll-fade-in-right');
-    for (const scrollFadeRightEl of scrollFadeRightEls) {
-        if (isVisible(scrollFadeRightEl)) {
-            scrollFadeRightEl.classList.add('fade-in-right', 'do-scroll-animation');
-        }
-    }
-}
-
-/**
- * Check to see if element is in view
- */
-function isVisible (ele) {
-    const { top, bottom } = ele.getBoundingClientRect();
-    const vHeight = (window.innerHeight || document.documentElement.clientHeight);
-    return ((top > 0 || bottom > 0) && top < vHeight);
-}
-
-/**
  * Dynamic YouTube GP/GB overlay panel stuff
  * 
  * REMEMBER to replace 'gb-overlay-937' with the value of your overlay panel!
  */
-function doYouTubeDynamicOverlay() {
+const doYouTubeDynamicOverlay = () => {
 	
 	// check for presence of YT overlay
 	const youtubeOverlay = document.getElementById('gb-overlay-937');
@@ -175,25 +167,26 @@ function doYouTubeDynamicOverlay() {
 }
 
 /**
- * Manipulate the main menu to be more accessible
+ * Call functions and do stuff when everything is loaded
  */
-const doAccessibleNavMenu = () => {
-    const menuLinksRoleButton = document.querySelectorAll('.menu .menu-item.is-role-button > a');
-    if (!menuLinksRoleButton) return;
-    menuLinksRoleButton.forEach((menuItem) => {
-        let linkHref = menuItem.dataset.href;
-        menuItem.addEventListener('click', function(event) {
-            event.preventDefault();
-            location.href = linkHref;
-        })
-    });
-}
+window.addEventListener('load', () =>  {
 
-/**
- * Remove the redundant title attribute from the skip-to-content link
- */
-const removeSkipToContentTitle = () => {
-    const skipToContent = document.querySelector('a.skip-link');
-    if (!skipToContent) return;
-    skipToContent.removeAttribute('title');
-}
+    // Indicate when everything is loaded
+    bodyLoaded();
+    
+    // Activate all prepped animations
+    prepAnimations();
+
+    // Make menus more accessible
+    doAccessibleNavMenu();
+
+    // Remove skip-to-content title
+    removeSkipToContentTitle();
+
+    // Check scroll animations
+    checkScrollAnimations();
+	
+	// Check for dynamic YouTube overlay request
+	doYouTubeDynamicOverlay();
+
+});
