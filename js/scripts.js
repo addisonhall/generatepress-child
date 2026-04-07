@@ -179,9 +179,9 @@ window.addEventListener('load', () =>  {
 
     // Make menus more accessible
     doAccessibleNavMenu();
-    
+
     // Activate all prepped animations
-    prepAnimations();
+    doScrollAnimations();
 	
 	// Check for dynamic YouTube overlay request
 	doYouTubeDynamicOverlay();
