@@ -23,7 +23,7 @@ add_action( 'wp_enqueue_scripts', 'gpc_scripts' );
 function gpc_scripts() {
     wp_enqueue_style( 'gpc-settings', get_stylesheet_directory_uri() . '/css/settings.css', false, GPC_VERSION, 'all');
     wp_enqueue_script( 'gpc-scripts', get_stylesheet_directory_uri() . '/js/scripts.js', [ 'jquery' ], GPC_VERSION, true );
-    
+
     // add 'has-js' class to html element
     wp_register_script( 'gpc-html-js', '', );
     wp_enqueue_script( 'gpc-html-js' );
@@ -40,19 +40,23 @@ function gpc_admin_scripts() {
 
 /**
  * Enqueue Gutenberg scripts and styles.
- * @link https://www.billerickson.net/how-to-remove-core-wordpress-blocks/
+ * @link https://developer.wordpress.org/block-editor/how-to-guides/enqueueing-assets-in-the-editor/
  */
-add_action( 'enqueue_block_editor_assets', 'gpc_gutenberg_scripts' );
+add_action( 'enqueue_block_assets', 'gpc_gutenberg_scripts' );
 function gpc_gutenberg_scripts() {
 
+    if ( ! is_admin() ) {
+        return;
+    }
+
     global $current_screen;
-    
+
     wp_enqueue_style( 'gpc-settings', get_stylesheet_directory_uri() . '/css/settings.css', false, GPC_VERSION, 'all');
     wp_enqueue_style( 'gpc-editor', get_stylesheet_directory_uri() . '/admin/css/editor.css', false, GPC_VERSION, 'all');
 
     // Load editor scripts for all post types
     wp_enqueue_script( 'gpc-editor', get_stylesheet_directory_uri() . '/admin/js/editor.js', array( 'wp-blocks', 'wp-dom' ), GPC_VERSION, true );
-    
+
     // Load editor scripts for specific post types
     if ( $current_screen->post_type == 'post' ) {
         wp_enqueue_script( 'gpc-editor-post', get_stylesheet_directory_uri() . '/admin/js/editor-post.js', array( 'wp-blocks', 'wp-dom' ), GPC_VERSION, true );
